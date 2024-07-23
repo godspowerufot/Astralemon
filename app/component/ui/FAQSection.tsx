@@ -2,10 +2,43 @@
 "use client";
 import { useState } from "react";
 
-import { faqItems } from "./lib/_exportLinks";
-import React from "react";
 // Declaring type for FAQ items
-
+type FAQItemType = {
+  question: string;
+  answer: string;
+};
+export const faqItems: FAQItemType[] = [
+  {
+    question: "What is JobMingle?",
+    answer:
+      "JobMingle is an innovative ed-tech platform and remote job recruitment website. We empower individuals seeking to transition to a new career by equipping them with the right skills and providing access to numerous remote job opportunities across the country. We assist employers in finding the remote talent they desire to grow their company and connect job seekers to the jobs they need to succeed.",
+  },
+  {
+    question: "Do I need a laptop before I can visit Jobmingle.co?",
+    answer:
+      "No! You can access Jobmingle.co on all smart devices. As long as your phone can browse, you are good to go.",
+  },
+  {
+    question: "Is there a mobile app available for JobMingle?",
+    answer:
+      "No. But we are currently working on it. We will notify you when it is available for download on the Play Store and Apple Store.",
+  },
+  {
+    question: "What kind of courses are available on JobMingle?",
+    answer:
+      "We offer a wide range of courses across multiple industries. Which means we are not specific to a particular industry.",
+  },
+  {
+    question: "Is it only remote jobs that are listed on JobMingle?",
+    answer:
+      "Yes. However, we also list hybrid jobs that require you to go to work a few times a week.",
+  },
+  {
+    question: "Can I advertise with JobMingle?",
+    answer:
+      "Yes, you can. To advertise your brand, please send an email to contact@jobmingle.co to learn more about our advertising rates.",
+  },
+];
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -20,9 +53,10 @@ const FAQSection = () => {
     >
       <div className="w-full">
         <div className="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-3">
-          <div className="flex flex-col">
-            <h2 className="font-bold text-5xl mt-0 tracking-tight">FAQ</h2>
-          </div>
+          <h2 className="font-bold text-5xl max-md:text-3xl  mt-0 tracking-tight">
+            Frequently asked questions
+          </h2>
+          <div className="flex flex-col"></div>
           {faqItems.map((item, index) => (
             <FAQItem
               key={index}

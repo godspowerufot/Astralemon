@@ -44,9 +44,6 @@ const ExceptionalSolutions = () => {
     <section className="bg-white py-8">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm mb-4">
-            Fill × Hug
-          </span>
           <h2 className="text-3xl font-bold">Our Exceptional Solutions</h2>
           <p className="text-gray-700">
             Innovative and tailored solutions designed to meet your unique
@@ -59,14 +56,12 @@ const ExceptionalSolutions = () => {
               key={index}
               className="p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start"
             >
-              <div className=" h-[300px] w-full rounded-lg mb-4">
+              <div className="  w-full rounded-lg mb-4 object-fit">
                 <Image
                   src={solution.srcI}
                   alt="Solution Image"
                   layout="responsive"
-                  height={solution.height}
-                  width={solution.width}
-                  className="rounded-lg"
+                  className="rounded-lg max-md:h-[300px] object-fit"
                 />
               </div>
               <h3 className="text-xl font-semibold">{solution.title}</h3>

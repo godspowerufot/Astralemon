@@ -24,7 +24,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="bg-white py-8 mt-6">
+    <section className="bg-white py-8 mt-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold">How it works</h2>

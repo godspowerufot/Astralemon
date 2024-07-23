@@ -6,6 +6,7 @@ import HowItWorks from "./component/ui/Howitworks";
 import Pricing from "./component/ui/PricingTables";
 import TestimonialSlider from "./component/ui/Testimonials";
 import HeroSection from "./component/ui/Carousel";
+import FAQSection from "./component/ui/FAQSection";
 export default function Home() {
   return (
     <main>
@@ -15,6 +16,7 @@ export default function Home() {
       <HowItWorks />
       <Pricing />
       <HeroSection />
+      <FAQSection />
       <TestimonialSlider />
     </main>
   );

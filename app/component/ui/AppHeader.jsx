@@ -11,7 +11,7 @@ const AppHeader = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <div className="container mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
+    <div className="container max-md:p-[20px] mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
       <nav className="w-full max-w-screen-xl flex items-center justify-around bg-[#2D72FF] text-white rounded-[100px] px-4 py-3">
         <div className="flex items-center gap-4">
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
@@ -20,31 +20,31 @@ const AppHeader = () => {
 
         <div className="hidden md:flex gap-4">
           <a
-            href="#"
+            href="#solution"
             className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
           >
             Solution
           </a>
           <a
-            href="#"
+            href="#features"
             className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
           >
             Features
           </a>
           <a
-            href="#"
+            href="#workflow"
             className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
           >
             Workflow
           </a>
           <a
-            href="#"
+            href="#pricing"
             className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
           >
             Pricing
           </a>
           <a
-            href="#"
+            href="#faqs"
             className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
           >
             FAQS
@@ -76,7 +76,7 @@ const AppHeader = () => {
       </nav>
 
       <div
-        className={`fixed top-0 left-0 w-full h-full bg-[#2D72FF] text-white transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 w-full   h-full bg-[#2D72FF] text-white transition-transform duration-300 transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } md:hidden`}
       >
@@ -104,40 +104,45 @@ const AppHeader = () => {
           <ul className="flex flex-col items-center gap-4">
             <li>
               <a
-                href="#"
+                href="#solution"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
+                onClick={closeMenu}
               >
                 Solution
               </a>
             </li>
             <li>
               <a
-                href="#"
+                href="#features"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
+                onClick={closeMenu}
               >
                 Features
               </a>
             </li>
             <li>
               <a
-                href="#"
+                href="#workflow"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
+                onClick={closeMenu}
               >
                 Workflow
               </a>
             </li>
             <li>
               <a
-                href="#"
+                href="#pricing"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
+                onClick={closeMenu}
               >
                 Pricing
               </a>
             </li>
             <li>
               <a
-                href="#"
+                href="#faqs"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
+                onClick={closeMenu}
               >
                 FAQS
               </a>

@@ -11,8 +11,8 @@ const AppFooter = () => {
             <h3 className="text-lg font-bold">MEDIA BEAR</h3>
           </div>
         </div>
-        <div className="w-full md:w-1/2 flex justify-center md:justify-end space-x-4">
-          <div className="hidden md:flex gap-4">
+        <div className="w-full md:w-1/2 flex justify-s md:justify-end space-x-4">
+          <div className="hidden max-md:flex max-md:flex-col gap-4">
             <a
               href="#"
               className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"

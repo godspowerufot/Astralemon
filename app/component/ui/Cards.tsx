@@ -16,7 +16,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ title, description, icon }) => {
   return (
-    <div className="bg-white max-md:w-[343px] max-md:h-[215px] p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start">
+    <div className="bg-white max-md:w-[300px] max-md:h-[240px] p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start">
       <div className="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100">
         <Image src={icon} alt="icon" width={24} height={24} />
       </div>

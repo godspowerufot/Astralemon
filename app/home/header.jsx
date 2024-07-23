@@ -6,15 +6,12 @@ const Header = () => {
   return (
     <header className="bg-white py-8">
       <div className="container mx-auto flex flex-col  md:flex-row items-start justify-between px-4 md:px-8">
-        <div className="flex flex-col items-start max-md:items-start md:justify-start md:w-1/2 mt-7 gap-[20px] mb-8 md:mb-0">
+        <div className="flex flex-col items-start max-md:items-start md:justify-start md:w-1/2 mt-7 gap-[20px] max-md:gap-[15px] mb-8 md:mb-0">
           <span className="border-solid h-8 border rounded-lg flex items-center justify-center bg-white text-[#3776F6] text-center w-[250px] border-[#3776F6] px-3 py-1 text-sm mb-4">
             Supercharge Your Instagram 🚀
           </span>
           <div className="flex  flex-col items-start justify-stretch max-md:items-start text-start max-md:text-left mb-4">
-            <h1
-              className=" text-black leading-9 font-bold text-5xl max-md:text-3xl"
-              style={{ lineHeight: "56px" }}
-            >
+            <h1 className=" text-black   font-bold text-5xl max-md:text-3xl" style={{lineHeight:"40px"}}>
               Ignite Your Instagram
               <br />
               Get Discovered by Millions
