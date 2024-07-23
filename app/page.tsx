@@ -5,6 +5,7 @@ import ExceptionalSolutions from "./component/ui/exceptional";
 import HowItWorks from "./component/ui/Howitworks";
 import Pricing from "./component/ui/PricingTables";
 import TestimonialSlider from "./component/ui/Testimonials";
+import HeroSection from "./component/ui/Carousel";
 export default function Home() {
   return (
     <main>
@@ -13,6 +14,7 @@ export default function Home() {
       <ExceptionalSolutions />
       <HowItWorks />
       <Pricing />
+      <HeroSection />
       <TestimonialSlider />
     </main>
   );

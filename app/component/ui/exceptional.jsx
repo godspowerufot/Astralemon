@@ -8,6 +8,8 @@ const ExceptionalSolutions = () => {
   const solutionsData = [
     {
       srcI: Exceptional,
+      height: "100%",
+      width: "100%",
       title: "More subscribers, more customers In automatic",
       description:
         "Are you looking to expand your reach and convert more leads into loyal customers? Look no further! Our service is designed to automatically show your account to individuals who are already interested in what you offer.",
@@ -20,13 +22,18 @@ const ExceptionalSolutions = () => {
     },
     {
       srcI: Exceptional3,
+      height: "100%",
+      width: "100%",
       title: "Get Ahead of Your Competition",
+      height: "50%",
+      width: "100%",
       description:
         "Mediabear empowers you to surpass your competitors by automating your interactions with prospects. Achieve greater visibility, increase your subscriber base, and convert more customers with minimal effort.",
-      // Note: No height or width here
     },
     {
       srcI: Exceptional5,
+      height: "100%",
+      width: "100%",
       title: "Real Followers, Real Interest",
       description:
         "Our cutting-edge algorithm engages with your competitors' subscribers, bringing them to your account faster than ever. Experience rapid growth as we help you capture the attention of a ready-made audience.",
@@ -50,20 +57,15 @@ const ExceptionalSolutions = () => {
           {solutionsData.map((solution, index) => (
             <div
               key={index}
-              className={`p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start ${
-                index === 2 ? "relative h-[300px] w-[300px]" : ""
-              }`}
+              className="p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start"
             >
-              <div
-                className={`relative ${
-                  index === 2 ? "h-full w-full" : "h-[300px] w-full"
-                } rounded-lg mb-4`}
-              >
+              <div className=" h-[300px] w-full rounded-lg mb-4">
                 <Image
                   src={solution.srcI}
                   alt="Solution Image"
-                  layout={index === 2 ? "fill" : "responsive"}
-                  objectFit={index === 2 ? "cover" : "contain"}
+                  layout="responsive"
+                  height={solution.height}
+                  width={solution.width}
                   className="rounded-lg"
                 />
               </div>
@@ -76,5 +78,4 @@ const ExceptionalSolutions = () => {
     </section>
   );
 };
-
 export default ExceptionalSolutions;

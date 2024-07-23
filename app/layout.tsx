@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import AppFooter from "@/app/component/ui/AppFooter";
+import AppFooter from "@/app/component/ui/AppFooter";
 import favicon from "./favicon.ico";
 import AppHeader from "@/app/component/ui/AppHeader";
 
@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AppHeader />
         {children}
-        {/* <AppFooter /> */}
+        <AppFooter />
       </body>
     </html>
   );

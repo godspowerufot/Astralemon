@@ -7,15 +7,12 @@ const Pricing = () => {
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <div className="mx-auto mb-[60px] max-w-[510px] text-center">
-              <span className="mb-2 block text-lg font-semibold text-primary">
-                Pricing Table
-              </span>
-              <h2 className="mb-3 text-3xl font-bold leading-[1.208] text-dark dark:text-white sm:text-4xl md:text-[40px]">
-                Our Pricing Plan
+              <h2 className=" text-black text-[68px] max-md:text-2xl  font-bold leading-[1.208] text-dark  sm:text-4xl md:text-[40px]">
+                Choose Your Perfect Plan{" "}
               </h2>
-              <p className="text-base text-body-color dark:text-dark-6">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+              <p className=" text-[18px] text-[#4B5563]">
+                Flexible pricing options designed to suit every need and budget.
+                Find the perfect plan for you.
               </p>
             </div>
           </div>
