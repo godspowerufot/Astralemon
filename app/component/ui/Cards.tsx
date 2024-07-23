@@ -16,12 +16,12 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ title, description, icon }) => {
   return (
-    <div className="bg-white p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start">
+    <div className="bg-white max-md:w-[343px] max-md:h-[215px] p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start">
       <div className="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100">
         <Image src={icon} alt="icon" width={24} height={24} />
       </div>
-      <h2 className="text-xl font-semibold">{title}</h2>
-      <p className="text-gray-600">{description}</p>
+      <h2 className="text-xl text-start font-semibold">{title}</h2>
+      <p className="text-gray-600 text-start">{description}</p>
     </div>
   );
 };
@@ -35,31 +35,33 @@ interface CardData {
 
 const cardData: CardData[] = [
   {
-    title: "Follow and Unsubscribe",
+    title: "Banning is Impossible",
     description:
-      "Daily engagement involves following about fifty accounts, then unfollowing them after a few days.",
+      "You cannot be banned or shadow banned because our personalized algorithm manages everything..",
     icon: Icon1,
   },
   {
-    title: "Like and Comment",
+    title: "Mass story views",
     description:
-      "Engage with your audience by liking and commenting on their posts regularly.",
+      "Automatically view competitors' top subscriber stories to gain insights and expand your reach effortlessly.",
     icon: Icon2,
   },
   {
-    title: "Post Regularly",
+    title: "Welcome direct message",
     description:
-      "Keep your followers engaged by posting high-quality content regularly.",
+      "Craft a personalized welcome message for every new subscriber with our customizable welcome message feature.",
     icon: Icon3,
   },
   {
-    title: "Use Hashtags",
-    description: "Increase your reach by using relevant and trending hashtags.",
+    title: "Follow and Unsubscribe",
+    description:
+      "Empower your strategy with our algorith designed to interact with stories from your competitors top subscribers..",
     icon: Icon4,
   },
   {
-    title: "Collaborate",
-    description: "Collaborate with other influencers to grow your following.",
+    title: "Mass viewing of feed story",
+    description:
+      "Our powerful tool designed to automate viewing of feed stories from your competitors’ most engaged subscribers",
     icon: Icon5,
   },
   {
@@ -72,7 +74,7 @@ const cardData: CardData[] = [
 const PageUI: React.FC = () => {
   return (
     <div className="container mx-auto py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-md:flex max-md:flex-col max-md:items-center max-md:justify-center">
         {cardData.map((card, index) => (
           <Card
             key={index}
