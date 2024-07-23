@@ -4,10 +4,10 @@ import BackgroundImage from "@/public/image6.png"; // Update the path as necessa
 
 const HeroSection = () => {
   return (
-    <section className="relative py-16 overflow-hidden">
+    <section className="relative py-16 overflow-hidden" data-aos="zoom-in">
       <div className="absolute inset-0 flex items-center justify-center">
         {/* Wrapper with padding around the image */}
-        <div className="relative h-full w-full max-w-[1200px] max-md:w-[340px] p-5">
+        <div className="relative h-full w-full max-w-[1200px] max-md:w-[50%] p-5">
           {" "}
           {/* Adjust padding as needed */}
           <div className="absolute inset-0 rounded-xl overflow-hidden">

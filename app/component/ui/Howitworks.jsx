@@ -26,14 +26,17 @@ const HowItWorks = () => {
   return (
     <section className="bg-white py-8 mt-10">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
+        <div className="text-center mb-8" data-aos="fade-up">
           <h2 className="text-3xl font-bold">How it works</h2>
           <p className="text-gray-700">
             Innovative and tailored solutions designed to meet your unique needs
             and bring your success.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          data-aos="zoom-in"
+        >
           {steps.map((step, index) => (
             <div
               key={index}

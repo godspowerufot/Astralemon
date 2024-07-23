@@ -12,7 +12,10 @@ const AppHeader = () => {
 
   return (
     <div className="container max-md:p-[20px] mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
-      <nav className="w-full max-w-screen-xl flex items-center justify-around bg-[#2D72FF] text-white rounded-[100px] px-4 py-3">
+      <nav
+        className="w-full max-w-screen-xl flex items-center justify-around bg-[#2D72FF] text-white rounded-[100px] px-4 py-3"
+        data-aos="zoom-in"
+      >
         <div className="flex items-center gap-4">
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
           <h3 className="text-lg font-bold">Media Bear</h3>
@@ -49,11 +52,10 @@ const AppHeader = () => {
           >
             FAQS
           </a>
-          <Button className="h-[45px] bg-white text-[16px] text-center rounded-[20px] text-black w-[133px]">
-            Get started
-          </Button>
         </div>
-
+        <Button className="h-[45px] max-md:hidden bg-white text-[16px] text-center rounded-[20px] text-black w-[133px]">
+          Get started
+        </Button>
         <button
           onClick={toggleMenu}
           className="md:hidden text-white focus:outline-none"
@@ -76,7 +78,7 @@ const AppHeader = () => {
       </nav>
 
       <div
-        className={`fixed top-0 left-0 w-full   h-full bg-[#2D72FF] text-white transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 w-full  z-10  h-full bg-[#2D72FF] text-white transition-transform duration-300 transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } md:hidden`}
       >

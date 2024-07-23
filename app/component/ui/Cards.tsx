@@ -16,7 +16,10 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ title, description, icon }) => {
   return (
-    <div className="bg-white max-md:w-[300px] max-md:h-[240px] p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start">
+    <div
+      data-aos="zoom-in"
+      className="bg-white max-md:w-[300px] max-md:h-[240px] p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start"
+    >
       <div className="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100">
         <Image src={icon} alt="icon" width={24} height={24} />
       </div>
@@ -74,7 +77,7 @@ const cardData: CardData[] = [
 const PageUI: React.FC = () => {
   return (
     <div className="container mx-auto py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-md:flex max-md:flex-col max-md:items-center max-md:justify-center">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-md:flex max-md:flex-col max-md:items-center max-md:justify-center">
         {cardData.map((card, index) => (
           <Card
             key={index}
