@@ -6,7 +6,7 @@ const AppFooter = () => {
     <footer className="bg-[#F9FAFB] border-t border-gray-200">
       <div className="container mx-auto px-4 py-8 flex flex-wrap items-center justify-between">
         <div className="w-full md:w-1/2 text-center md:text-left">
-          <div className="flex items-center gap-4 max-md:flex-col">
+          <div className="flex items-center gap-4 max-md:flex-col max-md:items-start">
             <Image src={MediaBear} alt="Logo" className="h-15 w-15" />
             <h3 className="text-lg font-bold">MEDIA BEAR</h3>
           </div>

@@ -8,7 +8,7 @@ const Header = () => {
       <div className=" mx-auto flex flex-col ml-[9%] md:flex-row items-start  md:items-center justify-between px-4 md:px-8">
         <div
           data-aos="zoom-in"
-          className="flex flex-col items-start max-md:items-center mr-[5%] max- md:justify-start md:w-1/2 mt-7 gap-[20px] max-md:gap-[15px] mb-8 md:mb-0"
+          className="flex flex-col items-start max-md:items-start mr-[5%] max- md:justify-start md:w-1/2 mt-7 gap-[20px] max-md:gap-[15px] mb-8 md:mb-0"
         >
           <span className="border-solid h-8 border rounded-lg flex items-center justify-center bg-white text-[#3776F6] text-center w-[250px] border-[#3776F6] px-3 py-1 text-sm mb-4">
             Supercharge Your Instagram 🚀
@@ -35,15 +35,15 @@ const Header = () => {
             Get started →
           </Button>
         </div>
-        <div className="flex justify-center max-md:justify-start md:w-1/2">
+        <div className="flex justify-center max-md:justify-start max-md:items-start md:w-1/2">
           <div
-            className="relative w-full max-w-xs md:max-w-md lg:max-w-lg"
+            className="relative w-full  max-md:mr-[20%] max-w-xs md:max-w-md lg:max-w-lg"
             data-aos="zoom-in"
           >
             <Image
               src={heroImage}
               alt="User on Instagram"
-              className="w-full h-auto"
+              className="w-full h-full"
             />
           </div>
         </div>
