@@ -6,13 +6,15 @@ const AppFooter = () => {
     <footer className="bg-[#F9FAFB] border-t border-gray-200">
       <div className="container mx-auto px-4 py-8 flex flex-wrap items-center justify-between">
         <div className="w-full md:w-1/2 text-center md:text-left">
-          <div className="flex items-center gap-4 max-md:flex-col max-md:items-start">
+          <div className="flex items-center gap-4 max-md:flex-col max-md:items-start max-md:ml-[1%]">
             <Image src={MediaBear} alt="Logo" className="h-15 w-15" />
             <h3 className="text-lg font-bold">MEDIA BEAR</h3>
           </div>
         </div>
-        <div className="w-full md:w-1/2 flex 
-        justify-s md:justify-end space-x-4">
+        <div
+          className="w-full md:w-1/2 flex 
+        justify-s md:justify-end space-x-4"
+        >
           <div className=" max-md:flex justify-center flex flex-row items-center max-md:flex-col gap-4">
             <a
               href="#"

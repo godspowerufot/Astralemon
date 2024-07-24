@@ -21,18 +21,48 @@ body {
   background-color: white;
   font-family: "Instrument Sans", Arial, Helvetica, sans-serif;
 }
-html{scroll-behavior: smooth;}
+html {
+  scroll-behavior: smooth;
+}
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+} /* Adjust the marquee animation for seamless scrolling */
+.animate-marquee-fast {
+  animation: marquee 50s linear infinite;
 }
-@media screen {
+
+.animate-marquee-reverse-fast {
+  animation: marquee-reverse 50s linear infinite;
 }
-@media (min-width: 768px) {
-  body {
-    display: flex;
-    flex-direction: column;
+
+@keyframes marquee {
+  from {
+    transform: translateX(50%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+  .animate-marquee-fast {
+    animation-duration: 60s; /* Slower pace for mobile */
+  }
+
+  .animate-marquee-reverse-fast {
+    animation-duration: 60s; /* Slower pace for mobile */
   }
 }
