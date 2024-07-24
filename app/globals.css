@@ -25,9 +25,9 @@ html {
   scroll-behavior: smooth;
 }
 .lining {
-  line-height: 65px;
+  line-height: 57px;
 }
-@media (max-min: 726px) {
+@media (max-width: 726px) {
   .lining {
     line-height: 50px;
   }
