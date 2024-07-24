@@ -15,10 +15,11 @@ export default function Home() {
       <UISection />
       <ExceptionalSolutions />
       <HowItWorks />
-      <Pricing />
+
+      <PricingPage />
       <HeroSection />
       <FAQSection />
-      <PricingPage />
+
       <TestimonialSlider />
     </main>
   );
