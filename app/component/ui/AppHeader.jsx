@@ -78,7 +78,7 @@ const AppHeader = () => {
       </nav>
 
       <div
-        className={`fixed top-0 left-0 w-full z-10 h-1/2 bg-[#2D72FF] text-white transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 w-full z-10 h-[70%] bg-[#2D72FF] text-white transition-transform duration-300 transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } md:hidden`}
       >
