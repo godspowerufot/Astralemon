@@ -24,6 +24,14 @@ body {
 html {
   scroll-behavior: smooth;
 }
+.lining {
+  line-height: 65px;
+}
+@media (max-min: 726px) {
+  .lining {
+    line-height: 50px;
+  }
+}
 
 @layer utilities {
   .text-balance {

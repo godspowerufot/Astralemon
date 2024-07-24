@@ -15,8 +15,7 @@ const Header = () => {
           </span>
           <div className="flex  flex-col items-start justify-stretch max-md:items-center text-start max-md:text-center mb-4">
             <h1
-              className=" text-black   font-bold text-5xl max-md:text-3xl"
-              style={{ lineHeight: "53px" }}
+              className="lining text-black   font-bold text-5xl max-md:text-[24.5px]"
             >
               Ignite Your Instagram
               <p>Get Discovered by Millions</p>

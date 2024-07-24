@@ -30,8 +30,8 @@ function PricingPage() {
               src="https://js.stripe.com/v3/pricing-table.js"
             ></script>
             <stripe-pricing-table
-              pricing-table-id="prctbl_1PgCGfGdWNCS6S2ASQI0a6t2"
-              publishable-key="pk_live_51PfoFIGdWNCS6S2AgtaxVcawZbXazB78qE7MCUivcckoT9uHnFXYad9TC80bJ7v9GQ1UCBGVgeWtHbxnAJH7a06N00cOruPW4H"
+              pricing-table-id={process.env.NEXT_PUBLIC_STRIPE_PRICING_TABLE_ID}
+              publishable-key={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
             ></stripe-pricing-table>
           </div>
         </div>

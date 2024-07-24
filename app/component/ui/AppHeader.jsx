@@ -11,12 +11,11 @@ const AppHeader = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <div className="container max-md:p-[20px] mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
+    <div className="container  mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
       <nav
-        className="w-full max-w-screen-xl flex items-center justify-around bg-[#2D72FF] text-white rounded-[100px] px-4 py-3"
-        data-aos="zoom-in"
+        className="w-full max-md:gap-[70px]  max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around bg-[#2D72FF] text-white rounded-[100px] px-4 py-3"
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 max-md:mr-[15%]">
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
           <h3 className="text-lg font-bold">Media Bear</h3>
         </div>
@@ -58,7 +57,7 @@ const AppHeader = () => {
         </Button>
         <button
           onClick={toggleMenu}
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-black focus:outline-none"
         >
           <svg
             className="w-6 h-6"
