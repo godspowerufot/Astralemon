@@ -59,10 +59,10 @@ html {
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
   .animate-marquee-fast {
-    animation-duration: 60s; /* Slower pace for mobile */
+    animation-duration: 20s; /* Slower pace for mobile */
   }
 
   .animate-marquee-reverse-fast {
-    animation-duration: 60s; /* Slower pace for mobile */
+    animation-duration: 30s; /* Slower pace for mobile */
   }
 }
