@@ -7,6 +7,7 @@ import Pricing from "./component/ui/PricingTables";
 import TestimonialSlider from "./component/ui/Testimonials";
 import HeroSection from "./component/ui/Carousel";
 import FAQSection from "./component/ui/FAQSection";
+import PricingPage from "./component/ui/pricingpage";
 export default function Home() {
   return (
     <main>
@@ -17,6 +18,7 @@ export default function Home() {
       <Pricing />
       <HeroSection />
       <FAQSection />
+      <PricingPage />
       <TestimonialSlider />
     </main>
   );

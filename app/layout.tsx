@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Media-bird LandingPage",
   icons: `${favicon}`,
 };
-
+// Replace with your publishable key
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,6 +24,7 @@ export default function RootLayout({
       <MyApp />
 
       <link rel="icon" href="favico.ico" type="image/x-icon" />
+      <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
 
       <body className={inter.className}>
         <AppHeader />
