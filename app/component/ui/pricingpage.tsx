@@ -25,9 +25,13 @@ function PricingPage() {
                 Find the perfect plan for you.
               </p>
             </div>
+            <script
+              async
+              src="https://js.stripe.com/v3/pricing-table.js"
+            ></script>
             <stripe-pricing-table
-              pricing-table-id="prctbl_1PfrHFGdWNCS6S2A4e8UOffX"
-              publishable-key="pk_test_51PfoFIGdWNCS6S2AnrAUlib4mJAyb6aQoiTnW3V4pg0gqpkqNo2M3U3VXTaMPXI5BQ8mKa3aXxRNQxOCDDezqnx600EkKfIrCy"
+              pricing-table-id="prctbl_1PgCGfGdWNCS6S2ASQI0a6t2"
+              publishable-key="pk_live_51PfoFIGdWNCS6S2AgtaxVcawZbXazB78qE7MCUivcckoT9uHnFXYad9TC80bJ7v9GQ1UCBGVgeWtHbxnAJH7a06N00cOruPW4H"
             ></stripe-pricing-table>
           </div>
         </div>

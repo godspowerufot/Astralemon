@@ -29,7 +29,7 @@ const TestimonialSlider = () => {
           <div className="overflow-hidden">
             <div className="flex whitespace-nowrap animate-marquee-fast">
               {/* Content is duplicated to ensure seamless scrolling */}
-              <div className="flex flex-nowrap space-x-4">
+              <div className="flex flex-nowrap space-x-5 mb-5">
                 <Testimonial
                   imageSrc="https://avatar.vercel.sh/jack"
                   text="I've never seen anything like this before. It's amazing. I love it."
@@ -90,7 +90,7 @@ const TestimonialSlider = () => {
           <div className="mt-6 overflow-hidden">
             <div className="flex whitespace-nowrap animate-marquee-reverse-fast">
               {/* Content is duplicated to ensure seamless scrolling */}
-              <div className="flex flex-nowrap space-x-4">
+              <div className="flex flex-nowrap space-x-5 mb-5">
                 <Testimonial
                   imageSrc="https://avatar.vercel.sh/jane"
                   text="I'm at a loss for words. This is amazing. I love it."
