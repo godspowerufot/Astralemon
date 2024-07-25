@@ -82,7 +82,7 @@ const AppHeader = () => {
         <div className="flex flex-col items-center p-4 gap-4 mt-16">
           <button
             onClick={closeMenu}
-            className="absolute top-4 right-4 text-white focus:outline-none"
+            className="absolute top-4 right-4 text-black focus:outline-none"
           >
             <svg
               className="w-6 h-6"
