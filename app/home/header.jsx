@@ -37,7 +37,7 @@ const Header = () => {
             data-aos="zoom-in"
           >
             <Image
-              src="heroImage"
+              src={heroImage}
               alt="User on Instagram"
               className="w-full  object-cover h-full"
               width={100}
