@@ -12,9 +12,7 @@ const AppHeader = () => {
 
   return (
     <div className="container  mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
-      <nav
-        className="w-full max-md:gap-[70px]  max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around bg-[#2D72FF] text-white rounded-[100px] px-4 py-3"
-      >
+      <nav className="w-full max-md:gap-[70px]  max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around bg-[#2D72FF] text-white rounded-[100px] px-4 py-3">
         <div className="flex items-center gap-4 max-md:mr-[15%]">
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
           <h3 className="text-lg font-bold">Media Bear</h3>
@@ -77,7 +75,7 @@ const AppHeader = () => {
       </nav>
 
       <div
-        className={`fixed top-0 left-0 w-full z-10 h-[70%] bg-[#2D72FF] text-white transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 w-full z-10 h-[70%] bg-white text-black transition-transform duration-300 transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } md:hidden`}
       >
