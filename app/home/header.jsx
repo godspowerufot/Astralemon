@@ -37,9 +37,9 @@ const Header = () => {
             data-aos="zoom-in"
           >
             <Image
-              src="https://mediabears.vercel.app/Images/hero.svg"
+              src="heroImage"
               alt="User on Instagram"
-              className="w-full h-full"
+              className="w-full  object-cover h-full"
               width={100}
               height={180}
             />
