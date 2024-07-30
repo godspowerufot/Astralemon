@@ -21,17 +21,24 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className="relative container mx-auto text-center z-10 max-md:w-[80%]">
+      <div className="relative container  flex items-center justify-center  flex-col mx-auto text-center z-10 max-md:w-[80%]">
         <h1 className="text-4xl font-bold max-md:text-3xl text-gray-900">
-          The Ideal solution for Your Product
+          Join the community
         </h1>
-        <p className="mt-4 text-lg  max-md:text-[16px] text-gray-700">
-          By choosing MediaBear to find the ideal subscribers, you are sure to
-          be able to offer your services/products to the right people.
+        <p className="mt-4 max-md:w-[100%] text-lg w-[1000px] text-wrap max-md:text-[16px] text-gray-700">
+          Join our Telegram or Discord Community to give your opinion on what we
+          should implement next, and to keep up to date with all the latest news
+          & updates on AstraLemon. You will also be able to preview future
+          features on the channel{" "}
         </p>
-        <button className="mt-8 px-6 py-3 bg-blue-600 text-white rounded-full text-lg hover:bg-blue-700 transition duration-300">
-          Get started
-        </button>
+        <div className="flex gap-[20px]">
+          <button className="mt-8 px-6 py-3 flex items-center justify-center max-md:h-[40px] max-md:text-[14px] bg-blue-600 text-white rounded-full text-lg hover:bg-blue-700 transition duration-300">
+            Join Telegram
+          </button>
+          <button className="mt-8 px-6 py-3 max-md:h-[40px]  flex items-center justify-center max-md:text-[14px] bg-blue-600 text-white rounded-full text-lg hover:bg-blue-700 transition duration-300">
+            Join Discord
+          </button>
+        </div>
       </div>
     </section>
   );

@@ -12,47 +12,52 @@ const AppHeader = () => {
 
   return (
     <div className="container  mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
-      <nav className="w-full max-md:gap-[70px]  max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around bg-[#2D72FF] text-white rounded-[100px] px-4 py-3">
+      <nav className="w-full max-md:gap-[70px]  max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around  text-black rounded-[100px] px-4 py-3">
         <div className="flex items-center gap-4 max-md:mr-[15%]">
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
-          <h3 className="text-lg font-bold">Media Bear</h3>
+          <h3 className="text-lg font-bold">Astra Lemon</h3>
         </div>
 
         <div className="hidden md:flex gap-4">
           <a
             href="#solution"
-            className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
+            className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
           >
             Solution
           </a>
           <a
             href="#features"
-            className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
+            className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
           >
             Features
           </a>
           <a
             href="#workflow"
-            className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
+            className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
           >
             Workflow
           </a>
           <a
             href="#pricing"
-            className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
+            className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
           >
             Pricing
           </a>
           <a
             href="#faqs"
-            className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
+            className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
           >
             FAQS
           </a>
         </div>
-        <Button className="h-[45px] max-md:hidden bg-white text-[16px] text-center rounded-[20px] text-black w-[133px]">
-          Get started
-        </Button>
+        <div className="flex gap-[20px] max-md:hidden">
+          <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px]  w-[155px]">
+            Log in
+          </Button>
+          <Button className="h-[45px] bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[155px]">
+            Join AstraLemon
+          </Button>
+        </div>
         <button
           onClick={toggleMenu}
           className="md:hidden text-black focus:outline-none"
@@ -75,7 +80,7 @@ const AppHeader = () => {
       </nav>
 
       <div
-        className={`fixed top-0 left-0 w-full z-10 h-[70%] bg-white text-black transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 w-full z-10 h-[76%] bg-white text-black transition-transform duration-300 transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } md:hidden`}
       >
@@ -147,9 +152,14 @@ const AppHeader = () => {
               </a>
             </li>
             <li>
-              <Button className="h-[45px] bg-white text-[16px] text-center rounded-[20px] text-black w-[133px]">
-                Get started
-              </Button>
+              <div className="flex flex-col gap-[20px] ">
+                <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px]  w-[155px]">
+                  Log in
+                </Button>
+                <Button className="h-[45px] bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[155px]">
+                  Join AstraLemon
+                </Button>
+              </div>
             </li>
           </ul>
         </div>

@@ -9,35 +9,31 @@ type FAQItemType = {
 };
 export const faqItems: FAQItemType[] = [
   {
-    question: "What is Media?",
+    question: "Is there a risk of shadowban/ban?",
     answer:
-      "Media is an innovative ed-tech platform and remote job recruitment website. We empower individuals seeking to transition to a new career by equipping them with the right skills and providing access to numerous remote job opportunities across the country. We assist employers in finding the remote talent they desire to grow their company and connect job seekers to the jobs they need to succeed.",
+      "We have been developing an algorithm since 2023 and we have been offering it to our customers since 2024. Despite these years, no customer has ever been banned due to automation.This is due to our security and account protection processes. We have developed a method that makes it possible to simulate human behavior, with a connection from an iPhone and thus not to be detected by Instagram. Our algorithm aims to annihilate Shadowban, not to cause it. By using our services, your engagement rate will increase, which will allow you to gain visibility.",
   },
   {
-    question: "Do I need a laptop before I can visit Media.co?",
+    question: "How many subscribers can I gain?",
     answer:
-      "No! You can access Media.co on all smart devices. As long as your phone can browse, you are good to go.",
+      "The number of subscribers you can gain varies depending on the quality and consistency of your content. We can't give specific figures. (Don't listen to those who promise you exact numbers, they're lying)However, be aware that only real and qualified users will follow you. Your branding is essential to attract these followers. We do not use contests or paid subscribers.",
   },
   {
-    question: "Is there a mobile app available for Media?",
+    question: "Are they qualified subscribers?",
     answer:
-      "No. But we are currently working on it. We will notify you when it is available for download on the Play Store and Apple Store.",
+      "Yes, absolutely! Our A.I. analyzes and filters the followers of your competitors to interact only with the most active and engaged ones. Since your targets are accounts similar to yours, this ensures that the followers you gain are not only real and active, but also highly qualified and interested in your field..",
   },
   {
-    question: "What kind of courses are available on Media?",
+    question: "Can I cancel my subscription?",
     answer:
-      "We offer a wide range of courses across multiple industries. Which means we are not specific to a particular industry.",
+      "Yes indeed, our subscriptions work by a monthly period you can cancel at any time while the period ends and you will not be charged the next period.",
   },
   {
-    question: "Is it only remote jobs that are listed on Media?",
+    question: "Can I use Upstar on multiple accounts?",
     answer:
-      "Yes. However, we also list hybrid jobs that require you to go to work a few times a week.",
+      "Yes, all our offers are available for one or more accounts. Contact us to find out our advantageous rates for multi-account subscriptions.",
   },
-  {
-    question: "Can I advertise with ?",
-    answer:
-      "Yes, you can. To advertise your brand, please send an email to contact@Media.co to learn more about our advertising rates.",
-  },
+
 ];
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -48,7 +44,8 @@ const FAQSection = () => {
 
   return (
     <div
-      id="faqs" data-aos="fade-in"
+      id="faqs"
+      data-aos="fade-in"
       className="flex center items-center max-w-screen-xl mt-20 mx-auto px-5 bg-white "
     >
       <div className="w-full">

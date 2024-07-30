@@ -24,13 +24,12 @@ export default function RootLayout({
       <MyApp />
 
       <link rel="icon" href="favico.ico" type="image/x-icon" />
-      <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-
       <body className={inter.className}>
         <AppHeader />
         {children}
         <AppFooter />
       </body>
+      <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
     </html>
   );
 }

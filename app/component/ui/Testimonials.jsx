@@ -18,7 +18,7 @@ const TestimonialSlider = () => {
     <section className="bg-white py-8 mt-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8" data-aos="fade-up">
-          <h2 className="text-3xl font-bold">How it works</h2>
+          <h2 className="text-3xl font-bold">Testimonials</h2>
           <p className="text-gray-700">
             Innovative and tailored solutions designed to meet your unique needs
             and bring your success.
