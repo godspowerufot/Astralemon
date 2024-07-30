@@ -1,9 +1,13 @@
+import Image from "next/image";
+
 // Testimonial Component
 const Testimonial = ({ imageSrc, text }) => (
   <div className="flex items-center justify-center bg-gray-100 p-2 rounded-lg shadow-lg w-[250px] h-[63px]">
     <Image
       className="rounded-full w-8 h-8 object-cover"
       alt="User"
+      width={100}
+      height={100}
       src={imageSrc}
     />
     <div className="ml-2 flex-1">
