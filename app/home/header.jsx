@@ -7,8 +7,8 @@ import Icon from "@/public/logo12.png";
 import Icon30 from "@/public/Icon30.png";
 const Header = () => {
   return (
-    <header className="bg-white py-8">
-      <div className=" mx-auto flex flex-col ml-[9%] max-md:ml-[1%] md:flex-row items-start  md:items-center justify-between px-4 md:px-8">
+    <header className="bg-white py-8 mt-5 max-md:mt-0">
+      <div className=" mx-auto flex flex-col ml-[7%] max-md:ml-[1%] md:flex-row items-start  md:items-center justify-between px-4 md:px-8">
         <div
           data-aos="zoom-in"
           className="flex flex-col items-start max-md:items-start mr-[5%] max- md:justify-start md:w-1/2 mt-7 gap-[20px] max-md:gap-[15px] mb-8 md:mb-0"
@@ -52,7 +52,7 @@ const Header = () => {
                 data-aos="zoom-in"
                 data-aos-duration="2000"
                 alt="User on Instagram"
-                className="w-[80%]   object-cover h-full"
+                className="w-[70%]   object-cover h-full"
               />
             </div>
             <div className="absolute  top-[-5%] right-[-30%]">
@@ -61,7 +61,7 @@ const Header = () => {
                 data-aos="zoom-in"
                 data-aos-duration="2000"
                 alt="User on Instagram"
-                className="w-[80%] max-md:w-[85%] object-cover h-full"
+                className="w-[70%] max-md:w-[85%] object-cover h-full"
               />
             </div>
             <div className="absolute  bottom-[-10%] left-[-55%] max-md:bottom-[-19%] max-md:left-[-35%]">
