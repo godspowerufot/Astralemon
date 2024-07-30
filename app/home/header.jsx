@@ -1,7 +1,10 @@
 import Image from "next/image";
-import heroImage from "@/public/iconssvg/Group 2.svg";
+import heroImage from "@/public/headerpic.jpg";
+import Notifications from "@/public/Notification.png";
+import twoNotifications from "@/public/2ksubscriber.png";
 import Button from "../component/atoms/Button";
-
+import Icon from "@/public/logo12.png";
+import Icon30 from "@/public/Icon30.png";
 const Header = () => {
   return (
     <header className="bg-white py-8">
@@ -33,16 +36,52 @@ const Header = () => {
         </div>
         <div className="flex justify-center max-md:justify-center max-md:ml-[10%] max-md:items-center md:w-1/2">
           <div
-            className="relative w-full  max-md:mr-[20%] max-w-xs md:max-w-md lg:max-w-lg"
+            className="relative w-[70%] max-md:mr-[20%] max-w-xs md:max-w-md lg:max-w-lg"
             data-aos="zoom-in"
           >
             <Image
               src={heroImage}
+              data-aos="zoom-in"
+              data-aos-duration="3000"
               alt="User on Instagram"
               className="w-full  object-cover h-full"
-              width={100}
-              height={180}
             />
+            <div className="absolute  top-[9%] left-[-10%]">
+              <Image
+                src={Icon}
+                data-aos="zoom-in"
+                data-aos-duration="2000"
+                alt="User on Instagram"
+                className="w-[80%]   object-cover h-full"
+              />
+            </div>
+            <div className="absolute  top-[-5%] right-[-30%]">
+              <Image
+                src={Icon30}
+                data-aos="zoom-in"
+                data-aos-duration="2000"
+                alt="User on Instagram"
+                className="w-[80%] max-md:w-[85%] object-cover h-full"
+              />
+            </div>
+            <div className="absolute  bottom-[-10%] left-[-55%] max-md:bottom-[-19%] max-md:left-[-35%]">
+              <Image
+                src={Notifications}
+                data-aos="zoom-in"
+                data-aos-duration="2000"
+                alt="User on Instagram"
+                className="w-[80%] max-md:w-[85%]  object-cover h-full"
+              />
+            </div>
+            <div className=" twoNotifications absolute  bottom-[-15%] right-[-65%]">
+              <Image
+                src={twoNotifications}
+                data-aos="zoom-in"
+                data-aos-duration="2000"
+                alt="User on Instagram"
+                className="w-[70%] max-md:w-[80%]  object-cover h-full"
+              />
+            </div>
           </div>
         </div>
       </div>
