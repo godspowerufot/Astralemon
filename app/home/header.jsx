@@ -4,7 +4,7 @@ import Notifications from "@/public/Notification.png";
 import twoNotifications from "@/public/2ksubscriber.png";
 import Button from "../component/atoms/Button";
 import Icon from "@/public/logo12.png";
-import Icons from "../public/Icon30.png";
+import Icons from "@/public/build10.png";
 const Header = () => {
   return (
     <header className="bg-white py-8 mt-5 max-md:mt-0">
@@ -55,7 +55,7 @@ const Header = () => {
                 className="w-[70%]   object-cover h-full"
               />
             </div>
-            <div className="absolute  top-[-5%] right-[-30%]">
+            <div className="absolute  top-[-5%] right-[-20%]">
               <Image
                 src={Icons}
                 data-aos="zoom-in"
