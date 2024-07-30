@@ -4,7 +4,7 @@ import Notifications from "@/public/Notification.png";
 import twoNotifications from "@/public/2ksubscriber.png";
 import Button from "../component/atoms/Button";
 import Icon from "@/public/logo12.png";
-import Icons from "@/public/Icon30.png";
+import Icons from "../public/Icon30.png";
 const Header = () => {
   return (
     <header className="bg-white py-8 mt-5 max-md:mt-0">
