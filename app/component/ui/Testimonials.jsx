@@ -1,7 +1,7 @@
 // Testimonial Component
 const Testimonial = ({ imageSrc, text }) => (
   <div className="flex items-center justify-center bg-gray-100 p-2 rounded-lg shadow-lg w-[250px] h-[63px]">
-    <img
+    <Image
       className="rounded-full w-8 h-8 object-cover"
       alt="User"
       src={imageSrc}
