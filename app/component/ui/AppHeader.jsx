@@ -16,7 +16,7 @@ const AppHeader = () => {
         <div className="flex items-center gap-4 max-md:mr-[15%]">
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
           <h3 className="text-lg font-bold">
-            <Link>Astra Lemon</Link>
+            <Link href="/">Astra Lemon</Link>
           </h3>
         </div>
 
