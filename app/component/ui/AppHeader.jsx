@@ -15,7 +15,9 @@ const AppHeader = () => {
       <nav className="w-full max-md:gap-[70px]  max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around  text-black rounded-[100px] px-4 py-3">
         <div className="flex items-center gap-4 max-md:mr-[15%]">
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
-          <h3 className="text-lg font-bold">Astra Lemon</h3>
+          <h3 className="text-lg font-bold">
+            <Link>Astra Lemon</Link>
+          </h3>
         </div>
 
         <div className="hidden md:flex gap-4">
