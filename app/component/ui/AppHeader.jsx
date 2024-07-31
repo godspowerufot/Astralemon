@@ -1,14 +1,22 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import MediaBear from "@/public/iconssvg/media-bear-icon.svg";
 import Button from "@/app/component/atoms/Button";
 import Link from "next/link";
+
 const AppHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
+
+  const handleNavigation = (path) => {
+    closeMenu();
+    router.push(path);
+  };
 
   return (
     <div className=" container  mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
@@ -21,36 +29,41 @@ const AppHeader = () => {
         </div>
 
         <div className="hidden md:flex gap-4">
-          <Link
-            href="#solution"
+          <a
+            href="/#solution"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
+            onClick={() => handleNavigation("/#solution")}
           >
             Solution
-          </Link>
-          <Link
-            href="#features"
+          </a>
+          <a
+            href="/#features"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
+            onClick={() => handleNavigation("/#features")}
           >
             Features
-          </Link>
-          <Link
-            href="#workflow"
+          </a>
+          <a
+            href="/#workflow"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
+            onClick={() => handleNavigation("/#workflow")}
           >
             Workflow
-          </Link>
-          <Link
-            href="#pricing"
+          </a>
+          <a
+            href="/#pricing"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
+            onClick={() => handleNavigation("/#pricing")}
           >
             Pricing
-          </Link>
-          <Link
-            href="#faqs"
+          </a>
+          <a
+            href="/#faqs"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
+            onClick={() => handleNavigation("/#faqs")}
           >
             FAQS
-          </Link>
+          </a>
         </div>
         <div className="flex gap-[20px] max-md:hidden">
           <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px]  w-[155px]">
@@ -109,49 +122,49 @@ const AppHeader = () => {
 
           <ul className="flex flex-col items-center  gap-y-8 gap-4">
             <li>
-              <Link
-                href="#solution"
+              <a
+                href="/#solution"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
-                onClick={closeMenu}
+                onClick={() => handleNavigation("/#solution")}
               >
                 Solution
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
-                href="#features"
+              <a
+                href="/#features"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
-                onClick={closeMenu}
+                onClick={() => handleNavigation("/#features")}
               >
                 Features
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
-                href="#workflow"
+              <a
+                href="/#workflow"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
-                onClick={closeMenu}
+                onClick={() => handleNavigation("/#workflow")}
               >
                 Workflow
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
-                href="#pricing"
+              <a
+                href="/#pricing"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
-                onClick={closeMenu}
+                onClick={() => handleNavigation("/#pricing")}
               >
                 Pricing
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
-                href="#faqs"
+              <a
+                href="/#faqs"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
-                onClick={closeMenu}
+                onClick={() => handleNavigation("/#faqs")}
               >
                 FAQS
-              </Link>
+              </a>
             </li>
             <li>
               <div className="flex flex-col gap-[20px] ">
