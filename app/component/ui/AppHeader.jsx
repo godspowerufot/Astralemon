@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import MediaBear from "@/public/iconssvg/media-bear-icon.svg";
 import Button from "@/app/component/atoms/Button";
-
+import Link from "next/link";
 const AppHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -11,7 +11,7 @@ const AppHeader = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <div className="container  mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
+    <div className=" container  mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
       <nav className="w-full max-md:gap-[70px]  max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around  text-black rounded-[100px] px-4 py-3">
         <div className="flex items-center gap-4 max-md:mr-[15%]">
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
@@ -19,40 +19,40 @@ const AppHeader = () => {
         </div>
 
         <div className="hidden md:flex gap-4">
-          <a
+          <Link
             href="#solution"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
           >
             Solution
-          </a>
-          <a
+          </Link>
+          <Link
             href="#features"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
           >
             Features
-          </a>
-          <a
+          </Link>
+          <Link
             href="#workflow"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
           >
             Workflow
-          </a>
-          <a
+          </Link>
+          <Link
             href="#pricing"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
           >
             Pricing
-          </a>
-          <a
+          </Link>
+          <Link
             href="#faqs"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
           >
             FAQS
-          </a>
+          </Link>
         </div>
         <div className="flex gap-[20px] max-md:hidden">
           <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px]  w-[155px]">
-            Log in
+            <Link href="/Login">Log in</Link>
           </Button>
           <Button className="h-[45px] bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[155px]">
             Join AstraLemon
@@ -107,49 +107,49 @@ const AppHeader = () => {
 
           <ul className="flex flex-col items-center  gap-y-8 gap-4">
             <li>
-              <a
+              <Link
                 href="#solution"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
                 onClick={closeMenu}
               >
                 Solution
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#features"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
                 onClick={closeMenu}
               >
                 Features
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#workflow"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
                 onClick={closeMenu}
               >
                 Workflow
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#pricing"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
                 onClick={closeMenu}
               >
                 Pricing
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#faqs"
                 className="px-3 py-2 hover:bg-gray-700 rounded-lg transition-all cursor-pointer"
                 onClick={closeMenu}
               >
                 FAQS
-              </a>
+              </Link>
             </li>
             <li>
               <div className="flex flex-col gap-[20px] ">
