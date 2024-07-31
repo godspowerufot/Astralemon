@@ -174,7 +174,10 @@ const AppHeader = () => {
                 >
                   Log in
                 </Button>
-                <Button className="h-[45px] bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[155px]">
+                <Button
+                  href="https://discord.gg/CvRtjnnrW8"
+                  className="h-[45px] bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[155px]"
+                >
                   Join AstraLemon
                 </Button>
               </div>
