@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import MediaBear from "@/public/iconssvg/media-bear-icon.svg";
-
+import LoginImage from "@/public/Secure login-bro.svg";
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -137,13 +137,11 @@ const Login = () => {
           </div>
         </div>
         <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
-          <div
+          <Image
+            alt="login"
+            src={LoginImage}
             className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
-            style={{
-              backgroundImage:
-                "url(https://source.unsplash.com/IXUM4cJynP0/640x960)",
-            }}
-          ></div>
+          />
         </div>
       </div>
     </div>
