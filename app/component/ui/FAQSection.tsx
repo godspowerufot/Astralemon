@@ -29,11 +29,10 @@ export const faqItems: FAQItemType[] = [
       "Yes indeed, our subscriptions work by a monthly period you can cancel at any time while the period ends and you will not be charged the next period.",
   },
   {
-    question: "Can I use Upstar on multiple accounts?",
+    question: "Can I use AstraLemon on multiple accounts?",
     answer:
       "Yes, all our offers are available for one or more accounts. Contact us to find out our advantageous rates for multi-account subscriptions.",
   },
-
 ];
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
