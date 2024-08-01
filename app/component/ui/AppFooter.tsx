@@ -54,7 +54,7 @@ const AppFooter = () => {
       <div className="container mx-auto px-4 py-8 flex flex-wrap items-center justify-between">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <span className="text-gray-600 text-sm">
-            © 2024 Media Bear, Inc. All rights reserved.
+            © 2024 AstraLemon, Inc. All rights reserved.
           </span>
         </div>
         <div className="w-full md:w-1/2 flex justify-center md:justify-end space-x-4">
