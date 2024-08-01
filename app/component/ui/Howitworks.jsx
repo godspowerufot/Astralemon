@@ -2,9 +2,9 @@ const HowItWorks = () => {
   const steps = [
     {
       number: "1",
-      title: "Setting Up MediaBeaker",
+      title: "Setting Up AstraLemon",
       description:
-        "After signing up for your subscription, all you have to do is set up MediaBeaker by connecting your account. Then, let our algorithm do the magic. We will analyze successful competitors, setting up an account base that mirrors theirs.",
+        "After signing up for your subscription, all you have to do is set up AstraLemon by connecting your account. Then, let our algorithm do the magic. We will analyze successful competitors, setting up an account base that mirrors theirs.",
       bgColor: "bg-purple-200 text-purple-800",
     },
     {

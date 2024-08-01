@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import MediaBear from "@/public/iconssvg/media-bear-icon.svg";
+import MediaBears from "@/public/astra.png";
 import Button from "@/app/component/atoms/Button";
 import Link from "next/link";
 
@@ -21,10 +22,16 @@ const AppHeader = () => {
   return (
     <div className=" container  mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
       <nav className="w-full max-md:gap-[70px]  max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around  text-black rounded-[100px] px-4 py-3">
-        <div className="flex items-center gap-4 max-md:mr-[15%]">
+        <div className="flex h-[72px] items-center gap-4 max-md:mr-[15%]">
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
           <h3 className="text-lg font-bold">
-            <Link href="/">Astra Lemon</Link>
+            <Link href="/">
+              <Image
+                src={MediaBears}
+                alt="Logo"
+                className="h-[100%] w-[200px]"
+              />
+            </Link>
           </h3>
         </div>
 
@@ -70,7 +77,7 @@ const AppHeader = () => {
             <Link href="/Login">Log in</Link>
           </Button>
           <Button className="h-[45px] bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[155px]">
-            Join AstraLemon
+            Get started
           </Button>
         </div>
         <button
@@ -170,15 +177,15 @@ const AppHeader = () => {
               <div className="flex flex-col gap-[20px] ">
                 <Button
                   href="/Login"
-                  className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px]  w-[155px]"
+                  className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]"
                 >
                   Log in
                 </Button>
                 <Button
                   href="https://discord.gg/CvRtjnnrW8"
-                  className="h-[45px] bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[155px]"
+                  className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]"
                 >
-                  Join AstraLemon
+                  Get started
                 </Button>
               </div>
             </li>

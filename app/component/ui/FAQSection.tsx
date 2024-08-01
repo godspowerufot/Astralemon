@@ -16,7 +16,7 @@ export const faqItems: FAQItemType[] = [
   {
     question: "How many subscribers can I gain?",
     answer:
-      "The number of subscribers you can gain varies depending on the quality and consistency of your content. We can't give specific figures. (Don't listen to those who promise you exact numbers, they're lying)However, be aware that only real and qualified users will follow you. Your branding is essential to attract these followers. We do not use contests or paid subscribers.",
+      "The number of subscribers you can gain varies depending on the quality and consistency of your content. We can't give specific figures. (Don't listen to those who promise you exact numbers, they're lying). However, be aware that only real and qualified users will follow you. Your branding is essential to attract these followers. We do not use contests or paid subscribers.",
   },
   {
     question: "Are they qualified subscribers?",

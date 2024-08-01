@@ -18,7 +18,7 @@ const ExceptionalSolutions = () => {
       srcI: Exceptional2,
       title: "Fast Results Guaranteed",
       description:
-        "Avoid Bots and Fake Subscribers with Mediabear, Mediabear helps you grow your account with real followers who are genuinely interested in your content. Say goodbye to fake subscribers and hello to meaningful engagement and authentic growth.",
+        "Avoid Bots and Fake Subscribers with AstraLemon, AstraLemon helps you grow your account with real followers who are genuinely interested in your content. Say goodbye to fake subscribers and hello to meaningful engagement and authentic growth.",
     },
     {
       srcI: Exceptional3,
@@ -28,7 +28,7 @@ const ExceptionalSolutions = () => {
       height: "50%",
       width: "100%",
       description:
-        "Mediabear empowers you to surpass your competitors by automating your interactions with prospects. Achieve greater visibility, increase your subscriber base, and convert more customers with minimal effort.",
+        "AstraLemon empowers you to surpass your competitors by automating your interactions with prospects. Achieve greater visibility, increase your subscriber base, and convert more customers with minimal effort.",
     },
     {
       srcI: Exceptional5,

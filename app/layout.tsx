@@ -9,8 +9,8 @@ import MyApp from "@/app/_app";
 const inter = Instrument_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Media",
-  description: "Media-bird LandingPage",
+  title: "AstraLemon",
+  description: "AstraLemon LandingPage",
   icons: `${favicon}`,
 };
 // Replace with your publishable key
