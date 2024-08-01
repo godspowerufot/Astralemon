@@ -174,11 +174,8 @@ const AppHeader = () => {
             </li>
             <li>
               <div className="flex flex-col gap-[20px] ">
-                <Button
-                  href="/Login"
-                  className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]"
-                >
-                  Log in
+                <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]">
+                  <Link href="/Login">Log in</Link>
                 </Button>
                 <Button
                   href="https://discord.gg/CvRtjnnrW8"
