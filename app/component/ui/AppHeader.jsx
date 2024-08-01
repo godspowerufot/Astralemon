@@ -48,7 +48,7 @@ const AppHeader = () => {
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
             onClick={() => handleNavigation("/#features")}
           >
-            Features
+            Feature
           </a>
           <a
             href="/#workflow"
