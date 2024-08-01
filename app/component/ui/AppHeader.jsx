@@ -25,11 +25,9 @@ const AppHeader = () => {
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
           <h3 className="text-lg font-bold">
             <Link href="/">
-              <img
-                src="https://i.ibb.co/f48t27K/astra.png"
-                alt="Logo"
-                className="h-[100%] w-[200px]"
-              />
+              <h3 className="text-lg font-bold">
+                <Link href="/">Astra Lemon</Link>
+              </h3>
 
               {/* <a href="https://ibb.co/m6vtG7Y"><img src="https://i.ibb.co/f48t27K/astra.png" alt="astra" border="0"></a> */}
             </Link>
