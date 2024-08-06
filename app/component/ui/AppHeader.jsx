@@ -19,18 +19,12 @@ const AppHeader = () => {
   };
 
   return (
-    <div className=" container  mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
-      <nav className="w-full max-md:gap-[70px]  max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around  text-black rounded-[100px] px-4 py-3">
+    <div className="container mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
+      <nav className="w-full max-md:gap-[70px] max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around text-black rounded-[100px] px-4 py-3">
         <div className="flex h-[72px] items-center gap-4 max-md:mr-[15%]">
           <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
           <h3 className="text-lg font-bold">
-            <Link href="/">
-              <h3 className="text-lg font-bold">
-                <Link href="/">Astra Lemon</Link>
-              </h3>
-
-              {/* <a href="https://ibb.co/m6vtG7Y"><img src="https://i.ibb.co/f48t27K/astra.png" alt="astra" border="0"></a> */}
-            </Link>
+            <Link href="/">Astra Lemon</Link>
           </h3>
         </div>
 
@@ -72,10 +66,10 @@ const AppHeader = () => {
           </a>
         </div>
         <div className="flex gap-[20px] max-md:hidden">
-          <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px]  w-[155px]">
+          <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px] w-[155px]">
             <Link href="/Login">Log in</Link>
           </Button>
-          <Button className="h-[45px] bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[155px]">
+          <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px] w-[155px]">
             Get started
           </Button>
         </div>
@@ -126,7 +120,7 @@ const AppHeader = () => {
             </svg>
           </button>
 
-          <ul className="flex flex-col items-center  gap-y-8 gap-4">
+          <ul className="flex flex-col items-center gap-y-8 gap-4">
             <li>
               <a
                 href="/#solution"
