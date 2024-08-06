@@ -33,6 +33,7 @@ const Login = () => {
     if (success) {
       alert("Login successful");
       // Redirect to dashboard or another page
+      router.push("/dashboard");
     } else {
       alert("Login failed: " + error);
     }
@@ -114,7 +115,7 @@ const Login = () => {
                 </div>
               </form>
               <p className="mt-8 text-center">
-                <span>Don't have an account?</span>
+                <span>Don&apos;t have an account?</span>
                 <a
                   href="#"
                   className="text-blue-500 hover:text-blue-700 font-semibold ml-2"
