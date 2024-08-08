@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import MediaBear from "@/public/media logo.png";
-import MediaBears from "@/public/astra.png";
+import MediaBears from "@/public/lemon.webp";
 import Button from "@/app/component/atoms/Button";
 import Link from "next/link";
 

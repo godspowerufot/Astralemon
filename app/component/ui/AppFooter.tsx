@@ -1,6 +1,6 @@
 import React from "react";
 import MediaBear from "@/public/iconssvg/media-bear-icon.svg";
-import MediaBears from "@/public/astra.png";
+import MediaBears from "@/public/iconssvg/lemon.svg";
 
 import Image from "next/image";
 const AppFooter = () => {
