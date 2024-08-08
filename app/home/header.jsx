@@ -4,6 +4,7 @@ import Notifications from "@/public/Notification.png";
 import twoNotifications from "@/public/2ksubscriber.png";
 import Button from "../component/atoms/Button";
 import Icon from "@/public/logo12.png";
+import Link from "next/link";
 import Icones from "@/public/build10.png";
 const Header = () => {
   return (
@@ -27,12 +28,14 @@ const Header = () => {
             followers who love your content and skyrocket your Instagram
             presence.
           </p>
-          <Button
-            href="/get-started"
-            className="bg-blue-600 w-[200px] h-[52px] text-white px-8 py-3 rounded-full font-bold transition duration-300 hover:bg-blue-700"
-          >
-            Get started →
-          </Button>
+          <Link href="/Registration">
+            <Button
+             
+              className="bg-blue-600 w-[200px] h-[52px] text-white px-8 py-3 rounded-full font-bold transition duration-300 hover:bg-blue-700"
+            >
+              Get started →
+            </Button>
+          </Link>
         </div>
         <div className="flex justify-center max-md:justify-center max-md:ml-[10%] max-md:items-center md:w-1/2">
           <div

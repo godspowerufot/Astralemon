@@ -133,7 +133,7 @@ const Login = () => {
           <Image
             alt="login"
             src={LoginImage}
-            className="m-12 xl:m-16 w-full"
+            className="m-12 w-[80%] xl:m-16 "
             width={500}
             height={500}
           />

@@ -1,5 +1,5 @@
 import React from "react";
-import MediaBear from "@/public/iconssvg/media-bear-icon.svg";
+import MediaBear from "@/public/media logo.png";
 import MediaBears from "@/public/iconssvg/lemon.svg";
 
 import Image from "next/image";
@@ -26,7 +26,7 @@ const AppFooter = () => {
                 Solution
               </a>
               <a
-                href="#features"
+                href="#Features"
                 className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
               >
                 Features

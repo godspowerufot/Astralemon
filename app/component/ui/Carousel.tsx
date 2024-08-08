@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import BackgroundImage from "@/public/image6.png"; // Update the path as necessary
-
+import Link from "next/link";
 const HeroSection = () => {
   return (
     <section className="relative py-16 overflow-hidden" data-aos="zoom-in">
@@ -32,9 +32,12 @@ const HeroSection = () => {
           features on the channel{" "}
         </p>
         <div className="flex gap-[20px]">
+          <Link             href="https://discord.gg/KNZA3KQQ">
+
           <button className="mt-8 px-6 py-3 max-md:h-[40px]  flex items-center justify-center max-md:text-[14px] bg-blue-600 text-white rounded-full text-lg hover:bg-blue-700 transition duration-300">
             Join Discord
           </button>
+          </Link>
         </div>
       </div>
     </section>

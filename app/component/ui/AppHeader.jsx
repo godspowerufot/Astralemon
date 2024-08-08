@@ -27,7 +27,11 @@ const AppHeader = () => {
           <h3 className="text-lg font-bold">
             <Link href="/">
               {" "}
-              <Image src={MediaBears} alt="Logo" className="h-[100%] w-[100%]" />
+              <Image
+                src={MediaBears}
+                alt="Logo"
+                className="h-[100%] w-[100%]"
+              />
             </Link>
           </h3>
         </div>
@@ -70,12 +74,17 @@ const AppHeader = () => {
           </a>
         </div>
         <div className="flex gap-[20px] max-md:hidden">
-          <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px] w-[155px]">
-            <Link href="/Login">Log in</Link>
-          </Button>
-          <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px] w-[155px]">
-            Get started
-          </Button>
+          <Link href="/Login">
+            {" "}
+            <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px] w-[155px]">
+              Log in
+            </Button>
+          </Link>
+          <Link href="/Registration">
+            <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px] w-[155px]">
+              Get started
+            </Button>
+          </Link>
         </div>
         <button
           onClick={toggleMenu}
@@ -172,15 +181,17 @@ const AppHeader = () => {
             </li>
             <li>
               <div className="flex flex-col gap-[20px] ">
-                <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]">
-                  <Link href="/Login">Log in</Link>
-                </Button>
-                <Button
-                  href="https://discord.gg/CvRtjnnrW8"
-                  className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]"
-                >
-                  Get started
-                </Button>
+                <Link href="/Login">
+                  {" "}
+                  <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]">
+                    Log in
+                  </Button>
+                </Link>
+                <Link href="/Registration">
+                  <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]">
+                    Get started
+                  </Button>
+                </Link>
               </div>
             </li>
           </ul>

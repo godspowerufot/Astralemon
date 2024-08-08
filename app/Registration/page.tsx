@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import MediaBear from "@/public/iconssvg/media-bear-icon.svg";
+import MediaBear from "@/public/media logo.png";
 import LoginImage from "@/public/Secure login-bro.svg";
 import useRegister from "@/hooks/useRegister"; // Adjust the import path as necessary
 
@@ -44,7 +44,7 @@ const Register = () => {
   return (
     <div className="h-[50%] bg-gray-100 text-gray-900 flex justify-center">
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
-        <div className="lg:w-[80%] xl:w-[50.666667%] p-6 sm:p-12">
+        <div className="lg:w-[50%] xl:w-[50.666667%] p-6 sm:p-12">
           <div>
             <Image
               src={MediaBear}
@@ -172,11 +172,11 @@ const Register = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
+        <div className="flex-1  bg-indigo-100 text-center hidden lg:flex">
           <Image
             alt="login"
             src={LoginImage}
-            className="m-12 xl:m-16 w-full"
+            className="w-[80%] m-12 xl:m-16 "
             width={500}
             height={500}
           />

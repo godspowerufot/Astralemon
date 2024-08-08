@@ -1,5 +1,6 @@
 import * as React from "react";
 import Button from "../atoms/Button";
+import Link from "next/link";
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -41,9 +42,11 @@ function PricingPage() {
         <p className=" text-[18px] text-[#4B5563] max-md:p-4 max-md:text-[16px]">
           Affiliate program ... coming .... soon{" "}
         </p>
-        <Button className="h-[40px] mt-5 bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[150px]">
-          Contact us
-        </Button>
+        <Link href="https://discord.gg/CvRtjnnrW8">
+          <Button className="h-[40px] mt-5 bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[150px]">
+            Contact us
+          </Button>
+        </Link>
       </div>
     </section>
   );

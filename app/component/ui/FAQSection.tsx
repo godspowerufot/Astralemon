@@ -9,7 +9,7 @@ type FAQItemType = {
 };
 export const faqItems: FAQItemType[] = [
   {
-    question: "Is there a risk of shadowban/ban?",
+    question: "Is there a risk of shadow ban?",
     answer:
       "We have been developing an algorithm since 2023 and we have been offering it to our customers since 2024. Despite these years, no customer has ever been banned due to automation.This is due to our security and account protection processes. We have developed a method that makes it possible to simulate human behavior, with a connection from an iPhone and thus not to be detected by Instagram. Our algorithm aims to annihilate Shadowban, not to cause it. By using our services, your engagement rate will increase, which will allow you to gain visibility.",
   },
