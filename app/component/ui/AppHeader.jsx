@@ -2,7 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import MediaBear from "@/public/iconssvg/media-bear-icon.svg";
+import MediaBear from "@/public/media logo.png";
+import MediaBears from "@/public/astra.png";
 import Button from "@/app/component/atoms/Button";
 import Link from "next/link";
 
@@ -22,13 +23,16 @@ const AppHeader = () => {
     <div className="container mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
       <nav className="w-full max-md:gap-[70px] max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around text-black rounded-[100px] px-4 py-3">
         <div className="flex h-[72px] items-center gap-4 max-md:mr-[15%]">
-          <Image src={MediaBear} alt="Logo" className="h-10 w-10" />
+          <Image src={MediaBear} alt="Logo" className="h-20 w-20" />
           <h3 className="text-lg font-bold">
-            <Link href="/">Astra Lemon</Link>
+            <Link href="/">
+              {" "}
+              <Image src={MediaBears} alt="Logo" className="h-[100%] w-[100%]" />
+            </Link>
           </h3>
         </div>
 
-        <div className="hidden md:flex gap-4">
+        <div className="hidden mr-[10%] md:flex gap-4">
           <a
             href="/#solution"
             className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"

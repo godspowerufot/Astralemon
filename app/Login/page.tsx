@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import MediaBear from "@/public/iconssvg/media-bear-icon.svg";
+import MediaBear from "@/public/media logo.png";
 import LoginImage from "@/public/Secure login-bro.svg";
 import useLogin from "@/hooks/useLogin"; // Adjust the import path accordingly
 

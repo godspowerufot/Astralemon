@@ -1,5 +1,7 @@
 import React from "react";
 import MediaBear from "@/public/iconssvg/media-bear-icon.svg";
+import MediaBears from "@/public/astra.png";
+
 import Image from "next/image";
 const AppFooter = () => {
   return (
@@ -7,8 +9,8 @@ const AppFooter = () => {
       <div className="container mx-auto px-4 py-8 flex flex-wrap items-center justify-between">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <div className="flex items-center gap-4 max-md:flex-col max-md:items-start max-md:ml-[3%] max-md:mb-[2%]">
-            <Image src={MediaBear} alt="Logo" className="h-15 w-15" />
-            <h3 className="text-lg font-bold">ASTRA LEMON</h3>
+            <Image src={MediaBear} alt="Logo" className="h-[10%] w-[10%]" />{" "}
+            <Image src={MediaBears} alt="Logo" className="h-[7rem] w-[10rem]" />
           </div>
         </div>
         <div
@@ -58,7 +60,10 @@ const AppFooter = () => {
           </span>
         </div>
         <div className="w-full md:w-1/2 flex justify-center md:justify-end space-x-4">
-          <a href="#" className="text-gray-600 hover:text-gray-900">
+          <a
+            href="https://x.com/AstraLemonAI"
+            className="text-gray-600 hover:text-gray-900"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -71,7 +76,10 @@ const AppFooter = () => {
               <path d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z"></path>
             </svg>
           </a>
-          <a href="#" className="text-gray-600 hover:text-gray-900">
+          <a
+            href="https://www.youtube.com/@AstraLemon"
+            className="text-gray-600 hover:text-gray-900"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -84,7 +92,10 @@ const AppFooter = () => {
               <path d="M 15 4 C 10.814 4 5.3808594 5.0488281 5.3808594 5.0488281 L 5.3671875 5.0644531 C 3.4606632 5.3693645 2 7.0076245 2 9 L 2 15 L 2 15.001953 L 2 21 L 2 21.001953 A 4 4 0 0 0 5.3769531 24.945312 L 5.3808594 24.951172 C 5.3808594 24.951172 10.814 26.001953 15 26.001953 C 19.186 26.001953 24.619141 24.951172 24.619141 24.951172 L 24.621094 24.949219 A 4 4 0 0 0 28 21.001953 L 28 21 L 28 15.001953 L 28 15 L 28 9 A 4 4 0 0 0 24.623047 5.0546875 L 24.619141 5.0488281 C 24.619141 5.0488281 19.186 4 15 4 z M 12 10.398438 L 20 15 L 12 19.601562 L 12 10.398438 z"></path>
             </svg>
           </a>
-          <a href="#" className="text-gray-600 hover:text-gray-900">
+          <a
+            href="https://www.facebook.com/astralemon"
+            className="text-gray-600 hover:text-gray-900"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -98,7 +109,10 @@ const AppFooter = () => {
             </svg>
           </a>
 
-          <a href="#" className="text-gray-600 hover:text-gray-900">
+          <a
+            href="https://discord.gg/KNZA3KQQ"
+            className="text-gray-600 hover:text-gray-900"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"

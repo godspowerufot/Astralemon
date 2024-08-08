@@ -15,7 +15,7 @@ const useRegister = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://52.91.135.209:8000/api/register/", {
+      const response = await fetch("https://52.91.135.209:8000/api/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
