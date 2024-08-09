@@ -4,8 +4,31 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import MediaBear from "@/public/media logo.png";
-import LoginImage from "@/public/Secure login-bro.svg";
 import useLogin from "@/hooks/useLogin"; // Adjust the import path accordingly
+
+const steps = [
+  {
+    icon: "text-blue-500",
+    number: "1",
+    title: "Connectez votre compte Instagram",
+    description:
+      "Nous prenons en charge la double authentification et tout est 100% crypté et sécurisé !",
+  },
+  {
+    icon: "text-blue-500",
+    number: "2",
+    title: "Choisissez votre audience idéale",
+    description:
+      "Configurez l'algorithme pour qu'il s'adapte à votre niche en identifiants quelques concurrents.",
+  },
+  {
+    icon: "text-blue-500",
+    number: "3",
+    title: "Profitez de l'IA et de notre algorithme",
+    description:
+      "Notre algorithme effectuera des actions pour vous et vous gagnerez des followers réels et ciblés.",
+  },
+];
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +39,7 @@ const Login = () => {
   const { login, loading, error } = useLogin();
   const router = useRouter();
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -24,7 +47,7 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { username, password } = formData;
 
@@ -58,7 +81,7 @@ const Login = () => {
               <form onSubmit={handleSubmit}>
                 <div className="mx-auto max-w-xs">
                   <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-300 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                     type="text"
                     name="username"
                     placeholder="Username"
@@ -66,7 +89,7 @@ const Login = () => {
                     onChange={handleChange}
                   />
                   <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-300 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                     type="password"
                     name="password"
                     placeholder="Password"
@@ -94,7 +117,7 @@ const Login = () => {
                       </svg>
                     ) : (
                       <svg
-                        className="w-6 h-6 -ml-2"
+                        className="w-6 h-6 -ml-2 pr-2" // Added padding-right
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -125,18 +148,71 @@ const Login = () => {
                 </a>
               </p>
             </div>
-            {/* "francid",
-    "password" :"123455667Bf@ */}
           </div>
         </div>
-        <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
-          <Image
-            alt="login"
-            src={LoginImage}
-            className="m-12 w-[80%] xl:m-16 "
-            width={500}
-            height={500}
-          />
+        <div className="flex-1 justify-center items-center flex-col bg-black text-center hidden lg:flex">
+          <div className="flex justify-center">
+            <Image
+              alt="Logo"
+              loading="lazy"
+              width="100"
+              height="20"
+              decoding="async"
+              src={MediaBear}
+              className="transform scale-300 mt-3"
+            />
+          </div>
+
+          <div className="flex flex-col justify-center items-center mt-12 w-[70%]">
+            {steps.map((step) => (
+              <div key={step.number} className="flex flex-col mb-6">
+                <div className="flex items-center text-left p-2">
+                  <span className="w-full text-gray-600 text-sm">
+                    <span className="flex ">
+                      {" "}
+                      <span
+                        className={` ml-[-3%] flex-shrink-0 pr-2 flex items-center ${step.icon}`}
+                      >
+                        <svg
+                          className="w-8 h-8 border border-gray-500 rounded-full flex items-center justify-center" // Thicker border and rounded full
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle cx="12" cy="12" r="12" />
+                          <text
+                            className="text-white font-bold text-sm"
+                            x="12"
+                            y="12"
+                            textAnchor="middle"
+                            dominantBaseline="central"
+                          >
+                            {step.number}
+                          </text>
+                        </svg>
+                      </span>
+                      <span className="ml-[0%] block font-semibold text-white">
+                        {step.title}
+                      </span>
+                    </span>
+                    <div className="border-l-[4px] border-white pl-5">
+                      {" "}
+                      {/* Changed border color and thickness */}
+                      <div className="overflow-visible transition-height duration-300">
+                        <p className="text-white text-sm">{step.description}</p>
+                      </div>
+                    </div>
+                  </span>
+                </div>
+
+                {step.number !== "3" && (
+                  <div className="flex items-center">
+                    <div className="border-l border-gray-500 flex-1 ml-3"></div>{" "}
+                    {/* Changed border color and thickness */}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
