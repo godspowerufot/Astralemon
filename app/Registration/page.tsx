@@ -6,7 +6,29 @@ import Image from "next/image";
 import MediaBear from "@/public/media logo.png";
 import LoginImage from "@/public/Secure login-bro.svg";
 import useRegister from "@/hooks/useRegister"; // Adjust the import path as necessary
-
+const steps = [
+  {
+    icon: "text-blue-500",
+    number: "1",
+    title: "Connectez votre compte Instagram",
+    description:
+      "Nous prenons en charge la double authentification et tout est 100% crypté et sécurisé !",
+  },
+  {
+    icon: "text-blue-500",
+    number: "2",
+    title: "Choisissez votre audience idéale",
+    description:
+      "Configurez l'algorithme pour qu'il s'adapte à votre niche en identifiants quelques concurrents.",
+  },
+  {
+    icon: "text-blue-500",
+    number: "3",
+    title: "Profitez de l'IA et de notre algorithme",
+    description:
+      "Notre algorithme effectuera des actions pour vous et vous gagnerez des followers réels et ciblés.",
+  },
+];
 const Register = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -172,14 +194,69 @@ const Register = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1  bg-indigo-100 text-center hidden lg:flex">
-          <Image
-            alt="login"
-            src={LoginImage}
-            className="w-[80%] m-12 xl:m-16 "
-            width={500}
-            height={500}
-          />
+        <div className="flex-1 justify-center items-center flex-col bg-black text-center hidden lg:flex">
+          <div className="flex justify-center">
+            <Image
+              alt="Logo"
+              loading="lazy"
+              width="100"
+              height="20"
+              decoding="async"
+              src={MediaBear}
+              className="transform scale-300 mt-3"
+            />
+          </div>
+
+          <div className="flex flex-col justify-center items-center mt-12 w-[70%]">
+            {steps.map((step) => (
+              <div key={step.number} className="flex flex-col mb-6">
+                <div className="flex items-center text-left p-2">
+                  <span className="w-full text-gray-600 text-sm">
+                    <span className="flex ">
+                      {" "}
+                      <span
+                        className={` ml-[-3%] flex-shrink-0 pr-2 flex items-center ${step.icon}`}
+                      >
+                        <svg
+                          className="w-8 h-8 border border-gray-500 rounded-full flex items-center justify-center" // Thicker border and rounded full
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle cx="12" cy="12" r="12" />
+                          <text
+                            className="text-white font-bold text-sm"
+                            x="12"
+                            y="12"
+                            textAnchor="middle"
+                            dominantBaseline="central"
+                          >
+                            {step.number}
+                          </text>
+                        </svg>
+                      </span>
+                      <span className="ml-[0%] block font-semibold text-white">
+                        {step.title}
+                      </span>
+                    </span>
+                    <div className="border-l-[4px] border-white pl-5">
+                      {" "}
+                      {/* Changed border color and thickness */}
+                      <div className="overflow-visible transition-height duration-300">
+                        <p className="text-white text-sm">{step.description}</p>
+                      </div>
+                    </div>
+                  </span>
+                </div>
+
+                {step.number !== "3" && (
+                  <div className="flex items-center">
+                    <div className="border-l border-gray-500 flex-1 ml-3"></div>{" "}
+                    {/* Changed border color and thickness */}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
