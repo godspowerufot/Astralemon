@@ -8,7 +8,7 @@ import MediaBears from "@/public/darkastralemon.png";
 import MediaBear from "@/public/media logo.png";
 import LoginImage from "@/public/Secure login-bro.svg";
 import useRegister from "@/hooks/useRegister"; // Adjust the import path as necessary
-import { steps } from "@/pages/expertlink";
+import { steps } from "@/lib/expertlink";
 const Register = () => {
   const [formData, setFormData] = useState({
     username: "",

@@ -6,7 +6,7 @@ import Image from "next/image";
 import MediaBear from "@/public/media logo.png";
 import useLogin from "@/hooks/useLogin"; // Adjust the import path accordingly
 import MediaBears from "@/public/darkastralemon.png";
-import { steps } from "@/pages/expertlink";
+import { steps } from "@/lib/expertlink";
 
 const Login = () => {
   const [formData, setFormData] = useState({
