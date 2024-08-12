@@ -3,7 +3,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import MediaBear from "@/public/media logo.png";
-import MediaBears from "@/public/lemon.webp";
 import Button from "@/app/component/atoms/Button";
 import Link from "next/link";
 
@@ -23,15 +22,11 @@ const AppHeader = () => {
     <div className="container mx-auto pt-8 flex flex-col md:flex-row justify-center items-center">
       <nav className="w-full max-md:gap-[70px] max-w-screen-xl flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around text-black rounded-[100px] px-4 py-3">
         <div className="flex h-[72px] items-center gap-4 max-md:mr-[15%]">
-          <Image src={MediaBear} alt="Logo" className="h-20 w-20" />
           <h3 className="text-lg font-bold">
             <Link href="/">
               {" "}
-              <Image
-                src={MediaBears}
-                alt="Logo"
-                className="h-[100%] w-[100%]"
-              />
+           
+          <Image src={MediaBear} alt="Logo" className="h-20 w-20" />
             </Link>
           </h3>
         </div>
@@ -76,13 +71,13 @@ const AppHeader = () => {
         <div className="flex gap-[20px] max-md:hidden">
           <Link href="/Login">
             {" "}
-            <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px] w-[155px]">
+            <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[10px] w-[85px]">
               Log in
             </Button>
           </Link>
           <Link href="/Registration">
-            <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[20px] w-[155px]">
-              Get started
+            <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[10px] w-[155px]">
+              Join AstraLemon
             </Button>
           </Link>
         </div>
@@ -189,7 +184,7 @@ const AppHeader = () => {
                 </Link>
                 <Link href="/Registration">
                   <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]">
-                    Get started
+                    Join AstraLemon
                   </Button>
                 </Link>
               </div>

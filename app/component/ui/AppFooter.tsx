@@ -1,50 +1,57 @@
+'use client'
 import React from "react";
+import { useRouter } from "next/navigation";
 import MediaBear from "@/public/media logo.png";
 import MediaBears from "@/public/iconssvg/lemon.svg";
-
 import Image from "next/image";
+
 const AppFooter = () => {
+  const router = useRouter();
+
+  const handleNavigation = (hash: string) => {
+    router.push(hash);
+  };
+
   return (
     <footer className="bg-[#F9FAFB] border-t border-gray-200 mt-8">
       <div className="container mx-auto px-4 py-8 flex flex-wrap items-center justify-between">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <div className="flex items-center gap-4 max-md:flex-col max-md:items-start max-md:ml-[3%] max-md:mb-[2%]">
-            <Image src={MediaBear} alt="Logo" className="h-[10%] w-[10%]" />{" "}
-            <Image src={MediaBears} alt="Logo" className="h-[7rem] w-[10rem]" />
+            <Image src={MediaBear} alt="Logo" className="h-[10%] w-[10%]" />
           </div>
         </div>
         <div
           className="w-full md:w-1/2 flex 
         max-md:justify-start md:justify-end space-x-4"
         >
-          <div className=" max-md:flex justify-center flex flex-row items-center max-md:flex-col max-md:justify-start max-md:items-start gap-4">
+          <div className="max-md:flex justify-center flex flex-row items-center max-md:flex-col max-md:justify-start max-md:items-start gap-4">
             <div className="hidden md:flex gap-4 max-md:flex max-md:flex-col ">
               <a
-                href="#solution"
+                onClick={() => handleNavigation("/#solution")}
                 className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
               >
                 Solution
               </a>
               <a
-                href="#Features"
+                onClick={() => handleNavigation("/#Features")}
                 className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
               >
                 Features
               </a>
               <a
-                href="#workflow"
+                onClick={() => handleNavigation("/#workflow")}
                 className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
               >
                 Workflow
               </a>
               <a
-                href="#pricing"
+                onClick={() => handleNavigation("/#pricing")}
                 className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
               >
                 Pricing
               </a>
               <a
-                href="#faqs"
+                onClick={() => handleNavigation("/#faqs")}
                 className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
               >
                 FAQS
@@ -122,7 +129,7 @@ const AppFooter = () => {
               viewBox="0 0 30 30"
               style={{ fill: "#737373" }}
             >
-              <path d="M25.12,6.946c-2.424-1.948-6.257-2.278-6.419-2.292c-0.256-0.022-0.499,0.123-0.604,0.357 c-0.004,0.008-0.218,0.629-0.425,1.228c2.817,0.493,4.731,1.587,4.833,1.647c0.478,0.278,0.638,0.891,0.359,1.368 C22.679,9.572,22.344,9.75,22,9.75c-0.171,0-0.343-0.043-0.501-0.135C21.471,9.598,18.663,8,15.002,8 C11.34,8,8.531,9.599,8.503,9.615C8.026,9.892,7.414,9.729,7.137,9.251C6.86,8.775,7.021,8.164,7.497,7.886 c0.102-0.06,2.023-1.158,4.848-1.65c-0.218-0.606-0.438-1.217-0.442-1.225c-0.105-0.235-0.348-0.383-0.604-0.357 c-0.162,0.013-3.995,0.343-6.451,2.318C3.564,8.158,1,15.092,1,21.087c0,0.106,0.027,0.209,0.08,0.301 c1.771,3.11,6.599,3.924,7.699,3.959c0.007,0.001,0.013,0.001,0.019,0.001c0.194,0,0.377-0.093,0.492-0.25l1.19-1.612 c-2.61-0.629-3.99-1.618-4.073-1.679c-0.444-0.327-0.54-0.953-0.213-1.398c0.326-0.443,0.95-0.541,1.394-0.216 C7.625,20.217,10.172,22,15,22c4.847,0,7.387-1.79,7.412-1.808c0.444-0.322,1.07-0.225,1.395,0.221 c0.324,0.444,0.23,1.066-0.212,1.392c-0.083,0.061-1.456,1.048-4.06,1.677l1.175,1.615c0.115,0.158,0.298,0.25,0.492,0.25 c0.007,0,0.013,0,0.019-0.001c1.101-0.035,5.929-0.849,7.699-3.959c0.053-0.092,0.08-0.195,0.08-0.301 C29,15.092,26.436,8.158,25.12,6.946z M11,19c-1.105,0-2-1.119-2-2.5S9.895,14,11,14s2,1.119,2,2.5S12.105,19,11,19z M19,19 c-1.105,0-2-1.119-2-2.5s0.895-2.5,2-2.5s2,1.119,2,2.5S20.105,19,19,19z"></path>
+              <path d="M25.12,6.946c-2.424-1.948-6.257-2.278-6.419-2.292c-0.256-0.022-0.499,0.123-0.604,0.357 c-0.004,0.008-0.218,0.629-0.425,1.228c2.817,0.493,4.731,1.587,4.833,1.647c0.303,0.184,0.4,0.582,0.217,0.885 c-0.121,0.2-0.334,0.313-0.56,0.313c-0.113,0-0.228-0.03-0.33-0.092c-0.027-0.016-2.768-1.61-6.091-1.609 c-0.022,0-0.044,0-0.066,0c-0.03,0-0.074,0-0.129,0c-1.962,0.007-3.853,0.4-5.58,1.162c-0.272,0.12-0.591-0.002-0.73-0.267 c-0.143-0.267-0.035-0.598,0.235-0.738c0.085-0.045,2.052-1.061,4.933-1.549c-0.189-0.553-0.379-1.108-0.383-1.122 c-0.088-0.28-0.366-0.452-0.657-0.414c-0.186,0.024-4.561,0.556-6.431,2.322C4.355,13.62,3.66,21.059,4.045,25.877 c0.002,0.021,0.008,0.043,0.013,0.063c0.001,0.004,0.002,0.007,0.003,0.011c0.131,0.532,0.968,1.996,3.531,2.034 c0.098,0.002,0.196,0.003,0.293,0.003c0.787,0,1.558-0.104,2.297-0.31c0.24-0.065,0.375-0.311,0.31-0.551 c-0.065-0.239-0.309-0.378-0.551-0.31c-1.44,0.393-3.953,0.663-4.623-1.248c-0.002-0.006-0.004-0.012-0.005-0.019 c-0.358-4.133,0.287-9.928,2.742-12.031c0.013-0.011,0.027-0.022,0.04-0.034c1.525-1.396,5.372-2.176,8.578-1.886 c3.06,0.274,6.03,1.696,7.566,2.529c2.422,1.291,3.025,7.012,2.652,10.823c-0.717,1.916-3.239,1.663-4.604,1.273 c-0.241-0.069-0.493,0.065-0.562,0.307c-0.07,0.241,0.064,0.493,0.307,0.562c0.53,0.152,1.15,0.269,1.831,0.269 c1.49,0,3.197-0.463,3.787-2.411c0.004-0.011,0.006-0.023,0.008-0.035C27.034,21.012,26.591,11.27,25.12,6.946z M11.754,19.766 c-1.232,0-2.243-1.151-2.243-2.562c0-1.411,1.011-2.562,2.243-2.562s2.243,1.151,2.243,2.562 C13.997,18.616,12.986,19.766,11.754,19.766z M18.246,19.766c-1.232,0-2.243-1.151-2.243-2.562c0-1.411,1.011-2.562,2.243-2.562 s2.243,1.151,2.243,2.562C20.489,18.616,19.478,19.766,18.246,19.766z"></path>
             </svg>
           </a>
         </div>

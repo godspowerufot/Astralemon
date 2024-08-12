@@ -5,28 +5,28 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import MediaBear from "@/public/media logo.png";
 import useLogin from "@/hooks/useLogin"; // Adjust the import path accordingly
-
-const steps = [
+import MediaBears from "@/public/darkastralemon.png";
+export const steps = [
   {
     icon: "text-blue-500",
     number: "1",
-    title: "Connectez votre compte Instagram",
+    title: "Connect your Instagram account",
     description:
-      "Nous prenons en charge la double authentification et tout est 100% crypté et sécurisé !",
+      "We support two-factor authentication and everything is 100% encrypted and secure!!",
   },
   {
     icon: "text-blue-500",
     number: "2",
-    title: "Choisissez votre audience idéale",
+    title: "Choose your ideal audience",
     description:
-      "Configurez l'algorithme pour qu'il s'adapte à votre niche en identifiants quelques concurrents.",
+      "Configure the algorithm to fit your niche by identifying a few competitors.",
   },
   {
     icon: "text-blue-500",
     number: "3",
-    title: "Profitez de l'IA et de notre algorithme",
+    title: "Take advantage of AI and our algorithm",
     description:
-      "Notre algorithme effectuera des actions pour vous et vous gagnerez des followers réels et ciblés.",
+      "Our algorithm will perform actions for you and you will gain real, targeted followers.",
   },
 ];
 
@@ -77,9 +77,10 @@ const Login = () => {
           </div>
           <div className="mt-8 flex flex-col items-center">
             <h1 className="text-2xl xl:text-3xl font-extrabold">Login</h1>
+            <p>Log in to your Astralemon account to continue</p>
             <div className="w-full flex-1 mt-8">
               <form onSubmit={handleSubmit}>
-                <div className="mx-auto max-w-xs">
+                <div className="mx-auto max-w-[35rem]">
                   <input
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-300 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                     type="text"
@@ -150,7 +151,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1 justify-center items-center flex-col bg-black text-center hidden lg:flex">
+        <div className="flex-1 justify-center items-center flex-col bg-[#111213] text-center hidden lg:flex">
           <div className="flex justify-center">
             <Image
               alt="Logo"
@@ -158,8 +159,8 @@ const Login = () => {
               width="100"
               height="20"
               decoding="async"
-              src={MediaBear}
-              className="transform scale-300 mt-3"
+              src={MediaBears}
+              className="transform scale-300 mt-3 w-full h-full"
             />
           </div>
 
