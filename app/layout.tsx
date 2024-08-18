@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
-import AppFooter from "@/app/component/ui/AppFooter";
 import favicon from "./favicon.ico";
-import AppHeader from "@/app/component/ui/AppHeader";
-import MyApp from "@/app/_app";
+import MyApp from "../app/_app";
 
 const inter = Instrument_Sans({ subsets: ["latin"] });
 
@@ -24,10 +22,15 @@ export default function RootLayout({
       <MyApp />
 
       <link rel="icon" href="favico.ico" type="image/x-icon" />
-      <body className={inter.className}>
-        <AppHeader />
-        {children}
-        <AppFooter />
+      <body
+        suppressHydrationWarning={true}
+        className={`${inter.className}`}
+      >
+        {/* <AppHeader /> */}
+        <div className="h-full  dark:bg-boxdark-2 dark:text-bodydark">
+          {children}
+        </div>
+        {/* <AppFooter /> */}
       </body>
       <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
     </html>
