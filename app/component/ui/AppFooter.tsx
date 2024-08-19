@@ -17,7 +17,7 @@ const AppFooter = () => {
       <div className="container mx-auto px-4 py-8 flex flex-wrap items-center justify-between">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <div className="flex items-center gap-4 max-md:flex-col max-md:items-start max-md:ml-[3%] max-md:mb-[2%]">
-            <Image src={MediaBear} alt="Logo" className="h-[10%] w-[10%]" />
+            <Image src={MediaBear} alt="Logo" className="h-auto w-auto max-md:w-[53%] " />
           </div>
         </div>
         <div
@@ -49,6 +49,12 @@ const AppFooter = () => {
                 className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
               >
                 Pricing
+              </a>
+              <a
+                onClick={() => handleNavigation("/privacy")}
+                className="px-3 py-2 hover:text-[#2D72FF] rounded-lg transition-all cursor-pointer"
+              >
+                Privacy policy
               </a>
               <a
                 onClick={() => handleNavigation("/#faqs")}
