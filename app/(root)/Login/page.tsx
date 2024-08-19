@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import MediaBear from "@/public/media logo.png";
 import useLogin from "@/hooks/useLogin"; // Adjust the import path accordingly
-import MediaBears from "@/public/darkastralemon.png";
+import MediaBears from "@/public/media logo.png";
 import { steps } from "@/lib/expertlink";
 
 const Login = () => {
@@ -42,17 +42,8 @@ const Login = () => {
 
   return (
     <div className="h-[50%] bg-gray-100 text-gray-900 flex justify-center">
-      <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+      <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow-2xl rounded-lg flex justify-center flex-1">
         <div className="lg:w-[80%] xl:w-[50.666667%] p-6 sm:p-12">
-          <div>
-            <Image
-              src={MediaBear}
-              alt="Logo"
-              width={100}
-              height={100}
-              className="w-32 mx-auto"
-            />
-          </div>
           <div className="mt-8 flex flex-col items-center">
             <h1 className="text-2xl xl:text-3xl font-extrabold">Login</h1>
             <p>Log in to your Astralemon account to continue</p>
@@ -77,39 +68,9 @@ const Login = () => {
                   />
                   <button
                     type="submit"
-                    className="mt-5 tracking-wide font-semibold bg-blue-600 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                    className="mt-5 text-white tracking-wide font-semibold bg-blue-600 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   >
-                    {loading ? (
-                      <svg
-                        className="w-6 h-6 -ml-2 animate-spin"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 4v8m0 0h8m-8 0H4"
-                        ></path>
-                      </svg>
-                    ) : (
-                      <svg
-                        className="w-6 h-6 -ml-2 pr-2" // Added padding-right
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M16 21v-2a4 4 0 00-8 0v2m8-10a4 4 0 01-8 0m8 0V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v6m8 0H4"
-                        ></path>
-                      </svg>
-                    )}
+                
                     <span className="ml-3">
                       {loading ? "Processing..." : "Sign In"}
                     </span>
