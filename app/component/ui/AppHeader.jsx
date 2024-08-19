@@ -21,8 +21,8 @@ const AppHeader = () => {
   return (
     <div className="flex flex-col md:flex-row justify-center items-center  bg-[url('/back.png')] ">
       <nav className="w-full   flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around max-md:justify-between text-black rounded-[100px] px-4 py-3 max-md:pr-5">
-        <div className="flex h-[72px] items-center gap-4 max-md:mr-[15%]">
-          <h3 className="text-lg font-bold">
+        <div className="flex h-[72px] items-center gap-4 max-md:mr-[15%] max-md:w-[100%]">
+         
             <Link href="/">
               <Image
                 src={MediaBear}
@@ -30,7 +30,7 @@ const AppHeader = () => {
                 className="h-auto w-auto  max-md:w-[100%]"
               />
             </Link>
-          </h3>
+        
         </div>
 
         <div className="hidden mr-[10%] md:flex gap-4">
