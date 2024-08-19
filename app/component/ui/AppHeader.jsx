@@ -19,12 +19,12 @@ const AppHeader = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center">
+    <div className="flex flex-col md:flex-row justify-center items-center  bg-[url('/back.png')] ">
       <nav className="w-full   flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around max-md:justify-between text-black rounded-[100px] px-4 py-3 max-md:pr-5">
         <div className="flex h-[72px] items-center gap-4 max-md:mr-[15%]">
           <h3 className="text-lg font-bold">
             <Link href="/">
-              <Image src={MediaBear} alt="Logo" className="h-20 w-20" />
+              <Image src={MediaBear} alt="Logo" className="h-auto w-auto" />
             </Link>
           </h3>
         </div>
@@ -68,7 +68,7 @@ const AppHeader = () => {
         </div>
         <div className="flex gap-[20px] max-md:hidden">
           <Link href="/Login">
-            <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[10px]  md:w-[100px] lg:w-[85px]">
+            <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[10px]  md:w-[100px] lg:w-[95px]">
               Log in
             </Button>
           </Link>

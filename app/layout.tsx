@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import favicon from "./favicon.ico";
-import MyApp from "../app/_app";
 
 const inter = Instrument_Sans({ subsets: ["latin"] });
 
@@ -18,16 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ overflowX: "hidden" }}>
-      <MyApp />
+    <html lang="en" >
 
       <link rel="icon" href="favico.ico" type="image/x-icon" />
       <body
         suppressHydrationWarning={true}
-        className={`${inter.className}`}
+        className={`${inter.className}` }
       >
         {/* <AppHeader /> */}
-        <div className="h-full  dark:bg-boxdark-2 dark:text-bodydark">
+        <div className="h-full   dark:bg-boxdark-2 dark:text-bodydark">
           {children}
         </div>
         {/* <AppFooter /> */}

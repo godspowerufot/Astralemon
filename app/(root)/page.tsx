@@ -6,9 +6,12 @@ import PricingPage from "../component/ui/pricingpage";
 import TestimonialSlider from "../component/ui/Testimonials";
 import UISection from "../component/ui/ultimatepage";
 import Header from "../home/header";
+import MyApp from "../_app";
 export default function Page() {
   return (
-    <main className="flex flex-col justify-center items-center">
+    <main className=" overflow-x-hidden">
+      <MyApp />
+
       <Header />
       <UISection />
       <ExceptionalSolutions />
