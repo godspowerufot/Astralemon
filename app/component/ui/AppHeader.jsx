@@ -26,7 +26,7 @@ const AppHeader = () => {
             <Image
               src={MediaBear}
               alt="Logo"
-              className="h-auto w-auto  max-md:w-[200px] max-md:h-[47px]"
+              className="h-auto w-auto  max-md:w-[200px] max-md:h-[45px]"
             />
           </Link>
         </div>
