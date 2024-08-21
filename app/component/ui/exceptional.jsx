@@ -57,6 +57,7 @@ const ExceptionalSolutions = () => {
           {solutionsData.map((solution, index) => (
             <div
               key={index}
+              style={{borderColor:"#E5E7EB"}}
               className="p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start"
             >
               <div className="  w-full rounded-lg mb-4 object-fit">

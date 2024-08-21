@@ -18,6 +18,7 @@ const Card: React.FC<CardProps> = ({ title, description, icon }) => {
   return (
     <div
       data-aos="zoom-in"
+      style={{ borderColor: "#E5E7EB" }}
       className="bg-white max-md:w-[full] max-md:h-[240px] p-6 gap-4 border rounded-lg shadow-md flex flex-col items-start"
     >
       <div className="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100">

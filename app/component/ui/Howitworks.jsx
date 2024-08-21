@@ -40,6 +40,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <div
               key={index}
+              style={{ borderColor: "#E5E7EB" }}
               className="p-6 border rounded-lg shadow-md flex flex-col items-start"
             >
               <div

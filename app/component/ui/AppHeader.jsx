@@ -22,15 +22,13 @@ const AppHeader = () => {
     <div className="flex flex-col md:flex-row justify-center items-center  bg-[url('/back.png')] ">
       <nav className="w-full   flex items-center max-md:bg-white max-md:text-[#2D72FF] justify-around max-md:justify-between text-black rounded-[100px] px-4 py-3 max-md:pr-5">
         <div className="flex h-[72px] items-center gap-4 max-md:mr-[15%] max-md:w-[100%]">
-         
-            <Link href="/">
-              <Image
-                src={MediaBear}
-                alt="Logo"
-                className="h-auto w-auto  max-md:w-[100%]"
-              />
-            </Link>
-        
+          <Link href="/">
+            <Image
+              src={MediaBear}
+              alt="Logo"
+              className="h-auto w-auto  max-md:w-[500px] max-md:h-[200px]"
+            />
+          </Link>
         </div>
 
         <div className="hidden mr-[10%] md:flex gap-4">
@@ -77,7 +75,7 @@ const AppHeader = () => {
             </Button>
           </Link>
           <Link href="/Registration">
-            <Button className="h-[45px] bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[10px] w-[155px]">
+            <Button className="h-[45px]  w-max bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[10px]">
               Join AstraLemon
             </Button>
           </Link>
@@ -183,7 +181,7 @@ const AppHeader = () => {
                   </Button>
                 </Link>
                 <Link href="/Registration">
-                  <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]">
+                  <Button className="h-[45px] w-max bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none ">
                     Join AstraLemon
                   </Button>
                 </Link>
