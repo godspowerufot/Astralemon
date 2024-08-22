@@ -287,15 +287,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <div className="flex   items-center justify-between gap-2 px-3 py-5.5 lg:py-6.5">
           <Link href="/" className="flex items-center justify-center">
             <Image
-              width={100}
-              height={32}
-              src={"/media logo.png"}
+              className="w-full h-full"
+              width={180}
+              height={180}
+              src={"/applogo.png"}
               alt="Logo"
               priority
             />
-            <h1 className="text-blue-500 font-semibold">
-              ASTRALEMON
-            </h1>
+       
           </Link>
 
           <button

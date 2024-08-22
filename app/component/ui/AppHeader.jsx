@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import MediaBear from "@/public/media logo.png";
+import MediaBear from "@/public/applogo.png";
 import Button from "@/app/component/atoms/Button";
 import Link from "next/link";
 
@@ -26,7 +26,7 @@ const AppHeader = () => {
             <Image
               src={MediaBear}
               alt="Logo"
-              className="h-auto w-auto  max-md:w-[200px] max-md:h-[45px]"
+              className="h-auto w-auto  max-md:w-full max-md:h-full"
             />
           </Link>
         </div>

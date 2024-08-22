@@ -10,7 +10,7 @@ const config: Config = {
   darkMode: "class",
   theme: {
     fontFamily: {
-      satoshi: ["Satoshi", "sans-serif"],
+      instrument: ["Instrument Sans", "Arial", "Helvetica", "sans-serif"],
     },
     screens: {
       "2xsm": "375px",

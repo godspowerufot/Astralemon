@@ -5,16 +5,16 @@ import Image from "next/image";
 import ChartOne from "../components/Charts/ChartOne"
 import ChartTwo from "../components/Charts/ChartTwo";
 // import ChatCard from "../Chat/ChatCard";
-// import TableOne from "../Tables/TableOne";
+import TableOne from "../components/Tables/TableOne";
 import CardDataStats from "../CardDataStats";
 
-// const MapOne = dynamic(() => import("@/components/Maps/MapOne"), {
-//   ssr: false,
-// });
+const MapOne = dynamic(() => import("@/app/Dashboard/components/Maps/MapOne"), {
+  ssr: false,
+});
 
-// const ChartThree = dynamic(() => import("@/components/Charts/ChartThree"), {
-//   ssr: false,
-// });
+const ChartThree = dynamic(() => import("@/app/Dashboard/components/Charts/ChartThree"), {
+  ssr: false,
+});
 const cardData = [
   {
     title: "Total Views",
@@ -70,16 +70,22 @@ const DashBoardHome: React.FC = () => {
         ))}
       </div>
 
-       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
+      <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <ChartOne />
-        <ChartTwo />
-        {/* <ChartThree />
-        <MapOne />
-        <div className="col-span-12 xl:col-span-8">
-          <TableOne />
+        <div className="gap-8 lg:w-[22rem] flex flex-col w-fit max-md:w-[20.8rem]">
+          <ChartTwo />
+          <ChartThree />
         </div>
-        <ChatCard /> */}
-      </div> 
+
+        <div className="col-span-12 flex flex-col gap-4 lg:col-span-8 lg:flex-row max-md:overflow-x-hidden ">
+          <div className="flex-1 max-md:w-[25.9rem]">
+            <MapOne />
+          </div>
+          <div className="flex-1">
+            <TableOne />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

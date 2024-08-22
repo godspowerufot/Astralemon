@@ -47,7 +47,7 @@ const Header = (props: {
                   }`}
                 ></span>
               </span>
-              <span className="absolute right-0 h-full w-full rotate-45">
+              {/* <span className="absolute right-0 h-full w-full rotate-45">
                 <span
                   className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black dark:bg-white ${
                     !props.sidebarOpen && "h-0 delay-[0]"
@@ -58,18 +58,10 @@ const Header = (props: {
                     !props.sidebarOpen && "h-0 delay-200"
                   }`}
                 ></span>
-              </span>
+              </span> */}
             </span>
           </button>
 
-          <Link className="block flex-shrink-0 lg:hidden" href="/">
-            <Image
-              width={32}
-              height={32}
-              src={"/images/logo/logo-icon.svg"}
-              alt="Logo"
-            />
-          </Link>
         </div>
 
         <div className="hidden sm:block">
