@@ -4,15 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
-}
 @layer base {
     body {
-        @apply relative z-1 font-instrument  bg-whiten  text-base font-normal text-body;
-}
-
+        @apply relative z-1   bg-whiten font-instrument text-base font-normal text-body;
     }
-
-
+}
 
 @layer components {
 }

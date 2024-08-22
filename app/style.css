@@ -6,7 +6,7 @@
 
 @layer base {
     body {
-        @apply relative z-1 bg-whiten font-Instrument_Sans text-base font-normal text-body;
+        @apply relative z-1 bg-whiten font-instrument text-base font-normal text-body;
     }
 }
 
