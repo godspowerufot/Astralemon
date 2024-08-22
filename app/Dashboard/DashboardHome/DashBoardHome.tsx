@@ -48,7 +48,7 @@ const cardData = [
 const DashBoardHome: React.FC = () => {
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
+      <div className="grid grid-cols-1  gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
         {cardData.map((card, index) => (
           <CardDataStats
             key={index}
@@ -72,7 +72,7 @@ const DashBoardHome: React.FC = () => {
 
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <ChartOne />
-        <div className="gap-8 lg:w-[22rem] flex flex-col w-fit max-md:w-[20.8rem]">
+        <div className="flex flex-col sm:flex-col md:flex-row lg:flex-col gap-8 w-fit lg:w-[22rem] max-md:w-[20.8rem]">
           <ChartTwo />
           <ChartThree />
         </div>
