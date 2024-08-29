@@ -155,7 +155,7 @@ const menuGroups = [
           </svg>
         ),
         label: "Affiliations",
-        route: "/Affiliations",
+        route: "/Dashboard/Affiliations",
       },
     ],
   },
