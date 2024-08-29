@@ -25,7 +25,7 @@ function PricingPage() {
         <h2 className="text-black  text-[30px] dark:text-white max-md:text-2xl font-bold leading-[1.208] md:text-[45px]">
           Pricing
         </h2>
-        <div className="flex items-center   bg-[#F3F4F6] shadow-xl p-2 rounded-[5px] w-[300px]">
+        <div className="flex items-center   bg-[#eeeff0]   p-2 rounded-[5px] w-[300px]">
           <button
             className={`px-4 w-[150px] py-2 rounded-l-md focus:outline-none ${
               activeTab === "monthly"
