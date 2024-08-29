@@ -120,7 +120,7 @@ const menuGroups = [
           </svg>
         ),
         label: "IG Accounts",
-        route: "/Accounts",
+        route: "/Dashboard/Accounts",
       },
       {
         icon: (

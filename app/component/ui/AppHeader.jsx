@@ -75,7 +75,7 @@ const AppHeader = () => {
             </Button>
           </Link>
           <Link href="/Registration">
-            <Button className="h-[45px] text-white border bg-blue-600 border-blue-600 flex items-center justify-center text-[14px] text-center rounded-[50px]  md:w-[100px] lg:w-[95px]">
+            <Button className="h-[45px] text-white border bg-blue-600 border-blue-600 flex items-center justify-center text-[14px] text-center rounded-[50px]  md:w-[100px]">
               Sign up
             </Button>
           </Link>
@@ -181,7 +181,7 @@ const AppHeader = () => {
                   </Button>
                 </Link>
                 <Link href="/Registration">
-                  <Button className="h-[45px] text-white bg-[#3776F6] border border-blue-600  r flex items-center justify-center text-[14px] text-center rounded-[50px] w-[150px] ">
+                  <Button className="h-[45px] text-white bg-blue-600 border border-blue-600  r flex items-center justify-center text-[14px] text-center rounded-[50px] w-[150px] ">
                     Sign up
                   </Button>
                 </Link>

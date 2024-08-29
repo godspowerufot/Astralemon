@@ -34,16 +34,19 @@ const getStatusColor = (status: Invoice["status"]): string => {
 
 const CryptoPayments: React.FC = () => {
   return (
-    <div className="w-[50%]  rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 md:w-full  lg:w-full xl:pb-1">
+    <div className="w-full rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 md:w-full lg:w-full xl:pb-1">
       <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">
         Crypto Payment
       </h4>
 
       <div className="overflow-x-auto">
-        <div className="w-full">
+        <div className="w-[150px] md:w-full">
           {" "}
-          {/* Adjust this width according to your content */}
-          <div className="grid grid-cols-3 gap-4 sm:grid-cols-3">
+          {/* Adjusted for responsive design */}
+          {/* Ensure width is enough to trigger scrolling */}
+          <div className="grid grid-cols-3 gap-4 min-w-[400px] md:w-full">
+            {" "}
+            {/* Adjusted grid min-width */}
             <div className="p-2.5 xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
                 PAYMENT ID
@@ -62,7 +65,8 @@ const CryptoPayments: React.FC = () => {
           </div>
           {invoiceData.map((invoice, key) => (
             <div
-              className={`grid grid-cols-3 gap-4 sm:grid-cols-3 ${
+              className={`grid grid-cols-3 gap-4 min-w-[400px] md:min-w-full ${
+                // Adjusted grid min-width for scrollability
                 key === invoiceData.length - 1
                   ? ""
                   : "border-b border-stroke dark:border-strokedark"
@@ -76,7 +80,7 @@ const CryptoPayments: React.FC = () => {
               </div>
 
               <div className="flex items-center justify-center p-2.5 xl:p-5">
-                <p className="text-[#6B7280] text-[15px] ">{invoice.date}</p>
+                <p className="text-[#6B7280] text-[15px]">{invoice.date}</p>
               </div>
 
               <div className="flex items-center justify-center p-2.5 xl:p-5">

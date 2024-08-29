@@ -51,9 +51,13 @@ const Subscription: React.FC = () => {
       </h4>
 
       <div className="overflow-x-auto">
-        <div className="min-w-[500px]">
+        <div className="w-[150px] md:w-full">
+          {" "}
+          {/* Adjusted for responsive design */}
           {/* Ensure width is enough to trigger scrolling */}
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-4 gap-2 min-w-[400px] md:min-w-full">
+            {" "}
+            {/* Adjusted grid min-width */}
             <div className="p-2">
               <h5 className="text-xs font-medium uppercase">ID</h5>
             </div>
@@ -71,7 +75,8 @@ const Subscription: React.FC = () => {
           </div>
           {subscriptionData.map((subscription, key) => (
             <div
-              className={`grid grid-cols-4 gap-2 ${
+              className={`grid grid-cols-4 gap-2 min-w-[400px] md:min-w-full ${
+                // Adjusted grid min-width for scrollability
                 key === subscriptionData.length - 1
                   ? ""
                   : "border-b border-stroke dark:border-strokedark"
