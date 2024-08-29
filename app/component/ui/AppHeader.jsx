@@ -26,7 +26,7 @@ const AppHeader = () => {
             <Image
               src={MediaBear}
               alt="Logo"
-              className="h-auto w-auto  max-md:w-full max-md:h-full"
+              className="h-[50%] w-[50%]  max-md:w-full max-md:h-full"
             />
           </Link>
         </div>
@@ -70,13 +70,13 @@ const AppHeader = () => {
         </div>
         <div className="flex gap-[20px] max-md:hidden">
           <Link href="/Login">
-            <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[10px]  md:w-[100px] lg:w-[95px]">
+            <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[50px]  md:w-[100px] lg:w-[95px]">
               Log in
             </Button>
           </Link>
           <Link href="/Registration">
-            <Button className="h-[45px]  w-max bg-blue-600 flex items-center justify-center text-white text-[14px] text-center rounded-[10px]">
-              Join AstraLemon
+            <Button className="h-[45px] text-white border bg-blue-600 border-blue-600 flex items-center justify-center text-[14px] text-center rounded-[50px]  md:w-[100px] lg:w-[95px]">
+              Sign up
             </Button>
           </Link>
         </div>
@@ -174,15 +174,15 @@ const AppHeader = () => {
               </a>
             </li>
             <li>
-              <div className="flex flex-col gap-[20px]">
+              <div className="flex  gap-[20px]">
                 <Link href="/Login">
-                  <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none w-[155px]">
+                  <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[50px] w-[150px]">
                     Log in
                   </Button>
                 </Link>
                 <Link href="/Registration">
-                  <Button className="h-[45px] w-max bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-none ">
-                    Join AstraLemon
+                  <Button className="h-[45px] text-white bg-[#3776F6] border border-blue-600  r flex items-center justify-center text-[14px] text-center rounded-[50px] w-[150px] ">
+                    Sign up
                   </Button>
                 </Link>
               </div>

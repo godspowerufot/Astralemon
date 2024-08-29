@@ -46,7 +46,7 @@ const menuGroups = [
           </svg>
         ),
         label: "Dashboard",
-        route: "#",
+        route: "/",
       },
       {
         icon: (
@@ -65,7 +65,7 @@ const menuGroups = [
           </svg>
         ),
         label: "Pricing",
-        route: "/Pricing",
+        route: "/Dashboard/Pricingpage",
       },
       {
         icon: (
@@ -88,9 +88,9 @@ const menuGroups = [
           </svg>
         ),
         label: "Invoices",
-        route: "/Invoices",
+        route: "/Dashboard/invoices",
       },
-   
+
       {
         icon: (
           <svg
