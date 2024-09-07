@@ -14,13 +14,16 @@ const useRegister = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://159.203.44.134:8000/accounts/token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "http://159.203.44.134:8000/accounts/register/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const text = await response.json(); // Read response as text
 
@@ -31,7 +34,6 @@ const useRegister = () => {
       console.log("Registration successful", text);
       return text;
     } catch (error: any) {
-      console.error("Error:", error);
       setError(error.message);
       console.log(error)
       return null;
