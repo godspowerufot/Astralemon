@@ -7,7 +7,6 @@ const useRegister = () => {
   const [error, setError] = useState<string | null>(null);
 
   const register = async (formData: {
-    username: string;
     email: string;
     password: string;
   }) => {
@@ -15,7 +14,7 @@ const useRegister = () => {
     setError(null);
 
     try {
-      const response = await fetch("https://52.91.135.209:8000/api/register/", {
+      const response = await fetch("http://159.203.44.134:8000/accounts/token", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,6 +33,7 @@ const useRegister = () => {
     } catch (error: any) {
       console.error("Error:", error);
       setError(error.message);
+      console.log(error)
       return null;
     } finally {
       setLoading(false);
