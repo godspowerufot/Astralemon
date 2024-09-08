@@ -1,10 +1,21 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ClickOutside from "@/components/ClickOutside";
+import { useRouter } from "next/navigation";
 
+import ClickOutside from "@/components/ClickOutside";
+import { useAuth } from "@/hooks/useAuth"; // Import the useAuth hook
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { logout } = useAuth(); // Use the logout function from the useAuth hook
+  const router = useRouter();
+
+  // Handle the logout process
+  const handleLogout = async () => {
+    logout(); // Call the logout function from useAuth
+    setDropdownOpen(false);
+    router.push("/Login"); // Redirect to the login page after logout
+  };
 
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
@@ -126,7 +137,7 @@ const DropdownUser = () => {
               </Link>
             </li>
           </ul>
-          <button className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+          <button onClick={handleLogout} className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
             <svg
               className="fill-current"
               width="22"

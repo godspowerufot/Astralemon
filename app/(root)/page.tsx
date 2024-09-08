@@ -7,6 +7,7 @@ import TestimonialSlider from "../component/ui/Testimonials";
 import UISection from "../component/ui/ultimatepage";
 import Header from "../home/header";
 import MyApp from "../_app";
+import HeroSectiontwo from "../component/ui/Carouseltwo";
 export default function Page() {
   return (
     <main className=" overflow-x-hidden">
@@ -16,8 +17,9 @@ export default function Page() {
       <UISection />
       <ExceptionalSolutions />
       <HowItWorks />
+       <HeroSection />
       <PricingPage />
-      <HeroSection />
+     <HeroSectiontwo/>
       <FAQSection />
       <TestimonialSlider />
     </main>

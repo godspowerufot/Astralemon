@@ -3,9 +3,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import MediaBear from "@/public/media logo.png";
-import useLogin from "@/hooks/useLogin"; // Adjust the import path accordingly
 import MediaBears from "@/public/media logo.png";
+import { useAuth } from "@/hooks/useAuth"; // Import the useAuth hook
 import { steps } from "@/lib/expertlink";
 
 const Login = () => {
@@ -14,9 +13,11 @@ const Login = () => {
     password: "",
   });
 
-  const { login, loading, error } = useLogin();
+  // Use the useAuth hook
+  const { login, loading, error } = useAuth();
   const router = useRouter();
 
+  // Handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -25,16 +26,17 @@ const Login = () => {
     }));
   };
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { username, password } = formData;
 
-    const { success, error } = await login(username, password);
+    // Call the login function from the useAuth hook
+    await login(username, password);
 
-    if (success) {
+    if (!error) {
       alert("Login successful");
-      // Redirect to dashboard or another page
-      router.push("/dashboard");
+      router.push("/Dashboard"); // Redirect to dashboard or another page
     } else {
       alert("Login failed: " + error);
     }
@@ -69,14 +71,17 @@ const Login = () => {
                   <button
                     type="submit"
                     className="mt-5 text-white tracking-wide font-semibold bg-blue-600 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                    disabled={loading}
                   >
-                
                     <span className="ml-3">
                       {loading ? "Processing..." : "Sign In"}
                     </span>
                   </button>
                 </div>
               </form>
+              {error && (
+                <p className="mt-4 text-red-500 text-center">{error}</p>
+              )}
               <p className="mt-8 text-center">
                 <span>Don&apos;t have an account?</span>
                 <a
@@ -96,7 +101,7 @@ const Login = () => {
               alt="Logo"
               loading="lazy"
               width="100"
-              height="20"
+              height="100"
               decoding="async"
               src={MediaBears}
               className="transform scale-300 mt-3 w-full h-full"
@@ -109,12 +114,11 @@ const Login = () => {
                 <div className="flex items-center text-left p-2">
                   <span className="w-full text-gray-600 text-sm">
                     <span className="flex ">
-                      {" "}
                       <span
                         className={` ml-[-3%] flex-shrink-0 pr-2 flex items-center ${step.icon}`}
                       >
                         <svg
-                          className="w-8 h-8 border border-gray-500 rounded-full flex items-center justify-center" // Thicker border and rounded full
+                          className="w-8 h-8 border border-gray-500 rounded-full flex items-center justify-center"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
@@ -135,8 +139,6 @@ const Login = () => {
                       </span>
                     </span>
                     <div className="border-l-[4px] border-white pl-5">
-                      {" "}
-                      {/* Changed border color and thickness */}
                       <div className="overflow-visible transition-height duration-300">
                         <p className="text-white text-sm">{step.description}</p>
                       </div>
@@ -146,8 +148,7 @@ const Login = () => {
 
                 {step.number !== "3" && (
                   <div className="flex items-center">
-                    <div className="border-l border-gray-500 flex-1 ml-3"></div>{" "}
-                    {/* Changed border color and thickness */}
+                    <div className="border-l border-gray-500 flex-1 ml-3"></div>
                   </div>
                 )}
               </div>

@@ -1,12 +1,15 @@
+// pages/Register.tsx
 "use client";
+
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import MediaBears from "@/public/media logo.png";
-import useRegister from "@/hooks/useRegister"; // Adjust the import path as necessary
+import { useAuth } from "@/hooks/useAuth"; // Import the useAuth hook
 import { steps } from "@/lib/expertlink";
 
 const Register = () => {
+  // Manage form data
   const [formData, setFormData] = useState({
     first_name: "",
     username: "",
@@ -14,12 +17,14 @@ const Register = () => {
     email: "",
     password: "",
     phone_no: "",
-    referred_by: "", // Assuming this will be a UUID or similar value
+    referred_by: "", // Optional field, assuming it is a UUID or similar value
   });
 
-  const { register, loading, error } = useRegister();
+  // Use the custom useAuth hook
+  const { register, loading, error } = useAuth();
   const router = useRouter();
 
+  // Handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -28,18 +33,22 @@ const Register = () => {
     }));
   };
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await register(formData);
 
-    if (response) {
-      alert("Registration successful");
-      // Redirect to login page or handle successful registration
+    // Call the register function from the useAuth hook
+    await register(formData.email, formData.username, formData.password);
+
+    if (!error) {
+      alert("Registration successful!");
+      router.push("/Dashboard"); // Redirect to the login page
     } else {
       alert("Registration failed: " + error);
     }
   };
 
+  // Handle navigation (e.g., to Login page)
   const handleNavigation = (path: string) => {
     router.push(path);
   };
@@ -121,6 +130,9 @@ const Register = () => {
                   </button>
                 </div>
               </form>
+              {error && (
+                <p className="mt-4 text-red-500 text-center">{error}</p>
+              )}
               <p className="mt-8 text-center">
                 <span>Already have an account?</span>
                 <a
