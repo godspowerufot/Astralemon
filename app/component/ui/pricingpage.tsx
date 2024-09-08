@@ -38,16 +38,7 @@ function PricingPage() {
           </div>
         </div>
       </div>
-      <div className="mx-auto  flex flex-col justify-center items-center mb-[60px] max-w-[510px] text-center">
-        <p className=" text-[18px] text-[#4B5563] max-md:p-4 max-md:text-[16px]">
-          Affiliate program ... coming .... soon{" "}
-        </p>
-        <Link href="https://discord.gg/CvRtjnnrW8">
-          <Button className="h-[40px] mt-5 bg-blue-600 flex items-center justify-center  text-white text-[14px] text-center rounded-[20px]  w-[150px]">
-            Contact us
-          </Button>
-        </Link>
-      </div>
+     
     </section>
   );
 }

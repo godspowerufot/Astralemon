@@ -150,71 +150,74 @@ const PricingCard: React.FC<PricingCardProps> = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+const handleSubscribe = async () => {
+  if (!stripe || !elements) {
+    return;
+  }
 
-  const handleSubscribe = async () => {
-    if (!stripe || !elements) {
-      return;
-    }
+  if (!showCheckout) {
+    setShowCheckout(true);
+    return;
+  }
 
-    if (!showCheckout) {
-      // Show the checkout form
-      setShowCheckout(true);
-      return;
-    }
+  setLoading(true);
+  setError(null);
+  setSuccess(null);
 
-    // If checkout form is already visible, proceed to subscribe
-    setLoading(true);
-    setError(null);
-    setSuccess(null);
+  // Create PaymentMethod
+  const { error: paymentError, paymentMethod } =
+    await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(CardElement)!,
+    });
 
-    // Create PaymentMethod
-    const { error: paymentError, paymentMethod } =
-      await stripe.createPaymentMethod({
-        type: "card",
-        card: elements.getElement(CardElement)!,
-      });
-
-    if (paymentError) {
-      console.error("Payment Method Error:", paymentError);
-      setError(paymentError.message || "Something went wrong.");
-      setLoading(false);
-      return;
-    }
-
-    // Send paymentMethod.id to your server
-    try {
-      const response = await fetch(
-        "http://159.203.44.134:8000/api/subscribe/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user_id: userId,
-            plan: title.toLowerCase(),
-            price_id: priceId,
-            payment_method_id: paymentMethod.id,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (data.status === "Subscription successful") {
-        setSuccess("Subscription successful!");
-        setIsPurchasing(false);
-        setShowCheckout(false);
-      } else {
-        setError(`Subscription failed: ${data.message}`);
-      }
-    } catch (err) {
-      console.error("Subscription Error:", err);
-      setError("An error occurred during subscription.");
-    }
-
+  if (paymentError) {
+    setError(paymentError.message || "Something went wrong.");
     setLoading(false);
-  };
+    return;
+  }
+
+  // Retrieve access token (assuming it's stored in localStorage)
+  const token = localStorage.getItem("access_token");
+
+  if (!token) {
+    setError("You are not logged in. Please log in to subscribe.");
+    setLoading(false);
+    return;
+  }
+
+  try {
+    const response = await fetch("http://159.203.44.134:8000/api/subscribe/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, // Include the access token in the Authorization header
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        plan: title.toLowerCase(),
+        price_id: priceId,
+        payment_method_id: paymentMethod.id,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.status === "Subscription successful") {
+      setSuccess("Subscription successful!");
+      setIsPurchasing(false);
+      setShowCheckout(false);
+    } else {
+      setError(`Subscription failed: ${data.message}`);
+    }
+  } catch (err) {
+    console.error("Subscription Error:", err);
+    setError("An error occurred during subscription.");
+  }
+
+  setLoading(false);
+};
+
 
   const handleCancel = () => {
     setShowCheckout(false);
