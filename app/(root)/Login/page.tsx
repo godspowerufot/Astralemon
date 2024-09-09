@@ -34,16 +34,15 @@ const Login = () => {
     // Call the login function from the useAuth hook
     await login(username, password);
 
-    if (!error) {
-      alert("Login successful");
-      router.push("/Dashboard"); // Redirect to dashboard or another page
-    } else {
-      alert("Login failed: " + error);
-    }
+
   };
 
   return (
-    <div className="h-[50%] bg-gray-100 text-gray-900 flex justify-center">
+    <div
+      className={`h-[50%] bg-gray-100 text-gray-900 flex justify-center ${
+        loading ? "blur-sm" : ""
+      }`}
+    >
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow-2xl rounded-lg flex justify-center flex-1">
         <div className="lg:w-[80%] xl:w-[50.666667%] p-6 sm:p-12">
           <div className="mt-8 flex flex-col items-center">
@@ -156,6 +155,11 @@ const Login = () => {
           </div>
         </div>
       </div>
+      {loading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-blue-500"></div>
+        </div>
+      )}
     </div>
   );
 };

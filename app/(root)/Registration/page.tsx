@@ -1,4 +1,3 @@
-// pages/Register.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -37,15 +36,12 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Call the register function from the useAuth hook
-    await register(formData.email, formData.username, formData.password);
+      // Call the register function from the useAuth hook
+      await register(formData.email, formData.username, formData.password);
 
-    if (!error) {
-      alert("Registration successful!");
-      router.push("/Dashboard"); // Redirect to the login page
-    } else {
-      alert("Registration failed: " + error);
-    }
+      // Redirect to the login page
+      // Handle error by logging it to the console
+    
   };
 
   // Handle navigation (e.g., to Login page)

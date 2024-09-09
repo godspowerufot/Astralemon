@@ -1,6 +1,7 @@
-// lib/axios.js
-'use client'
+"use client";
 import axios from "axios";
+import { clearTokens } from "../utils/util"; // Updated path
+import Cookies from "js-cookie";
 
 // Create axios instance
 const api = axios.create({
@@ -10,8 +11,7 @@ const api = axios.create({
 // Request interceptor to add access token to headers
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("accessToken");
-    console.log(token)
+    const token = Cookies.get("accessToken");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -30,13 +30,13 @@ api.interceptors.response.use(
 
       try {
         // Call refresh token endpoint
-        const refreshToken = localStorage.getItem("refreshToken");
+        const refreshToken = Cookies.get("refreshToken");
         const { data } = await api.post("/token/refresh/", {
           refresh: refreshToken,
         });
 
         // Store new access token
-        localStorage.setItem("accessToken", data.access);
+        Cookies.set("accessToken", data.access);
 
         // Update header and retry original request
         api.defaults.headers.common["Authorization"] = `Bearer ${data.access}`;
@@ -45,6 +45,7 @@ api.interceptors.response.use(
         return api(originalRequest);
       } catch (error) {
         console.log("Refresh token expired. Logging out...");
+        clearTokens(); // Clear tokens on error
         return Promise.reject(error);
       }
     }

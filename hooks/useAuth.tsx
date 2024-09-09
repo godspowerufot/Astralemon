@@ -1,18 +1,19 @@
-// hooks/useAuth.ts
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import api from "../lib/axios";
-import { setTokens, clearTokens } from "../utils";
+import { setTokens, clearTokens } from "../utils/util"; // Updated path
 
-// Define types for the parameters and return values
 interface AuthResponse {
   access: string;
   refresh: string;
+  user_id: string; // Added user_id to the response
 }
 
 export const useAuth = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter(); // Use Next.js router for navigation
 
   // Registration handler
   const register = async (
@@ -28,10 +29,13 @@ export const useAuth = () => {
         username,
         password,
       });
-      console.log("User registered:", response.data);
+
       setLoading(false);
+      console.log("User registered:", response?.data);
+setTokens(response.data.access, response.data.refresh, response.data.user_id);
+      // Navigate to /Dashboard on successful registration
+      router.push("/Dashboard");
     } catch (err: any) {
-      // `any` type is used for catching any type of error
       setLoading(false);
       setError(err.response?.data?.message || "Registration failed");
     }
@@ -47,11 +51,18 @@ export const useAuth = () => {
         password,
       });
 
-      // Store tokens
-      setTokens(response.data.access, response.data.refresh);
+      // Store tokens and user_id
+      setTokens(
+        response.data.access,
+        response.data.refresh,
+        response.data.user_id
+      );
 
-      console.log("User logged in:", response.data);
       setLoading(false);
+      console.log("User logged in:", response.data);
+
+      // Navigate to /Dashboard on successful login
+      router.push("/Dashboard");
     } catch (err: any) {
       setLoading(false);
       setError(err.response?.data?.message || "Login failed");
@@ -61,6 +72,8 @@ export const useAuth = () => {
   // Logout handler
   const logout = (): void => {
     clearTokens();
+    // Optionally redirect to the login page after logging out
+    router.push("/Login");
   };
 
   return {

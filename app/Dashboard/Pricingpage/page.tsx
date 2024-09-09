@@ -9,6 +9,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { Check, X } from "lucide-react";
+import { getAccessToken, getUserId } from "@/utils/util";
 
 // Initialize Stripe with your publishable key
 const stripePromise = loadStripe(
@@ -65,7 +66,6 @@ const PricingPage: React.FC = () => {
               title="Essential"
               price={activeTab === "monthly" ? 35 : 35}
               priceId="price_1HhQ2bQGf4fNlG6fQgP0kjE3"
-              userId="user_0"
               features={[
                 { text: "1 Instagram account", included: true },
                 { text: "25,000 shares/day", included: true },
@@ -82,8 +82,6 @@ const PricingPage: React.FC = () => {
               title="Premium"
               price={activeTab === "monthly" ? 65 : 65}
               priceId="price_1HhQ3fQGf4fNlG6fl9PoXK09"
-              userId="user_1"
-              featured
               features={[
                 { text: "1 Instagram account", included: true },
                 { text: "25,000 shares/day", included: true },
@@ -93,6 +91,7 @@ const PricingPage: React.FC = () => {
                 { text: "Follow / Unfollow", included: false },
                 { text: "Welcome DM", included: false },
               ]}
+              featured
             />
 
             {/* Platinum Plan */}
@@ -100,7 +99,6 @@ const PricingPage: React.FC = () => {
               title="Platinum"
               price={activeTab === "monthly" ? 99 : 99}
               priceId="price_1HhQ4uQGf4fNlG6fsH2yPvLJ"
-              userId="user_2"
               features={[
                 { text: "1 Instagram account", included: true },
                 { text: "35,000 shares/day", included: true },
@@ -130,7 +128,6 @@ interface PricingCardProps {
   title: string;
   price: number;
   priceId: string;
-  userId: string;
   features: Feature[];
   featured?: boolean;
 }
@@ -139,7 +136,6 @@ const PricingCard: React.FC<PricingCardProps> = ({
   title,
   price,
   priceId,
-  userId,
   features,
   featured = false,
 }) => {
@@ -150,74 +146,77 @@ const PricingCard: React.FC<PricingCardProps> = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-const handleSubscribe = async () => {
-  if (!stripe || !elements) {
-    return;
-  }
 
-  if (!showCheckout) {
-    setShowCheckout(true);
-    return;
-  }
-
-  setLoading(true);
-  setError(null);
-  setSuccess(null);
-
-  // Create PaymentMethod
-  const { error: paymentError, paymentMethod } =
-    await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement)!,
-    });
-
-  if (paymentError) {
-    setError(paymentError.message || "Something went wrong.");
-    setLoading(false);
-    return;
-  }
-
-  // Retrieve access token (assuming it's stored in localStorage)
-  const token = localStorage.getItem("access_token");
-
-  if (!token) {
-    setError("You are not logged in. Please log in to subscribe.");
-    setLoading(false);
-    return;
-  }
-
-  try {
-    const response = await fetch("http://159.203.44.134:8000/api/subscribe/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Include the access token in the Authorization header
-      },
-      body: JSON.stringify({
-        user_id: userId,
-        plan: title.toLowerCase(),
-        price_id: priceId,
-        payment_method_id: paymentMethod.id,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (data.status === "Subscription successful") {
-      setSuccess("Subscription successful!");
-      setIsPurchasing(false);
-      setShowCheckout(false);
-    } else {
-      setError(`Subscription failed: ${data.message}`);
+  const handleSubscribe = async () => {
+    if (!stripe || !elements) {
+      return;
     }
-  } catch (err) {
-    console.error("Subscription Error:", err);
-    setError("An error occurred during subscription.");
-  }
 
-  setLoading(false);
-};
+    if (!showCheckout) {
+      setShowCheckout(true);
+      return;
+    }
 
+    setLoading(true);
+    setError(null);
+    setSuccess(null);
+
+    // Create PaymentMethod
+    const { error: paymentError, paymentMethod } =
+      await stripe.createPaymentMethod({
+        type: "card",
+        card: elements.getElement(CardElement)!,
+      });
+
+    if (paymentError) {
+      setError(paymentError.message || "Something went wrong.");
+      setLoading(false);
+      return;
+    }
+
+    // Retrieve access token and user_id from cookies
+    const token = getAccessToken();
+
+    if (!token) {
+      setError("You are not logged in. Please log in to subscribe.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "http://159.203.44.134:8000/api/subscribe/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Include the access token in the Authorization header
+          },
+          body: JSON.stringify({
+            user_id: 10,
+            plan: title.toLowerCase(),
+            price_id: priceId,
+            payment_method_id: paymentMethod.id,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.status === "Subscription successful") {
+        setSuccess("Subscription successful!");
+        setIsPurchasing(false);
+        setShowCheckout(false);
+      } else {
+        setError(`Subscription failed: ${data.message}`);
+      }
+    } catch (err) {
+      console.error("Subscription Error:", err);
+      setError("An error occurred during subscription.");
+    }
+
+    setLoading(false);
+  };
 
   const handleCancel = () => {
     setShowCheckout(false);
@@ -253,7 +252,13 @@ const handleSubscribe = async () => {
           Get Started
         </button>
       ) : (
-        <form onSubmit={handleSubscribe} className="w-full">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubscribe();
+          }}
+          className="w-full"
+        >
           <CardElement
             options={{
               style: {
@@ -279,8 +284,7 @@ const handleSubscribe = async () => {
               Cancel
             </button>
             <button
-              type="button"
-              onClick={handleSubscribe}
+              type="submit"
               disabled={!stripe || loading}
               className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
             >
@@ -307,7 +311,6 @@ const handleSubscribe = async () => {
     </div>
   );
 };
-
 
 // Define the ListItem component
 interface ListItemProps {
