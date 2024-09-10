@@ -3,20 +3,39 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import MediaBears from "@/public/media logo.png";
 import { useAuth } from "@/hooks/useAuth"; // Import the useAuth hook
+import MediaBears from "@/public/media logo.png";
 import { steps } from "@/lib/expertlink";
-
+import { ToastContainer, toast } from "react-toastify"; // Import Toastify
+import "react-toastify/dist/ReactToastify.css"; // Toastify styles
+import Modals from "./component/component"; // Modal component for resending verification email
+import { api } from "@/lib/axios"; 
+import Modal from "./component/Modal"// Axios for resend verification
 const Login = () => {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
+  const [showModal, setShowModal] = useState(false); // State to show/hide modal
 
   // Use the useAuth hook
   const { login, loading, error } = useAuth();
   const router = useRouter();
+  const [showResetModal, setShowResetModal] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
 
+  // Handle reset password submit
+  const handlePasswordResetRequest = async () => {
+    try {
+      await api.post("/accounts/password-reset/", { email: resetEmail });
+      toast.success("Password reset email sent! Please check your inbox.");
+      setShowResetModal(false);
+    } catch (err) {
+      toast.error("Failed to send reset email.");
+    }
+  };
+
+ 
   // Handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,12 +48,30 @@ const Login = () => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { username, password } = formData;
+    const { email, password } = formData;
 
     // Call the login function from the useAuth hook
-    await login(username, password);
+    await login(email, password);
 
+    // Handle specific errors like email not verified
+    if (error === "Email not verified") {
+      setShowModal(true); // Show modal for resending verification email
+    } else if (error) {
+      toast.error(error); // Show error toast for other errors
+    }
+  };
 
+  // Resend verification email handler
+  const handleResendVerification = async () => {
+    try {
+      await api.post("/accounts/resend-verification/", {
+        email: formData.email,
+      });
+      toast.success("Verification email sent successfully");
+      setShowModal(false); // Close modal after sending
+    } catch (err) {
+      toast.error("Failed to send verification email");
+    }
   };
 
   return (
@@ -43,6 +80,7 @@ const Login = () => {
         loading ? "blur-sm" : ""
       }`}
     >
+      <ToastContainer /> {/* Toast Container for notifications */}
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow-2xl rounded-lg flex justify-center flex-1">
         <div className="lg:w-[80%] xl:w-[50.666667%] p-6 sm:p-12">
           <div className="mt-8 flex flex-col items-center">
@@ -54,9 +92,9 @@ const Login = () => {
                   <input
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-300 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                     type="text"
-                    name="username"
-                    placeholder="Username"
-                    value={formData.username}
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
                     onChange={handleChange}
                   />
                   <input
@@ -78,19 +116,53 @@ const Login = () => {
                   </button>
                 </div>
               </form>
-              {error && (
-                <p className="mt-4 text-red-500 text-center">{error}</p>
-              )}
+
               <p className="mt-8 text-center">
                 <span>Don&apos;t have an account?</span>
                 <a
-                  href="#"
+                  href="/Registration"
                   className="text-blue-500 hover:text-blue-700 font-semibold ml-2"
-                  onClick={() => router.push("/Registration")}
                 >
                   Sign up
                 </a>
               </p>
+              <div>
+                {/* Existing login form */}
+                {/* Forgot password link */}
+                <p className="mt-8 text-center">
+                  <span>Forgot your password?</span>
+                  <a
+                    href="#"
+                    className="text-blue-500 hover:text-blue-700 font-semibold ml-2"
+                    onClick={() => setShowResetModal(true)}
+                  >
+                    Click here
+                  </a>
+                </p>
+
+                {/* First Modal for Email Input */}
+                {showResetModal && (
+                  <Modal
+                    title="Reset Password"
+                    onClose={() => setShowResetModal(false)}
+                    onSubmit={handlePasswordResetRequest}
+                  >
+                    <p>
+                      Please enter your email to receive the password reset
+                      link.
+                    </p>
+                    <input
+                      type="email"
+                      value={resetEmail}
+                      onChange={(e) => setResetEmail(e.target.value)}
+                      placeholder="Email"
+                      className="w-full px-4 py-2 border border-gray-300 rounded mt-2"
+                    />
+                  </Modal>
+                )}
+
+              
+              </div>
             </div>
           </div>
         </div>
@@ -155,6 +227,20 @@ const Login = () => {
           </div>
         </div>
       </div>
+      {/* Modal for resending verification email */}
+      {showModal && (
+        <Modals
+          title="Email not verified"
+          onClose={() => setShowModal(false)}
+          onAction={handleResendVerification}
+          actionLabel="Resend Verification Email"
+        >
+          <p>
+            Your email is not verified. Please click the button below to resend
+            the verification email.
+          </p>
+        </Modals>
+      )}
       {loading && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-blue-500"></div>
