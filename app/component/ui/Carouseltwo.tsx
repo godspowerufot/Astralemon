@@ -29,7 +29,7 @@ const HeroSectiontwo = () => {
           <h1 className="text-4xl font-bold max-md:text-3xl text-gray-900">
             The ideal solution for Your Product
           </h1>
-          <p className="mt-4 max-md:w-[100%] text-lg w-[1000px] text-wrap max-md:text-[16px] text-gray-700">
+          <p className="mt-4 max-md:w-[100%] text-lg lg:w-[800px] text-wrap max-md:text-[16px] text-gray-700">
             By choosing MediaBear to find the ideal subscribers, you are sure to
             be able to offer yourservices/products to the right people.
           </p>
