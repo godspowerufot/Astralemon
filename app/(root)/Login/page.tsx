@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify"; // Import Toastify
 import "react-toastify/dist/ReactToastify.css"; // Toastify styles
 import Modals from "./component/component"; // Modal component for resending verification email
 import { api } from "@/lib/axios"; 
-import Modal from "./component/Modal"// Axios for resend verification
+import ForgotPasswordModal from "./component/forgotPasswordmodal";
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -22,19 +22,8 @@ const Login = () => {
   const { login, loading, error } = useAuth();
   const router = useRouter();
   const [showResetModal, setShowResetModal] = useState(false);
-  const [resetEmail, setResetEmail] = useState("");
 
-  // Handle reset password submit
-  const handlePasswordResetRequest = async () => {
-    try {
-      await api.post("/accounts/password-reset/", { email: resetEmail });
-      toast.success("Password reset email sent! Please check your inbox.");
-      setShowResetModal(false);
-    } catch (err) {
-      toast.error("Failed to send reset email.");
-    }
-  };
-
+ 
  
   // Handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -140,28 +129,11 @@ const Login = () => {
                   </a>
                 </p>
 
-                {/* First Modal for Email Input */}
                 {showResetModal && (
-                  <Modal
-                    title="Reset Password"
-                    onClose={() => setShowResetModal(false)}
-                    onSubmit={handlePasswordResetRequest}
-                  >
-                    <p>
-                      Please enter your email to receive the password reset
-                      link.
-                    </p>
-                    <input
-                      type="email"
-                      value={resetEmail}
-                      onChange={(e) => setResetEmail(e.target.value)}
-                      placeholder="Email"
-                      className="w-full px-4 py-2 border border-gray-300 rounded mt-2"
-                    />
-                  </Modal>
+                  <ForgotPasswordModal
+                    onClose={() =>setShowResetModal(false)}
+                  />
                 )}
-
-              
               </div>
             </div>
           </div>

@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { api } from "../lib/axios";
-import { setTokens, clearTokens } from "../utils/util"; // Updated path
-import { toast } from "react-toastify"; // Import Toastify
-import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import { setTokens, clearTokens, getAccessToken } from "../utils/util";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface AuthResponse {
   access: string;
@@ -13,10 +13,16 @@ interface AuthResponse {
   user_id: string;
 }
 
+interface ReferralResponse {
+  referral_link: string;
+}
+
 export const useAuth = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+   const [referralCode, setReferralCode] = useState<string>("");
   const router = useRouter();
+
   // Registration handler
   const register = async (formData: {
     first_name: string;
@@ -31,12 +37,12 @@ export const useAuth = () => {
     setError(null);
 
     try {
-      // Determine the correct endpoint based on whether referralId is provided
-      const endpoint = formData.referred_by
-        ? `/accounts/register/?ref=${formData.referred_by}`
-        : "/accounts/register/";
+      const { referred_by, ...restFormData } = formData;
+      const validFormData = referred_by
+        ? { ...restFormData, referred_by }
+        : restFormData;
 
-      const response = await api.post(endpoint, formData); // Send all form data
+      const response = await api.post("/accounts/register/", validFormData);
       setLoading(false);
 
       setTokens(
@@ -49,19 +55,8 @@ export const useAuth = () => {
       return true;
     } catch (err: any) {
       setLoading(false);
-
-      // Log detailed error information
-      console.error("Registration error details:", {
-        message: err.message,
-        response: err.response?.data,
-        status: err.response?.status,
-        headers: err.response?.headers,
-        request: err.request,
-      });
-
       const errorMessage = err.response?.data?.message || "Registration failed";
       setError(errorMessage);
-
       toast.error(errorMessage);
       return false;
     }
@@ -85,17 +80,12 @@ export const useAuth = () => {
       );
       setLoading(false);
 
-      // Show success toast
       toast.success("Login successful!");
-
-      // Navigate to dashboard
       router.push("/Dashboard");
     } catch (err: any) {
       setLoading(false);
       const errorMessage = err.response?.data?.message || "Login failed";
       setError(errorMessage);
-
-      // Show error toast
       toast.error(errorMessage);
     }
   };
@@ -107,10 +97,50 @@ export const useAuth = () => {
     router.push("/Login");
   };
 
+  // Function to get referral code (ref=)
+  const getReferralLink = async (): Promise<void> => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const accessToken = getAccessToken();
+
+      if (!accessToken) {
+        setError("User not authenticated or token has expired.");
+        setLoading(false);
+        return;
+      }
+
+      const response = await api.get("/accounts/api/get-referral-link/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      const referralLink = response?.data?.referral_link;
+
+      // Extract the 'ref' parameter from the URL
+      const getReferralCode = (link: string) => {
+        const url = new URL(link);
+        return url.searchParams.get("ref"); // Extract the 'ref' parameter
+      };
+
+      const referralCode = getReferralCode(referralLink); // Extract the code
+      setReferralCode(referralCode || ""); // Set the referral code
+
+      setLoading(false);
+    } catch (err: any) {
+      setLoading(false);
+      setError("Failed to fetch referral link.");
+    }
+  };
+
   return {
     register,
     login,
     logout,
+    getReferralLink,
+    referralCode,
     loading,
     error,
   };

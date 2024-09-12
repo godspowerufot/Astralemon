@@ -1,19 +1,28 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { toast, ToastContainer } from "react-toastify";
+import { useAuth } from "@/hooks/useAuth";
+import "react-toastify/dist/ReactToastify.css";
 
 const Affiliations = () => {
-  // Set up state for the input value
-  const [inputValue, setInputValue] = useState("");
+  const { getReferralLink, referralCode, loading, error }:any = useAuth();
 
-  // Event handler to update the state
-  const handleChange = (event:any) => {
-    setInputValue(event.target.value);
+  useEffect(() => {
+    // Fetch referral link when component mounts
+    getReferralLink();
+  }, []);
+
+  const handleCopy = () => {
+        toast.success("Referral link copied to clipboard!");
+
+    navigator.clipboard.writeText(referralCode); // Copy the referral link to clipboard
   };
 
   return (
     <div className="overflow-hidden">
+      <ToastContainer />
+
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold">Affiliations</h2>
         <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
@@ -36,15 +45,20 @@ const Affiliations = () => {
             <div className="mt-4 flex flex-row sm:flex-row items-center bg-white rounded-lg overflow-hidden p-3">
               <input
                 type="text"
-                placeholder="https://mediabear.com/divine.samuel"
-                value={inputValue}
-                onChange={handleChange}
+                placeholder="Your referral link"
+                value={referralCode} // Display the referral link
                 className="flex-1 px-4 py-2 text-gray-700 outline-none w-full sm:w-auto"
+                readOnly
               />
-              <button className="mt-2 sm:mt-0 sm:ml-2 px-4 py-2 text-blue-600 border-blue-400 border-[1px] border-solid rounded-xl flex items-center justify-center h-[40px] sm:h-[30px] w-[130px] sm:w-auto">
-                Copy link
+              <button
+                className="mt-2 sm:mt-0 sm:ml-2 px-4 py-2 text-blue-600 border-blue-400 border-[1px] border-solid rounded-xl flex items-center justify-center h-[40px] sm:h-[30px] w-[130px] sm:w-auto"
+                onClick={handleCopy}
+                disabled={loading}
+              >
+                {loading ? "Loading..." : "Copy link"}
               </button>
             </div>
+            {error && <p className="text-red-600 mt-2">{error}</p>}
           </div>
         </div>
 
