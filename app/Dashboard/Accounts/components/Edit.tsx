@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { PencilIcon } from "lucide-react";
 import { useUserDetails } from "@/hooks/useLoguser";
+import EditProfileModal from "./EditProfileModal";
 
 const MyAccount = () => {
   const { data, loading, error } = useUserDetails(); // Use the hook
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   // Show a loading state if the data is being fetched
   if (loading) {
@@ -24,7 +26,7 @@ const MyAccount = () => {
   ];
 
   return (
-    <div className="w-full mx-auto ">
+    <div className="w-full mx-auto">
       <h1 className="text-2xl font-bold mb-6">My Account</h1>
 
       <div className="bg-white shadow rounded-lg p-6">
@@ -32,7 +34,10 @@ const MyAccount = () => {
           <h2 className="text-[20px] text-black font-semibold">
             Profile information
           </h2>
-          <button className="text-blue-600 border-blue-400 border-[1px] border-solid rounded-xl flex items-center justify-center h-[30px] w-[80px]">
+          <button
+            onClick={() => setIsModalOpen(true)} // Open the modal on click
+            className="text-blue-600 border-blue-400 border-[1px] border-solid rounded-xl flex items-center justify-center h-[30px] w-[80px]"
+          >
             <PencilIcon className="w-4 h-4 mr-1" />
             Edit
           </button>
@@ -49,6 +54,20 @@ const MyAccount = () => {
           ))}
         </div>
       </div>
+
+      {/* Render the EditProfileModal and pass necessary props */}
+      {isModalOpen && (
+        <EditProfileModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          initialData={{
+            first_name: data?.first_name,
+            last_name: data?.last_name,
+            phone_no: data?.phone_no,
+            username: data?.username,
+          }}
+        />
+      )}
     </div>
   );
 };
