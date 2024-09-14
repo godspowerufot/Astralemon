@@ -11,7 +11,7 @@ const Affiliations = () => {
   useEffect(() => {
     // Fetch referral link when component mounts
     getReferralLink();
-  }, [getReferralLink]);
+  }, []);
 
   const handleCopy = () => {
     toast.success("Referral link copied to clipboard!");
