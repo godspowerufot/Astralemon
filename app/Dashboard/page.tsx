@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import DefaultLayout from "./layout";
 import favicon from "../favicon.ico";
 
-import DashBoardHome from "../Dashboard/DashboardHome/DashBoardHome"
+import DashBoardHome from "./DashboardHome/DashBoardHome";
 export const metadata: Metadata = {
   title: "AstraLemon",
   description: "AstraLemon DashBoard",
@@ -11,10 +11,9 @@ export const metadata: Metadata = {
 export default function Dashboard() {
   return (
     <>
-    <div className="">
-               <DashBoardHome />
-
-    </div>
+      <div className="">
+        <DashBoardHome />
+      </div>
     </>
   );
 }

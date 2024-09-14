@@ -75,12 +75,10 @@ const Register = () => {
     }));
   };
 
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-     await register(formData);
-  
+      await register(formData);
     }
   };
 
@@ -88,8 +86,6 @@ const Register = () => {
     router.push(path);
   };
 
-
- 
   return (
     <>
       {/* Main container with loading blur effect */}
@@ -188,7 +184,7 @@ const Register = () => {
                     </button>
                   </div>
                 </form>
-             
+
                 <p className="mt-8 text-center">
                   <span>Already have an account?</span>
                   <a
@@ -258,8 +254,6 @@ const Register = () => {
           </div>
         </div>
       </div>
-
-   
     </>
   );
 };
