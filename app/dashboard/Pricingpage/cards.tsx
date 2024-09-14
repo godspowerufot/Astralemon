@@ -5,6 +5,7 @@ import { Check, X } from "lucide-react";
 import { getAccessToken } from "@/utils/util";
 import { toast } from "react-toastify";
 import CheckoutForm from "./checkout";
+import { title } from "process";
 
 interface Feature {
   text: string;
@@ -25,14 +26,12 @@ const PricingCard: React.FC<PricingCardProps> = ({
   price,
   priceId,
   features,
+ 
   featured = false,
   onGetStarted,
 }) => {
   const [showCheckout, setShowCheckout] = useState(false);
 
-  const handleGetStarted = () => {
-    onGetStarted(title);
-  };
 
   return (
     <div
@@ -50,20 +49,18 @@ const PricingCard: React.FC<PricingCardProps> = ({
       <p className="text-sm text-gray-500 mb-4">
         {`Per ${price >= 1000 ? "year" : "month"}`}
       </p>
-      {!showCheckout ? (
-        <button
-          className={`w-full py-2 rounded-md mb-6 transition-colors ${
-            featured
-              ? "bg-blue-500 text-white hover:bg-blue-600"
-              : "bg-black text-white hover:bg-gray-700"
-          }`}
-          onClick={() => setShowCheckout(true)}
-        >
-          Get Started
-        </button>
-      ) : (
-        <CheckoutForm plans={title} onClose={() => setShowCheckout(false)} />
-      )}
+
+      <button
+        className={`w-full py-2 rounded-md mb-6 transition-colors ${
+          featured
+            ? "bg-blue-500 text-white hover:bg-blue-600"
+            : "bg-black text-white hover:bg-gray-700"
+        }`}
+        onClick={() =>  onGetStarted(title)}
+      >
+        Get Started
+      </button>
+
       <ul className="w-full mt-4 space-y-2">
         {features.map((feature, index) => (
           <ListItem

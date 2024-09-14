@@ -90,6 +90,8 @@ export const useAuth = () => {
     }
   };
 
+
+
   // Logout handler
   const logout = (): void => {
     clearTokens();

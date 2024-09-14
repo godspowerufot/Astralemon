@@ -56,8 +56,8 @@ const handleSubmit = async (event: React.FormEvent) => {
     const response = await api.post(
       "/api/subscribe/",
       {
-        user_id: "2", // Fetch user ID from hook
-        plan: "basic",
+        user_id: `${data?.id}`, // Fetch user ID from hook
+        plan: `${plans}`,
         payment_method_id: paymentMethod.id,
       },
       {
@@ -95,7 +95,10 @@ const handleSubmit = async (event: React.FormEvent) => {
 
 
   return (
-    <div className="w-full max-w-sm mx-auto p-6 bg-white rounded-lg shadow-md">
+  
+      <div className="fixed inset-0 flex items-center justify-center z-50">
+      <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur-md" onClick={onClose}></div>
+    <div className="w-full    z-[1111]  max-w-sm mx-auto p-6 bg-white  rounded-lg shadow-md">
       <h3 className="text-xl font-bold mb-4">Subscribe to {plans}</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -110,14 +113,14 @@ const handleSubmit = async (event: React.FormEvent) => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            className="mt-1  p-4 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
           />
         </div>
         <div className="mb-4">
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
+            className="block  text-sm font-medium text-gray-700"
           >
             Email
           </label>
@@ -126,7 +129,7 @@ const handleSubmit = async (event: React.FormEvent) => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            className="mt-1  p-4 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
           />
         </div>
@@ -171,7 +174,9 @@ const handleSubmit = async (event: React.FormEvent) => {
           <p className="text-green-500 text-sm mt-2 text-center">{success}</p>
         )}
       </form>
+     
     </div>
+     </div>
   );
 };
 
