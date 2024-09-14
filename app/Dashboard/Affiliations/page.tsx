@@ -6,15 +6,15 @@ import { useAuth } from "@/hooks/useAuth";
 import "react-toastify/dist/ReactToastify.css";
 
 const Affiliations = () => {
-  const { getReferralLink, referralCode, loading, error }:any = useAuth();
+  const { getReferralLink, referralCode, loading, error }: any = useAuth();
 
   useEffect(() => {
     // Fetch referral link when component mounts
     getReferralLink();
-  }, []);
+  }, [getReferralLink]);
 
   const handleCopy = () => {
-        toast.success("Referral link copied to clipboard!");
+    toast.success("Referral link copied to clipboard!");
 
     navigator.clipboard.writeText(referralCode); // Copy the referral link to clipboard
   };
