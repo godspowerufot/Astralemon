@@ -1,75 +1,178 @@
-// // CheckoutForm.tsx
-// import React from "react";
-// import { loadStripe } from "@stripe/stripe-js";
-// import {
-//   Elements,
-//   CardElement,
-//   useStripe,
-//   useElements,
-// } from "@stripe/react-stripe-js";
+"use client";
+import React, { useState } from "react";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import { toast } from "react-toastify";
+import { api } from "@/lib/axios";
+import { useUserDetails } from "@/hooks/useLoguser";
+import { getAccessToken } from "@/utils/util";
 
-// // Replace with your actual Stripe public key
-// const stripePromise = loadStripe(
-//   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-// );
+const CheckoutForm: React.FC<{ plans: string; onClose: () => void }> = ({
+  plans,
+  onClose,
+}) => {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const { data } = useUserDetails(); // Get logged-in user details
 
-// function CheckoutForm({ plan, userId }: { plan: string; userId: string }) {
-//   const stripe = useStripe();
-//   const elements = useElements();
+const handleSubmit = async (event: React.FormEvent) => {
+  event.preventDefault();
 
-//   const handleSubmit = async (event: React.FormEvent) => {
-//     event.preventDefault();
+  if (!stripe || !elements) {
+    console.error("Stripe or Elements are not available.");
+    return;
+  }
 
-//     if (!stripe || !elements) {
-//       return;
-//     }
+  const cardElement = elements.getElement(CardElement);
+  if (!cardElement) {
+    console.error("Card Element is not available.");
+    return;
+  }
 
-//     const { error, paymentMethod } = await stripe.createPaymentMethod({
-//       type: "card",
-//       card: elements.getElement(CardElement),
-//     });
+  const { error: stripeError, paymentMethod } =
+    await stripe.createPaymentMethod({
+      type: "card",
+      card: cardElement,
+      billing_details: { name, email },
+    });
 
-//     if (error) {
-//       console.error(error);
-//     } else {
-//       const response = await fetch("/api/subscribe_to_plan/", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           user_id: userId,
-//           plan: plan,
-//           payment_method_id: paymentMethod.id,
-//         }),
-//       });
+  if (stripeError) {
+    console.error("Stripe error:", stripeError.message);
+    setError(stripeError.message || "Something went wrong.");
+    setLoading(false);
+    return;
+  }
 
-//       const data = await response.json();
+  console.log("Payment method ID:", paymentMethod.id);
 
-//       if (data.status === "Subscription successful") {
-//         alert("Subscription successful!");
-//       } else {
-//         alert("Subscription failed: " + data.message);
-//       }
-//     }
-//   };
+  setLoading(true);
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <CardElement />
-//       <button type="submit" disabled={!stripe}>
-//         Subscribe
-//       </button>
-//     </form>
-//   );
-// }
+  try {
+    const token = getAccessToken();
+    const response = await api.post(
+      "/api/subscribe/",
+      {
+        user_id: "2", // Fetch user ID from hook
+        plan: "basic",
+        payment_method_id: paymentMethod.id,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-// export default function App() {
-//   const userId = "your-actual-user-id";
+    console.log("API response:", response); // Log the entire response object
 
-//   return (
-//     <Elements stripe={stripePromise}>
-//       <CheckoutForm plan="basic" userId={userId} />
-//     </Elements>
-//   );
-// }
+    if (response.status === 201) {
+      console.log("Subscription successful:", response.data);
+      toast.success("Subscription successful!");
+      setSuccess("Subscription successful!");
+    } else {
+      // Inspect the response data to determine the error structure
+      console.error("Subscription failed:", response.data);
+      toast.error(
+        `Subscription failed: ${response.data.message || "Unknown error"}`
+      );
+      setError(
+        `Subscription failed: ${response.data.message || "Unknown error"}`
+      );
+    }
+  } catch (error) {
+    console.error("Error during subscription:", error);
+    toast.error("Error during subscription.");
+    setError("Error during subscription.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+  return (
+    <div className="w-full max-w-sm mx-auto p-6 bg-white rounded-lg shadow-md">
+      <h3 className="text-xl font-bold mb-4">Subscribe to {plans}</h3>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Name
+          </label>
+          <input
+            id="name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <CardElement
+            options={{
+              style: {
+                base: {
+                  fontSize: "16px",
+                  color: "#424770",
+                  "::placeholder": {
+                    color: "#aab7c4",
+                  },
+                },
+                invalid: {
+                  color: "#9e2146",
+                },
+              },
+            }}
+          />
+        </div>
+        <div className="flex justify-between mt-4">
+          <button
+            type="button"
+            onClick={onClose}
+            className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            disabled={!stripe || loading}
+            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
+          >
+            {loading ? "Processing..." : "Subscribe"}
+          </button>
+        </div>
+        {error && (
+          <p className="text-red-500 text-sm mt-2 text-center">{error}</p>
+        )}
+        {success && (
+          <p className="text-green-500 text-sm mt-2 text-center">{success}</p>
+        )}
+      </form>
+    </div>
+  );
+};
+
+export default CheckoutForm;
