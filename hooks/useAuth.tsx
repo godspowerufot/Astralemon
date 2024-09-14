@@ -20,7 +20,7 @@ interface ReferralResponse {
 export const useAuth = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-   const [referralCode, setReferralCode] = useState<string>("");
+  const [referralCode, setReferralCode] = useState<string>("");
   const router = useRouter();
 
   // Registration handler
@@ -51,7 +51,7 @@ export const useAuth = () => {
         response.data.user_id
       );
 
-      router.push("/Dashboard");
+      router.push("/dashboard");
       return true;
     } catch (err: any) {
       setLoading(false);
@@ -81,7 +81,7 @@ export const useAuth = () => {
       setLoading(false);
 
       toast.success("Login successful!");
-      router.push("/Dashboard");
+      router.push("/dashboard");
     } catch (err: any) {
       setLoading(false);
       const errorMessage = err.response?.data?.message || "Login failed";

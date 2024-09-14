@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import CryptoPayments from "./Cryptopayments"; // Placeholder component for CryptoPayments
 import Subscription from "./subscription"; // Placeholder component for Subscription
 import Invoices from "./invoices";
 
 const Tabs: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("Subscription");
+  const [activeTab, setActiveTab] = useState("Invoices");
 
   const renderComponent = () => {
     switch (activeTab) {
       case "Subscription":
         return <Subscription />;
-      case "CryptoPayments":
-        return <CryptoPayments />;
       case "Invoices":
         return <Invoices />;
       default:
@@ -26,7 +23,7 @@ const Tabs: React.FC = () => {
           {activeTab}
         </h2>
         <div className="flex items-center space-x-8 p-2">
-          {["Subscription", "CryptoPayments", "Invoices"].map((tab) => (
+          {["Invoices", "Subscription"].map((tab) => (
             <div
               key={tab}
               className={`cursor-pointer text-[15px] lg:text-[18px] pb-2 ${
@@ -40,10 +37,7 @@ const Tabs: React.FC = () => {
         </div>
       </div>
       <div className="mt-8 overflow-x-auto ">
-        
-          <div className="lg:w-full w-full mx-0">
-            {renderComponent()}</div>
-      
+        <div className="lg:w-full w-full mx-0">{renderComponent()}</div>
       </div>
     </section>
   );
