@@ -2,19 +2,22 @@
 import dynamic from "next/dynamic";
 import React from "react";
 import Image from "next/image";
-import ChartOne from "../components/Charts/ChartOne"
+import ChartOne from "../components/Charts/ChartOne";
 import ChartTwo from "../components/Charts/ChartTwo";
 // import ChatCard from "../Chat/ChatCard";
 import TableOne from "../components/Tables/TableOne";
 import CardDataStats from "../CardDataStats";
 
-const MapOne = dynamic(() => import("@/app/Dashboard/components/Maps/MapOne"), {
+const MapOne = dynamic(() => import("@/app/dashboard/components/Maps/MapOne"), {
   ssr: false,
 });
 
-const ChartThree = dynamic(() => import("@/app/Dashboard/components/Charts/ChartThree"), {
-  ssr: false,
-});
+const ChartThree = dynamic(
+  () => import("@/app/dashboard/components/Charts/ChartThree"),
+  {
+    ssr: false,
+  }
+);
 const cardData = [
   {
     title: "Total Views",
@@ -89,6 +92,5 @@ const DashBoardHome: React.FC = () => {
     </>
   );
 };
-
 
 export default DashBoardHome;

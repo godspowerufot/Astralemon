@@ -9,7 +9,7 @@ import { steps } from "@/lib/expertlink";
 import { ToastContainer, toast } from "react-toastify"; // Import Toastify
 import "react-toastify/dist/ReactToastify.css"; // Toastify styles
 import Modals from "./component/component"; // Modal component for resending verification email
-import { api } from "@/lib/axios"; 
+import { api } from "@/lib/axios";
 import ForgotPasswordModal from "./component/forgotPasswordmodal";
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -23,8 +23,6 @@ const Login = () => {
   const router = useRouter();
   const [showResetModal, setShowResetModal] = useState(false);
 
- 
- 
   // Handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -109,7 +107,7 @@ const Login = () => {
               <p className="mt-8 text-center">
                 <span>Don&apos;t have an account?</span>
                 <a
-                  href="/Registration"
+                  href="/registration"
                   className="text-blue-500 hover:text-blue-700 font-semibold ml-2"
                 >
                   Sign up
@@ -131,7 +129,7 @@ const Login = () => {
 
                 {showResetModal && (
                   <ForgotPasswordModal
-                    onClose={() =>setShowResetModal(false)}
+                    onClose={() => setShowResetModal(false)}
                   />
                 )}
               </div>
