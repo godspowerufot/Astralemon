@@ -30,7 +30,6 @@ const PricingCard: React.FC<PricingCardProps> = ({
   featured = false,
   onGetStarted,
 }) => {
-  const [showCheckout, setShowCheckout] = useState(false);
 
 
   return (
