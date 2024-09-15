@@ -50,6 +50,7 @@ export const useAuth = () => {
         response.data.refresh,
         response.data.user_id
       );
+      toast.success("Kindly check your mail for a Verification");
 
       router.push("/dashboard");
       return true;
