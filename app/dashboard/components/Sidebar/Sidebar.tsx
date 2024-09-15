@@ -51,7 +51,7 @@ const menuGroups = [
       {
         icon: <span>&gt;_</span>,
         label: "Console",
-        route: "/console",
+        route: "/dashboard/console",
       },
       {
         icon: (
