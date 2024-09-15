@@ -75,12 +75,10 @@ const Register = () => {
     }));
   };
 
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-     await register(formData);
-  
+      await register(formData);
     }
   };
 
@@ -88,8 +86,6 @@ const Register = () => {
     router.push(path);
   };
 
-
- 
   return (
     <>
       {/* Main container with loading blur effect */}
@@ -152,7 +148,7 @@ const Register = () => {
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                       type="text"
                       name="referred_by"
-                      placeholder="Referred By (UUID)"
+                      placeholder="Referral (Username)"
                       value={formData.referred_by}
                       onChange={handleChange}
                     />
@@ -188,7 +184,7 @@ const Register = () => {
                     </button>
                   </div>
                 </form>
-             
+
                 <p className="mt-8 text-center">
                   <span>Already have an account?</span>
                   <a
@@ -258,8 +254,6 @@ const Register = () => {
           </div>
         </div>
       </div>
-
-   
     </>
   );
 };

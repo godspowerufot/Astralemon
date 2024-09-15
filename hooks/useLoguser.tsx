@@ -56,7 +56,7 @@ export const useUserDetails = () => {
             },
           }
         );
-console.log(response?.data)
+        console.log(response?.data);
         setData(response?.data);
         setLoading(false);
       } catch (err: any) {

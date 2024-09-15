@@ -3,7 +3,7 @@ import React from "react";
 
 // Define the type for invoice data
 interface Invoice {
-  id: string;
+  invoiceNumber: string;
   account: string;
   bill: string; // Previously 'subscriptionType'
   date: string;
@@ -13,35 +13,35 @@ interface Invoice {
 // The invoice data array with type annotation
 const invoiceData: Invoice[] = [
   {
-    id: "California",
+    invoiceNumber: "#12345",
     account: "@_diviinesamuel",
     bill: "Premium",
     date: "Aug 8, 2024",
     amount: "500",
   },
   {
-    id: "Nevada",
+    invoiceNumber: "#12346",
     account: "@_diviinesamuel",
     bill: "Premium",
     date: "Aug 8, 2024",
     amount: "500",
   },
   {
-    id: "Texas",
+    invoiceNumber: "#12347",
     account: "@_diviinesamuel",
     bill: "Premium",
     date: "Aug 8, 2024",
     amount: "500",
   },
   {
-    id: "Arizona",
+    invoiceNumber: "#12348",
     account: "@_diviinesamuel",
     bill: "Premium",
     date: "Aug 8, 2024",
     amount: "500",
   },
   {
-    id: "Washington",
+    invoiceNumber: "#12349",
     account: "@_diviinesamuel",
     bill: "Premium",
     date: "Aug 8, 2024",
@@ -61,7 +61,7 @@ const Invoice: React.FC = () => {
           {/* Ensure width is enough to trigger scrolling */}
           <div className="grid grid-cols-5 gap-2 min-w-[600px] md:min-w-full">
             <div className="p-2">
-              <h5 className="text-xs font-medium uppercase">ID</h5>
+              <h5 className="text-xs font-medium uppercase">Invoice Number</h5>
             </div>
             <div className="p-2 text-center">
               <h5 className="text-xs font-medium uppercase">ACCOUNT</h5>
@@ -88,7 +88,7 @@ const Invoice: React.FC = () => {
             >
               <div className="flex items-center gap-2 p-2">
                 <p className="font-semibold text-black dark:text-white text-sm">
-                  {invoice.id}
+                  {invoice.invoiceNumber}
                 </p>
               </div>
               <div className="flex items-center justify-center p-2">
