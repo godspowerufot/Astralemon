@@ -131,12 +131,20 @@ const Register = () => {
                           }
                           name={field}
                           placeholder={
-                            field.replace("_", " ").charAt(0).toUpperCase() +
-                            field.replace("_", " ").slice(1)
+                            field === "username"
+                              ? "Choose a username"
+                              : field === "phone_no"
+                              ? "Phone No"
+                              : field
+                                  .replace("_", " ")
+                                  .charAt(0)
+                                  .toUpperCase() +
+                                field.replace("_", " ").slice(1)
                           }
                           value={formData[field as keyof FormData]}
                           onChange={handleChange}
                         />
+
                         {errors[field as keyof FormData] && (
                           <p className="text-red-500 text-sm mt-1">
                             {errors[field as keyof FormData]}
