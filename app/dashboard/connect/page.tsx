@@ -31,6 +31,7 @@ const ConnectInstagram: React.FC = () => {
       );
 
       setLoading(false);
+      console.log(response?.data)
       toast.success("Instagram account connected successfully!");
     } catch (err: any) {
       setLoading(false);
