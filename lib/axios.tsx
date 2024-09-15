@@ -7,7 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 
 // Create axios instance
 export const api = axios.create({
-  baseURL: "http://159.203.44.134:8000/",
+  baseURL: "https://api.astralemon.com/",
 });
 const useAxiosPrivate = () => {
   const { auth }: any = useAuth();
