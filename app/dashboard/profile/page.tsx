@@ -135,7 +135,7 @@ const ProfilePage = () => {
 
               {/* Right Column */}
               <div className="space-y-4">
-                <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex flex-col lg:items-center md:flex-row gap-4">
                   <label
                     htmlFor="username"
                     className="text-black font-medium "
