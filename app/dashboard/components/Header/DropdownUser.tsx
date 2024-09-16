@@ -5,11 +5,12 @@ import { useRouter } from "next/navigation";
 
 import ClickOutside from "@/components/ClickOutside";
 import { useAuth } from "@/hooks/useAuth"; // Import the useAuth hook
+import { useUserDetails } from "@/hooks/useLoguser";
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { logout } = useAuth(); // Use the logout function from the useAuth hook
   const router = useRouter();
-
+const {data}=useUserDetails();
   // Handle the logout process
   const handleLogout = async () => {
     logout(); // Call the logout function from useAuth
@@ -38,9 +39,8 @@ const DropdownUser = () => {
         </span>
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {data?.username}
           </span>
-          <span className="block text-xs">UX Designer</span>
         </span>
         <svg
           className="hidden fill-current sm:block"

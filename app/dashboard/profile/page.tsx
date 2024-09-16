@@ -1,7 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { Camera } from "lucide-react";
-
+import { useUserDetails } from "@/hooks/useLoguser";
+import { useUpdateUserDetails } from "@/hooks/useUpdate";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 const ProfilePage = () => {
   const [profile, setProfile] = useState({
     name: "",
@@ -10,12 +14,15 @@ const ProfilePage = () => {
     phoneNumber: "",
     email: "",
   });
-
+  const { data } = useUserDetails();
+  const { updateUserDetails, loading } = useUpdateUserDetails();
   const [passwords, setPasswords] = useState({
     current: "",
     old: "",
     new: "",
   });
+  // Handle form submission
+
 
   const handleProfileChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
@@ -33,14 +40,17 @@ const ProfilePage = () => {
     }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+        await updateUserDetails(profile);
+
     console.log("Profile:", profile);
     console.log("Passwords:", passwords);
   };
 
   return (
     <div className="min-h-screen bg-gray-100 py-2 flex flex-col items-center lg:items-start">
+     <ToastContainer/>
       <div className="relative w-full sm:w-[90%] md:w-[80%] lg:w-[80%] py-8 bg-white shadow-lg sm:rounded-2xl sm:p-10 md:p-20 p-[5%]">
         <div className="flex justify-between items-center mb-8">
           <div>
@@ -74,7 +84,7 @@ const ProfilePage = () => {
                     type="text"
                     id="name"
                     name="name"
-                    placeholder="Name"
+                    placeholder={`${data?.first_name}`}
                     value={profile.name}
                     onChange={handleProfileChange}
                     className="border p-2 rounded w-full"
@@ -91,7 +101,7 @@ const ProfilePage = () => {
                     type="text"
                     id="lastName"
                     name="lastName"
-                    placeholder="Last Name"
+                    placeholder={`${data?.last_name}`}
                     value={profile.lastName}
                     onChange={handleProfileChange}
                     className="border p-2 rounded w-full"
@@ -108,7 +118,7 @@ const ProfilePage = () => {
                     type="tel"
                     id="phoneNumber"
                     name="phoneNumber"
-                    placeholder="Phone Number"
+                    placeholder={`${data?.first_name}`}
                     value={profile.phoneNumber}
                     onChange={handleProfileChange}
                     className="border p-2 rounded w-full"
@@ -125,28 +135,34 @@ const ProfilePage = () => {
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder={`${data?.email}`}
                     value={profile.email}
                     onChange={handleProfileChange}
                     className="border p-2 rounded w-full"
                   />
                 </div>
+                <button
+                  type="submit"
+                  className={`bg-blue-500 text-white py-2 px-4 rounded ${
+                    loading ? "opacity-50" : ""
+                  }`}
+                  disabled={loading}
+                >
+                  {loading ? "Updating..." : "save"}
+                </button>
               </div>
 
               {/* Right Column */}
               <div className="space-y-4">
                 <div className="flex flex-col lg:items-center md:flex-row gap-4">
-                  <label
-                    htmlFor="username"
-                    className="text-black font-medium "
-                  >
+                  <label htmlFor="username" className="text-black font-medium ">
                     Username:
                   </label>
                   <input
                     type="text"
                     id="username"
                     name="username"
-                    placeholder="Username"
+                    placeholder={`${data?.username}`}
                     value={profile.username}
                     onChange={handleProfileChange}
                     className="border p-2 rounded w-full"
@@ -158,15 +174,12 @@ const ProfilePage = () => {
 
           {/* Password Change Section */}
           <div>
-            <h2 className="text-lg md:text-xl font-semibold mb-4">
+            <h2 className="text-lg mt-5 md:text-xl font-semibold mb-4">
               Change Password
             </h2>
             <div className="space-y-4">
               <div className="flex flex-col md:flex-row gap-4">
-                <label
-                  htmlFor="current"
-                  className="text-black font-medium "
-                >
+                <label htmlFor="current" className="text-black font-medium ">
                   Current:
                 </label>
                 <input
@@ -181,10 +194,7 @@ const ProfilePage = () => {
               </div>
               <div className="grid grid-cols-1  lg:ml-6 md:grid-cols-2 gap-4">
                 <div className="flex flex-col md:flex-row gap-4">
-                  <label
-                    htmlFor="old"
-                    className="text-black font-medium "
-                  >
+                  <label htmlFor="old" className="text-black font-medium ">
                     Old:
                   </label>
                   <input
@@ -198,10 +208,7 @@ const ProfilePage = () => {
                   />
                 </div>
                 <div className="flex flex-col md:flex-row gap-4">
-                  <label
-                    htmlFor="new"
-                    className="text-black font-medium"
-                  >
+                  <label htmlFor="new" className="text-black font-medium">
                     New:
                   </label>
                   <input

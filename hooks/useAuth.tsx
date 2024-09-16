@@ -1,11 +1,11 @@
 "use client";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { api } from "../lib/axios";
 import { setTokens, clearTokens, getAccessToken } from "../utils/util";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 interface AuthResponse {
   access: string;
@@ -79,9 +79,9 @@ export const useAuth = () => {
         response.data.refresh,
         response.data.user_id
       );
-      setLoading(false);
+     toast.success("Email verification  sent , check your mail!!");
 
-      toast.success("Login successful!");
+      setLoading(false);
       router.push("/dashboard");
     } catch (err: any) {
       setLoading(false);
@@ -123,13 +123,9 @@ export const useAuth = () => {
       const referralLink = response?.data?.referral_link;
 
       // Extract the 'ref' parameter from the URL
-      const getReferralCode = (link: string) => {
-        const url = new URL(link);
-        return url.searchParams.get("ref"); // Extract the 'ref' parameter
-      };
+    
 
-      const referralCode = getReferralCode(referralLink); // Extract the code
-      setReferralCode(referralCode || ""); // Set the referral code
+      setReferralCode(referralLink || ""); // Set the referral code
 
       setLoading(false);
     } catch (err: any) {

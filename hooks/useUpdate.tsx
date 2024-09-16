@@ -1,10 +1,11 @@
 "use client";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { api } from "../lib/axios"; // Assuming this is your Axios instance
 import { getAccessToken, clearTokens } from "../utils/util"; // Your utility functions for token management
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 interface UpdateUserDetails {
   first_name?: string;
@@ -38,8 +39,8 @@ export const useUpdateUserDetails = () => {
           Authorization: `Bearer ${accessToken}`, // Pass the token in the header
         },
       });
-
       toast.success("Profile updated successfully!");
+
 
       setLoading(false);
       return response.data; // Optionally return updated data
