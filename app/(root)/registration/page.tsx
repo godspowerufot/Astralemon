@@ -127,6 +127,8 @@ const Register = () => {
                               ? "email"
                               : field === "password"
                               ? "password"
+                               : field === "phone_no"
+                               ? "number"
                               : "text"
                           }
                           name={field}

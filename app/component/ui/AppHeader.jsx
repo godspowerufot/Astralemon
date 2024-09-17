@@ -6,14 +6,15 @@ import MediaBear from "@/public/applogo.png";
 import Button from "@/app/component/atoms/Button";
 import Link from "next/link";
 import { useUpdateUserDetails } from "@/hooks/useUpdate";
-
+import { getAccessToken } from "@/utils/util";
 const AppHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
   const { data } = useUpdateUserDetails();
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
-
+  const accesstoken=getAccessToken();
+  console.log(accesstoken)
   const handleNavigation = (path) => {
     closeMenu();
     router.push(path);
@@ -70,8 +71,19 @@ const AppHeader = () => {
           </a>
         </div>
 
-        {data?.email ? (
-          <div>{data?.username}</div>
+        {accesstoken ? (
+          <span className="h-12 w-12 rounded-full">
+            <Image
+              width={112}
+              height={112}
+              src={"/images/user/user-01.png"}
+              style={{
+                width: "auto",
+                height: "auto",
+              }}
+              alt="User"
+            />
+          </span>
         ) : (
           <div className="flex gap-[20px] max-md:hidden">
             <Link href="/Login">

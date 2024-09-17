@@ -1,9 +1,12 @@
+'use client'
 import Image from "next/image";
 import heroImage from "@/public/headerpic.png";
 import Button from "../component/atoms/Button";
 import Link from "next/link";
+import { getAccessToken } from "@/utils/util";
 
 const Header = () => {
+  let accesstoken=getAccessToken();
   return (
     <header className="bg-white py-8 flex flex-col  items-center text-center bg-[url('/back.png')] ">
       <div className="w-full max-w-[1200px] flex flex-col items-center justify-center gap-8">
@@ -25,11 +28,18 @@ const Header = () => {
             followers who love your content and skyrocket your Instagram
             presence.
           </p>
-          <Link href="/#pricing">
+          {
+            accesstoken?(<Link href="/dashboard">
+            <Button className="bg-blue-600 w-[150px] h-[52px] sm:w-[220px] sm:h-[56px] text-white rounded-full font-bold text-lg lg:text-xl transition duration-300 hover:bg-blue-700">
+              My Dashboard
+            </Button>
+          </Link>):(<Link href="/#pricing">
             <Button className="bg-blue-600 w-[150px] h-[52px] sm:w-[220px] sm:h-[56px] text-white rounded-full font-bold text-lg lg:text-xl transition duration-300 hover:bg-blue-700">
               Get started
             </Button>
-          </Link>
+          </Link>)
+          }
+          
         </div>
         <div className="relative w-full flex justify-center">
           <div
