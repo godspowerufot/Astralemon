@@ -41,7 +41,7 @@ const ExceptionalSolutions = () => {
   ];
 
   return (
-    <section className="bg-white py-8">
+    <section id="solution" className="bg-white py-8">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8" data-aos="fade-up">
           <h2 className="text-3xl font-bold">Our Exceptional Solutions</h2>

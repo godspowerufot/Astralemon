@@ -25,7 +25,7 @@ const Header = () => {
             followers who love your content and skyrocket your Instagram
             presence.
           </p>
-          <Link href="/registration">
+          <Link href="/#pricing">
             <Button className="bg-blue-600 w-[150px] h-[52px] sm:w-[220px] sm:h-[56px] text-white rounded-full font-bold text-lg lg:text-xl transition duration-300 hover:bg-blue-700">
               Get started
             </Button>

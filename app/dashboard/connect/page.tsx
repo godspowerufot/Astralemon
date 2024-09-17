@@ -46,7 +46,7 @@ const ConnectInstagram: React.FC = () => {
       {/* Flex container for the cards */}
       <div className="flex flex-col lg:flex-row gap-8">
         {/* First Card */}
-        <div className="main-content flex items-stretch justify-center gap-[5%] bg-white border-2 p-10 rounded-lg shadow-md flex-1">
+        <div className="main-content flex items-stretch justify-center flex-col gap-[5%] bg-white border-2 p-10 rounded-lg shadow-md flex-1">
           <div className="header mb-5 flex justify-center">
             <img
               src="https://i.imgur.com/zqpwkLQ.png"

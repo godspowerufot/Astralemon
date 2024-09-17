@@ -34,11 +34,10 @@ const Register = () => {
   const [showModal, setShowModal] = useState(false);
   const { register, loading, error } = useAuth();
   const router = useRouter();
-
   const inputRefs: Record<keyof FormData, React.RefObject<HTMLInputElement>> = {
     first_name: useRef(null),
-    username: useRef(null),
     last_name: useRef(null),
+    username: useRef(null),
     email: useRef(null),
     password: useRef(null),
     phone_no: useRef(null),
@@ -104,8 +103,9 @@ const Register = () => {
                   <div className="mx-auto max-w-[35rem]">
                     {[
                       "first_name",
-                      "username",
                       "last_name",
+                      "username",
+
                       "email",
                       "password",
                       "phone_no",
@@ -134,7 +134,7 @@ const Register = () => {
                             field === "username"
                               ? "Choose a username"
                               : field === "phone_no"
-                              ? "Phone No"
+                              ? "Phone No."
                               : field
                                   .replace("_", " ")
                                   .charAt(0)
@@ -156,7 +156,7 @@ const Register = () => {
                       className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                       type="text"
                       name="referred_by"
-                      placeholder="Referral (Username)"
+                      placeholder="Referral (Username) optional"
                       value={formData.referred_by}
                       onChange={handleChange}
                     />
