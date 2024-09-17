@@ -1,18 +1,18 @@
-"use client";
+"use client"; 
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
 import { api } from "@/lib/axios"; // Ensure your Axios instance is correctly configured
 import "react-toastify/dist/ReactToastify.css";
-
 const PasswordReset = () => {
   const [newPassword, setNewPassword] = useState<string>("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams(); 
 
+ 
   const uid = searchParams.get("uid");
   const token = searchParams.get("token");
 
@@ -20,6 +20,7 @@ const PasswordReset = () => {
     e.preventDefault();
     setLoading(true);
 
+    // Validate passwords match
     if (newPassword !== newPasswordConfirm) {
       toast.error("Passwords do not match");
       setLoading(false);
@@ -27,7 +28,7 @@ const PasswordReset = () => {
     }
 
     try {
-      // Post to the reset password confirm endpoint
+      // send request  to the reset password confirm endpoint
       await api.post("/accounts/password-reset-confirm/", {
         uid,
         token,
@@ -46,17 +47,11 @@ const PasswordReset = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded shadow-md w-full max-w-md"
-      >
+      <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Reset Password</h2>
 
         <div className="mb-4">
-          <label
-            htmlFor="newPassword"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700">
             New Password
           </label>
           <input
@@ -70,10 +65,7 @@ const PasswordReset = () => {
         </div>
 
         <div className="mb-4">
-          <label
-            htmlFor="newPasswordConfirm"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="newPasswordConfirm" className="block text-sm font-medium text-gray-700">
             Confirm New Password
           </label>
           <input
@@ -98,4 +90,38 @@ const PasswordReset = () => {
   );
 };
 
-export default PasswordReset;
+// components/Spinner.js
+const Spinner = () => (
+  <div className="flex justify-center items-center h-full">
+    <svg
+      className="animate-spin h-8 w-8 border-t-4 border-blue-500 border-solid rounded-full"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+      />
+    </svg>
+  </div>
+);
+
+
+const PasswordResetPage = () => {
+  return (
+    <Suspense fallback={<Spinner/>}>
+      <PasswordReset />
+    </Suspense>
+  );
+};
+
+export default PasswordResetPage;
