@@ -29,7 +29,7 @@ const HeroSection = () => {
           Make money with our affiliate marketing program.
         </h1>
         <p className="mt-4 max-md:w-[100%] text-lg w-[500px] text-wrap max-md:text-[16px] text-gray-700">
-          Earn commissions on Astralemon by promoting our products through your
+          Earn commissions on Astralemon by promoting our product through your
           unique affiliate link and grow your income effortlessly.
         </p>
         <div className="flex gap-[20px]">

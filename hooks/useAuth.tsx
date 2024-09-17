@@ -79,7 +79,7 @@ export const useAuth = () => {
         response.data.refresh,
         response.data.user_id
       );
-     toast.success("Email verification  sent , check your mail!!");
+     toast.success("Login successful");
 
       setLoading(false);
       router.push("/dashboard");

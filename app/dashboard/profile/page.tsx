@@ -15,10 +15,10 @@ const ProfilePage = () => {
     email: "",
   });
   const { data } = useUserDetails();
-  const { updateUserDetails, loading } = useUpdateUserDetails();
+  const { updateUserDetails,changePasswords, loading,LoadingChange } = useUpdateUserDetails();
   const [passwords, setPasswords] = useState({
-    current: "",
     old: "",
+    current: "",
     new: "",
   });
   // Handle form submission
@@ -47,10 +47,17 @@ const ProfilePage = () => {
     console.log("Profile:", profile);
     console.log("Passwords:", passwords);
   };
+  const handlePassword = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+          await changePasswords(passwords);
+
+    console.log("Profile:", profile);
+    console.log("Passwords:", passwords);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 py-2 flex flex-col items-center lg:items-start">
-     <ToastContainer/>
+      <ToastContainer />
       <div className="relative w-full sm:w-[90%] md:w-[80%] lg:w-[80%] py-8 bg-white shadow-lg sm:rounded-2xl sm:p-10 md:p-20 p-[5%]">
         <div className="flex justify-between items-center mb-8">
           <div>
@@ -171,67 +178,70 @@ const ProfilePage = () => {
               </div>
             </div>
           </div>
+        </form>
 
-          {/* Password Change Section */}
-          <div>
-            <h2 className="text-lg mt-5 md:text-xl font-semibold mb-4">
-              Change Password
-            </h2>
-            <div className="space-y-4">
+        {/* Password Change Section */}
+        <div>
+          <h2 className="text-lg mt-5 md:text-xl font-semibold mb-4">
+            Change Password
+          </h2>
+          <div className="space-y-4">
+            <div className="flex flex-col md:flex-row gap-4">
+              <label htmlFor="current" className="text-black font-medium ">
+                Current:
+              </label>
+              <input
+                type="password"
+                id="current"
+                name="current"
+                placeholder="Current Password"
+                value={passwords.current}
+                onChange={handlePasswordChange}
+                className="border p-2 rounded w-full"
+              />
+            </div>
+            <div className="grid grid-cols-1  lg:ml-6 md:grid-cols-2 gap-4">
               <div className="flex flex-col md:flex-row gap-4">
-                <label htmlFor="current" className="text-black font-medium ">
-                  Current:
+                <label htmlFor="old" className="text-black font-medium ">
+                  Old:
                 </label>
                 <input
                   type="password"
-                  id="current"
-                  name="current"
-                  placeholder="Current Password"
-                  value={passwords.current}
+                  id="old"
+                  name="old"
+                  placeholder="Old Password"
+                  value={passwords.old}
                   onChange={handlePasswordChange}
                   className="border p-2 rounded w-full"
                 />
               </div>
-              <div className="grid grid-cols-1  lg:ml-6 md:grid-cols-2 gap-4">
-                <div className="flex flex-col md:flex-row gap-4">
-                  <label htmlFor="old" className="text-black font-medium ">
-                    Old:
-                  </label>
-                  <input
-                    type="password"
-                    id="old"
-                    name="old"
-                    placeholder="Old Password"
-                    value={passwords.old}
-                    onChange={handlePasswordChange}
-                    className="border p-2 rounded w-full"
-                  />
-                </div>
-                <div className="flex flex-col md:flex-row gap-4">
-                  <label htmlFor="new" className="text-black font-medium">
-                    New:
-                  </label>
-                  <input
-                    type="password"
-                    id="new"
-                    name="new"
-                    placeholder="New Password"
-                    value={passwords.new}
-                    onChange={handlePasswordChange}
-                    className="border p-2 rounded w-full"
-                  />
-                </div>
+              <div className="flex flex-col md:flex-row gap-4">
+                <label htmlFor="new" className="text-black font-medium">
+                  New:
+                </label>
+                <input
+                  type="password"
+                  id="new"
+                  name="new"
+                  placeholder="New Password"
+                  value={passwords.new}
+                  onChange={handlePasswordChange}
+                  className="border p-2 rounded w-full"
+                />
               </div>
             </div>
           </div>
+        </div>
 
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full md:w-auto"
-          >
-            Save
-          </button>
-        </form>
+        <button
+          onClick={handlePassword}
+          className={`bg-blue-500 text-white py-2 px-4 rounded ${
+            LoadingChange ? "opacity-50" : ""
+          }`}
+          disabled={LoadingChange}
+        >
+          {LoadingChange ? "Updating..." : "save"}
+        </button>
       </div>
     </div>
   );
