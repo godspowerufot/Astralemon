@@ -1,11 +1,11 @@
 "use client";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { api } from "../lib/axios";
 import { setTokens, clearTokens, getAccessToken } from "../utils/util";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 interface AuthResponse {
   access: string;
@@ -20,47 +20,52 @@ interface ReferralResponse {
 export const useAuth = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-   const [referralCode, setReferralCode] = useState<string>("");
+  const [referralCode, setReferralCode] = useState<string>("");
   const router = useRouter();
 
-  // Registration handler
-  const register = async (formData: {
-    first_name: string;
-    username: string;
-    last_name: string;
-    email: string;
-    password: string;
-    phone_no: string;
-    referred_by?: string; // Optional referralId
-  }): Promise<boolean> => {
-    setLoading(true);
-    setError(null);
+const register = async (formData: {
+  first_name: string;
+  username: string;
+  last_name: string;
+  email: string;
+  password: string;
+  phone_no: string;
+  referred_by?: string; // Optional referralId
+}): Promise<boolean> => {
+  setLoading(true);
+  setError(null);
 
-    try {
-      const { referred_by, ...restFormData } = formData;
-      const validFormData = referred_by
-        ? { ...restFormData, referred_by }
-        : restFormData;
+  try {
+    // Convert the email to lowercase
+    const { referred_by, ...restFormData } = formData;
+    const validFormData = {
+      ...restFormData,
+      email: formData.email.toLowerCase(), // Convert email to lowercase
+    };
 
-      const response = await api.post("/accounts/register/", validFormData);
-      setLoading(false);
+    // Use the appropriate endpoint based on whether `referred_by` exists
+    const endpoint = referred_by
+      ? `https://api.astralemon.com/accounts/register/?ref=${referred_by}`
+      : "/accounts/register/";
 
-      setTokens(
-        response.data.access,
-        response.data.refresh,
-        response.data.user_id
-      );
+    const response = await api.post(endpoint, validFormData);
+    toast.success("Kindly check your mail for a Verification");
 
-      router.push("/Dashboard");
-      return true;
-    } catch (err: any) {
-      setLoading(false);
-      const errorMessage = err.response?.data?.message || "Registration failed";
-      setError(errorMessage);
-      toast.error(errorMessage);
-      return false;
-    }
-  };
+    // Handle the response
+    setLoading(false);
+ console.log(response)
+    router.push("/dashboard");
+    return true;
+  } catch (err: any) {
+    // Handle errors
+    setLoading(false);
+    const errorMessage = err.response?.data?.username || err.response?.data?.email;
+    setError(errorMessage);
+    toast.error(errorMessage);
+    return false;
+  }
+};
+
 
   // Login handler
   const login = async (email: string, password: string): Promise<void> => {
@@ -69,7 +74,7 @@ export const useAuth = () => {
 
     try {
       const response = await api.post<AuthResponse>("/accounts/login", {
-        email,
+        email: email.toLowerCase(), // Ensures email is in lowercase,
         password,
       });
 
@@ -78,10 +83,10 @@ export const useAuth = () => {
         response.data.refresh,
         response.data.user_id
       );
-      setLoading(false);
+     toast.success("Login successful");
 
-      toast.success("Login successful!");
-      router.push("/Dashboard");
+      setLoading(false);
+      router.push("/dashboard");
     } catch (err: any) {
       setLoading(false);
       const errorMessage = err.response?.data?.message || "Login failed";
@@ -89,6 +94,8 @@ export const useAuth = () => {
       toast.error(errorMessage);
     }
   };
+
+
 
   // Logout handler
   const logout = (): void => {
@@ -120,13 +127,9 @@ export const useAuth = () => {
       const referralLink = response?.data?.referral_link;
 
       // Extract the 'ref' parameter from the URL
-      const getReferralCode = (link: string) => {
-        const url = new URL(link);
-        return url.searchParams.get("ref"); // Extract the 'ref' parameter
-      };
+    
 
-      const referralCode = getReferralCode(referralLink); // Extract the code
-      setReferralCode(referralCode || ""); // Set the referral code
+      setReferralCode(referralLink || ""); // Set the referral code
 
       setLoading(false);
     } catch (err: any) {

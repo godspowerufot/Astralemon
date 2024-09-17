@@ -3,7 +3,7 @@ import PageUI from "./Cards";
 export default function UlSection() {
   return (
     <div
-      id="solution"
+      id="features"
       className="flex  items-center justify-center  bg-[#F9FAFB] w-[100vw] py-8"
     >
       <div className="flex flex-col">

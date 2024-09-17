@@ -30,13 +30,13 @@ const HeroSectiontwo = () => {
             The ideal solution for Your Product
           </h1>
           <p className="mt-4 max-md:w-[100%] text-lg lg:w-[800px] text-wrap max-md:text-[16px] text-gray-700">
-            By choosing MediaBear to find the ideal subscribers, you are sure to
-            be able to offer yourservices/products to the right people.
+            By choosing Astralemon to find the ideal subscribers, you are sure
+            to be able to offer yourservices/products to the right people.
           </p>
           <div className="flex gap-[20px]">
-            <Link href="/Dashboard/Affiliations">
+            <Link href="/dashboard/Affiliations">
               <button className="mt-8 px-6 py-3 max-md:h-[40px]  flex items-center justify-center max-md:text-[14px] bg-blue-600 text-white rounded-full text-lg hover:bg-blue-700 transition duration-300">
-              Get Started
+                Get Started
               </button>
             </Link>
           </div>
