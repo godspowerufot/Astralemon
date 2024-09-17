@@ -37,7 +37,7 @@ const PasswordReset = () => {
       });
 
       toast.success("Password reset successful");
-      router.push("/login"); // Redirect to login after success
+      router.push("/Login"); // Redirect to login after success
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Failed to reset password");
     } finally {
