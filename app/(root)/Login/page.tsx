@@ -36,16 +36,21 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { email, password } = formData;
-
-    // Call the login function from the useAuth hook
-    await login(email, password);
+try{
+ await login(email, password);
+}
+   catch(err) {
+ if (
+   err === "Account is not verified. Please verify your account to login."
+ ) {
+   setShowModal(true);
+ }
+   }// Call the login function from the useAuth hook
+   
 
     // Handle specific errors like email not verified
-    if (error === "Email not verified") {
-      setShowModal(true); // Show modal for resending verification email
-    } else if (error) {
-      toast.error(error); // Show error toast for other errors
-    }
+    // Show modal for resending verification email
+   
   };
 
   // Resend verification email handler
