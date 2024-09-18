@@ -146,36 +146,36 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-2 lg:p-8">
       <div className="mb-6">
-        <h1 className="text-2xl font-semibold">Console</h1>
-        <p className="text-base">09/23/24 &gt; Running</p>
+        <h1 className="text-lg lg:text-2xl font-semibold">Console</h1>
+        <p className="text-sm lg:text-base">09/23/24 &gt; Running</p>
       </div>
 
-      <div className="grid grid-flow-row grid-cols-12 gap-5 mb-6">
-        <div className="col-span-8">
-          <h3 className="mb-4 bg-white rounded-lg font-bold p-4 text-xl">
+      <div className="grid grid-flow-row grid-cols-12 lg:gap-5 gap-3 mb-6">
+        <div className="col-span-12 order-2 lg:order-1 lg:col-span-8">
+          <h3 className="mb-4 bg-white rounded-lg font-bold p-2 lg:p-4 text-base lg:text-xl">
             Instagram account
-            <span className="text-black ms-2">
+            <span className="text-black text-nowrap ms-2">
               {"<"} {selectedAccount.username} &gt;
             </span>
           </h3>
           {/* Displayed Logs */}
-          <div className="rounded-lg bg-white p-4 w-full mb-4 min-h-50">
+          <div className="rounded-lg bg-white p-2 lg:p-4 w-full mb-4 min-h-50">
             {selectedAccount.username.length > 0 &&
               displayedLogs.map((item, index) => (
-                <div
+                <h3
                   key={index}
-                  className="flex items-center my-0 typewriter w-fit"
+                  className="flex items-center my-0 typewriter w-fit text-nowrap"
                 >
-                  <span className="text-xl leading-5 text-nowrap w-fit">{`[${item.time} INFO]:`}</span>
+                  <span className="lg:text-xl text-sm leading-5 lg:w-fit">{`[${item.time} INFO]:`}</span>
 
-                  <span className="mx-1 text-black text-lg leading-5 text-nowrap w-fit">{`<${
+                  <span className="mx-1 text-black text-xs lg:text-lg leading-5  lg:w-fit">{`<${
                     item.user || "system"
                   }>`}</span>
 
                   <span
-                    className={`text-lg leading-5 text-black text-nowrap w-fit ${
+                    className={`text-xs lg:text-lg leading-5 text-black lg:w-fit ${
                       index == 0 && "text-green-500"
                     } ${index == 1 && "text-amber-500"} ${
                       index == 2 && "text-red"
@@ -183,15 +183,15 @@ export default function Home() {
                   >
                     {item.action}
                   </span>
-                </div>
+                </h3>
               ))}
           </div>
 
-          <div className="grid grid-flow-row grid-cols-3 gap-4 justify-center items-center w-10/12 mx-auto">
+          <div className="grid grid-flow-row grid-cols-3 lg:gap-4 gap-2 justify-center items-center lg:w-10/12 mx-auto">
             <button
               onClick={() => controlLogs("start")}
               disabled={!selectedAccount.username.length || isPlaying}
-              className={`text-xl font-bold p-3 w-full text-black bg-green-500 hover:bg-green-600 rounded-xl ${
+              className={`text-sm lg:text-xl font-bold p-2 lg:p-3 w-full text-black bg-green-500 hover:bg-green-600 rounded-xl ${
                 selectedAccount.username.length > 0
                   ? "cursor-pointer"
                   : "cursor-not-allowed"
@@ -202,7 +202,7 @@ export default function Home() {
             <button
               onClick={() => controlLogs("restart")}
               disabled={!selectedAccount.username.length}
-              className={`text-xl font-bold p-3 w-full text-black bg-slate-400 hover:bg-slate-500 rounded-xl ${
+              className={`text-sm lg:text-xl font-bold p-2 lg:p-3 w-full text-black bg-slate-400 hover:bg-slate-500 rounded-xl ${
                 selectedAccount.username.length > 0
                   ? "cursor-pointer"
                   : "cursor-not-allowed"
@@ -213,7 +213,7 @@ export default function Home() {
             <button
               onClick={() => controlLogs("stop")}
               disabled={!selectedAccount.username.length || !isPlaying}
-              className={`text-xl font-bold p-3 w-full text-black bg-red hover:bg-rose-600 rounded-xl ${
+              className={`text-sm lg:text-xl font-bold p-2 lg:p-3 w-full text-black bg-red hover:bg-rose-600 rounded-xl ${
                 selectedAccount.username.length > 0
                   ? "cursor-pointer"
                   : "cursor-not-allowed"
@@ -224,49 +224,59 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="h-fit col-span-4 grid grid-flow-row grid-cols-2 gap-4 justify-center items-center">
+        <div className="h-fit col-span-12 order-1 lg:order-2 lg:col-span-4 grid grid-flow-row grid-cols-2 gap-4 justify-center items-center">
           {igAccounts.map((item, index) => (
             <div
               onClick={() => setSelectedAccount(item)}
               key={index}
-              className={`p-4 rounded-3xl flex flex-col items-center cursor-pointer bg-white bg-gradient-to-b hover:from-white hover:to-slate-200 ${
+              className={`p-2 lg:p-4 rounded-3xl flex flex-col items-center cursor-pointer bg-white bg-gradient-to-b hover:from-white hover:to-slate-200 ${
                 selectedAccount.username === item.username
                   ? "from-white  to-slate-200"
                   : ""
               }`}
             >
-              <h3 className="text-lg font-bold text-black">{item.username}</h3>
-              <span className="text-6xl my-4">{item.avatar}</span>
-              <span>
+              <h3 className="text-sm lg:text-lg font-bold text-black">
+                {item.username}
+              </h3>
+              <span className="text-3xl lg:text-6xl my-2 lg:my-4">
+                {item.avatar}
+              </span>
+              <span className="text-sm lg:text-lg">
                 {selectedAccount.username === item.username
                   ? "Selected"
                   : "Select"}
               </span>
             </div>
           ))}
-          <div className="rounded-full h-24 w-24 bg-white text-8xl flex justify-center items-center text-center mx-auto cursor-pointer hover:bg-slate-200 transition-all">
+          <div className="rounded-full h-16 w-16 lg:h-24 lg:w-24 bg-white lg:text-8xl text-4xl flex justify-center items-center text-center mx-auto cursor-pointer hover:bg-slate-200 transition-all">
             +
           </div>
         </div>
       </div>
-      <div className="grid grid-flow-row grid-cols-3 gap-5 w-9/12">
-        <div className="p-6 rounded-3xl flex flex-col bg-white">
-          <FaRegClock className="text-5xl text-amber-400" />
+      <div className="grid grid-flow-row grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 lg:w-9/12">
+        <div className="p-3 lg:p-6 rounded-3xl flex items-center lg:items-start flex-col bg-white">
+          <FaRegClock className="text-2xl lg:text-5xl text-amber-400" />
 
-          <p className="my-1 font-medium text-lg">Uptime</p>
-          <h3 className="font-bold text-black text-2xl">10d 22h 32m</h3>
+          <p className="my-1 font-medium text-xs lg:text-lg">Uptime</p>
+          <h3 className="font-bold text-black text-base lg:text-2xl">
+            10d 22h 32m
+          </h3>
         </div>
-        <div className="p-6 rounded-3xl flex flex-col bg-white">
-          <FaRegClock className="text-5xl text-red" />
+        <div className="p-3 lg:p-6 rounded-3xl flex items-center lg:items-start flex-col bg-white">
+          <FaRegClock className="text-2xl lg:text-5xl text-red" />
 
-          <p className="my-1 font-medium text-lg">Downtime</p>
-          <h3 className="font-bold text-black text-2xl">4d 1h 21m</h3>
+          <p className="my-1 font-medium text-xs lg:text-lg">Downtime</p>
+          <h3 className="font-bold text-black text-base lg:text-2xl">
+            4d 1h 21m
+          </h3>
         </div>
-        <div className="p-6 rounded-3xl flex flex-col bg-white">
-          <FaRegClock className="text-5xl text-slate-400" />
+        <div className="p-3 lg:p-6 rounded-3xl flex items-center lg:items-start flex-col bg-white">
+          <FaRegClock className="text-2xl lg:text-5xl text-slate-400" />
 
-          <p className="my-1 font-medium text-lg">Life Time</p>
-          <h3 className="font-bold text-black text-2xl">159d 22h 32m</h3>
+          <p className="my-1 font-medium text-xs lg:text-lg">Life Time</p>
+          <h3 className="font-bold text-black text-base lg:text-2xl">
+            159d 22h 32m
+          </h3>
         </div>
       </div>
     </div>
