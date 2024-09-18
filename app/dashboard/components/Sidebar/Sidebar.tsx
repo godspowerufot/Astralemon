@@ -89,7 +89,7 @@ const menuGroups = [
         label: "Invoices",
         route: "/dashboard/invoices",
       },
-    
+
       {
         icon: (
           <svg
@@ -142,12 +142,10 @@ const menuGroups = [
           </svg>
         ),
         label: "Pricing",
-        route: "/dashboard/Pricingpage",
+        route: "/dashboard/pricing",
       },
-    
     ],
-  }
- 
+  },
 ];
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
