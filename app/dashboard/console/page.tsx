@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaCircleUser, FaRegClock } from "react-icons/fa6";
 
@@ -248,9 +249,12 @@ export default function Home() {
               </span>
             </div>
           ))}
-          <div className="rounded-full h-16 w-16 lg:h-24 lg:w-24 bg-white lg:text-8xl text-4xl flex justify-center items-center text-center mx-auto cursor-pointer hover:bg-slate-200 transition-all">
+          <Link
+            href="/dashboard/connect"
+            className="rounded-full h-16 w-16 lg:h-24 lg:w-24 bg-white lg:text-8xl text-4xl flex justify-center items-center text-center mx-auto cursor-pointer hover:bg-slate-200 transition-all"
+          >
             +
-          </div>
+          </Link>
         </div>
       </div>
       <div className="grid grid-flow-row grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 lg:w-9/12">
