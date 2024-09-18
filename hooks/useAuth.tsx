@@ -23,45 +23,49 @@ export const useAuth = () => {
   const [referralCode, setReferralCode] = useState<string>("");
   const router = useRouter();
 
-  // Registration handler
-  const register = async (formData: {
-    first_name: string;
-    username: string;
-    last_name: string;
-    email: string;
-    password: string;
-    phone_no: string;
-    referred_by?: string; // Optional referralId
-  }): Promise<boolean> => {
-    setLoading(true);
-    setError(null);
+const register = async (formData: {
+  first_name: string;
+  username: string;
+  last_name: string;
+  email: string;
+  password: string;
+  phone_no: string;
+  referred_by?: string; // Optional referralId
+}): Promise<boolean> => {
+  setLoading(true);
+  setError(null);
 
-    try {
-      const { referred_by, ...restFormData } = formData;
-      const validFormData = referred_by
-        ? { ...restFormData, referred_by }
-        : restFormData;
+  try {
+    // Convert the email to lowercase
+    const { referred_by, ...restFormData } = formData;
+    const validFormData = {
+      ...restFormData,
+      email: formData.email.toLowerCase(), // Convert email to lowercase
+    };
 
-      const response = await api.post("/accounts/register/", validFormData);
-      setLoading(false);
+    // Use the appropriate endpoint based on whether `referred_by` exists
+    const endpoint = referred_by
+      ? `https://api.astralemon.com/accounts/register/?ref=${referred_by}`
+      : "/accounts/register/";
 
-      setTokens(
-        response.data.access,
-        response.data.refresh,
-        response.data.user_id
-      );
-      toast.success("Kindly check your mail for a Verification");
+    const response = await api.post(endpoint, validFormData);
+    toast.success("Kindly check your mail for a Verification");
 
-      router.push("/dashboard");
-      return true;
-    } catch (err: any) {
-      setLoading(false);
-      const errorMessage = err.response?.data?.message || "Registration failed";
-      setError(errorMessage);
-      toast.error(errorMessage);
-      return false;
-    }
-  };
+    // Handle the response
+    setLoading(false);
+ console.log(response)
+    router.push("/dashboard");
+    return true;
+  } catch (err: any) {
+    // Handle errors
+    setLoading(false);
+    const errorMessage = err.response?.data?.username || err.response?.data?.email;
+    setError(errorMessage);
+    toast.error(errorMessage);
+    return false;
+  }
+};
+
 
   // Login handler
   const login = async (email: string, password: string): Promise<void> => {
@@ -70,7 +74,7 @@ export const useAuth = () => {
 
     try {
       const response = await api.post<AuthResponse>("/accounts/login", {
-        email,
+        email: email.toLowerCase(), // Ensures email is in lowercase,
         password,
       });
 
@@ -79,7 +83,7 @@ export const useAuth = () => {
         response.data.refresh,
         response.data.user_id
       );
-     toast.success("Email verification  sent , check your mail!!");
+     toast.success("Login successful");
 
       setLoading(false);
       router.push("/dashboard");

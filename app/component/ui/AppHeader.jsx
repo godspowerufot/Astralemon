@@ -5,14 +5,16 @@ import { useRouter } from "next/navigation";
 import MediaBear from "@/public/applogo.png";
 import Button from "@/app/component/atoms/Button";
 import Link from "next/link";
-
+import { useUpdateUserDetails } from "@/hooks/useUpdate";
+import { getAccessToken } from "@/utils/util";
 const AppHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
-
+  const { data } = useUpdateUserDetails();
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
-
+  const accesstoken=getAccessToken();
+  console.log(accesstoken)
   const handleNavigation = (path) => {
     closeMenu();
     router.push(path);
@@ -68,18 +70,35 @@ const AppHeader = () => {
             FAQS
           </a>
         </div>
-        <div className="flex gap-[20px] max-md:hidden">
-          <Link href="/Login">
-            <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[50px]  md:w-[100px] lg:w-[95px]">
-              Log in
-            </Button>
-          </Link>
-          <Link href="/registration">
-            <Button className="h-[45px] text-white border bg-blue-600 border-blue-600 flex items-center justify-center text-[14px] text-center rounded-[50px]  md:w-[100px]">
-              Sign up
-            </Button>
-          </Link>
-        </div>
+
+        {accesstoken ? (
+          <span className="h-12 w-12 rounded-full">
+            <Image
+              width={112}
+              height={112}
+              src={"/images/user/user-01.png"}
+              style={{
+                width: "auto",
+                height: "auto",
+              }}
+              alt="User"
+            />
+          </span>
+        ) : (
+          <div className="flex gap-[20px] max-md:hidden">
+            <Link href="/Login">
+              <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[50px]  md:w-[100px] lg:w-[95px]">
+                Log in
+              </Button>
+            </Link>
+            <Link href="/registration">
+              <Button className="h-[45px] text-white border bg-blue-600 border-blue-600 flex items-center justify-center text-[14px] text-center rounded-[50px]  md:w-[100px]">
+                Sign up
+              </Button>
+            </Link>
+          </div>
+        )}
+
         <button
           onClick={toggleMenu}
           className="md:hidden text-black focus:outline-none"
