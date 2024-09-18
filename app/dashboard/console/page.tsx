@@ -125,7 +125,7 @@ export default function Home() {
       }, 5000);
 
       return () => clearTimeout(timer);
-    } else setDisplayedLogs([logs[0]]);
+    }
   }, [currentLogIndex, logs, selectedAccount]);
 
   const controlLogs = (action: "start" | "stop" | "restart") => {
