@@ -11,7 +11,7 @@ declare global {
     }
   }
 }
-function PricingPage() {
+function Pricing() {
   // Paste the stripe-pricing-table snippet in your React component
   return (
     <section
@@ -38,9 +38,8 @@ function PricingPage() {
           </div>
         </div>
       </div>
-     
     </section>
   );
 }
 
-export default PricingPage;
+export default Pricing;

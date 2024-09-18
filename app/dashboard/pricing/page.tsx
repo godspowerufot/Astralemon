@@ -10,7 +10,6 @@ const stripePromise = loadStripe(
   "pk_test_51PfoFIGdWNCS6S2AnrAUlib4mJAyb6aQoiTnW3V4pg0gqpkqNo2M3U3VXTaMPXI5BQ8mKa3aXxRNQxOCDDezqnx600EkKfIrCy"
 );
 
-
 // if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
 //   console.error(
 //     "Stripe publishable key is not set in the environment variables."
@@ -33,10 +32,10 @@ const PricingPage: React.FC = () => {
     <Elements stripe={stripePromise}>
       <section
         id="pricing"
-        className="relative z-10 overflow-hidden dark:bg-dark p-8"
+        className="relative z-10 overflow-hidden dark:bg-dark lg:p-8"
       >
         <div className="flex flex-col lg:flex-row justify-between items-center mb-8">
-          <h2 className="text-black dark:text-white text-3xl md:text-5xl font-bold">
+          <h2 className="text-black dark:text-white text-3xl md:text-5xl font-bold mb-4">
             Pricing
           </h2>
           <div className="flex items-center bg-[#eeeff0] p-2 rounded-md w-72">

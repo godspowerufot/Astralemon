@@ -2,7 +2,7 @@ import HeroSection from "../component/ui/Carousel";
 import ExceptionalSolutions from "../component/ui/exceptional";
 import FAQSection from "../component/ui/FAQSection";
 import HowItWorks from "../component/ui/Howitworks";
-import PricingPage from "../component/ui/pricingpage";
+import Pricing from "../component/ui/pricing";
 import TestimonialSlider from "../component/ui/Testimonials";
 import UISection from "../component/ui/ultimatepage";
 import Header from "../home/header";
@@ -17,9 +17,9 @@ export default function Page() {
       <UISection />
       <ExceptionalSolutions />
       <HowItWorks />
-       <HeroSection />
-      <PricingPage />
-     <HeroSectiontwo/>
+      <HeroSection />
+      <Pricing />
+      <HeroSectiontwo />
       <FAQSection />
       <TestimonialSlider />
     </main>
