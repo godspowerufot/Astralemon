@@ -1,11 +1,10 @@
 
 "use client";
 import React, { useState } from "react";
-import { toast } from "react-toastify";
+import { toast,ToastContainer } from "react-toastify";
 import { api } from "@/lib/axios";
 import "react-toastify/dist/ReactToastify.css";
 import { getAccessToken } from "@/utils/util";
-
 const ConnectInstagram: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -30,11 +29,13 @@ const ConnectInstagram: React.FC = () => {
           },
         }
       );
+console.log(response)
+      toast.success("Instagram account connected successfully!");
 
       setLoading(false);
-      toast.success("Instagram account connected successfully!");
     } catch (err: any) {
       setLoading(false);
+      console.log(err)
       const errorMessage = err.response?.data?.message || "Connection failed";
       setError(errorMessage);
       toast.error(errorMessage);
@@ -44,6 +45,7 @@ const ConnectInstagram: React.FC = () => {
   return (
     <div id="wrapper" className="max-w-4xl mx-auto mt-12 p-4">
       {/* Flex container for the cards */}
+      <ToastContainer/>
       <div className="flex flex-col lg:flex-row gap-8">
         {/* First Card */}
         <div className="main-content flex items-stretch justify-center flex-col gap-[5%] bg-white border-2 p-10 rounded-lg shadow-md flex-1">
