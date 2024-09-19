@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   icons: `${favicon}`,
 };
 export default function Dashboard() {
+   
+
   return (
     <>
       <div className="">
