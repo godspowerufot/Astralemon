@@ -29,14 +29,20 @@ const ConnectInstagram: React.FC = () => {
           },
         }
       );
-console.log(response)
-      toast.success("Instagram account connected successfully!");
 
+      toast.success("Instagram account connected successfully!");
+console.log(response)
       setLoading(false);
     } catch (err: any) {
-      setLoading(false);
-      console.log(err)
-      const errorMessage = err.response?.data?.message || "Connection failed";
+    setLoading(false);
+      console.log(err);
+
+      // Extract the error message from the Axios error object
+      const errorMessage =
+        err.response?.data?.error || // Backend error message
+        err.response?.data?.message || // Alternate backend error field
+        "Connection failed"; // Fallback message
+      
       setError(errorMessage);
       toast.error(errorMessage);
     }
