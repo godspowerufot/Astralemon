@@ -9,6 +9,7 @@ interface Feature {
 
 interface PricingCardProps {
   title: string;
+  subscription:string;
   price: number;
   priceId: string;
   features: Feature[];
@@ -17,9 +18,12 @@ interface PricingCardProps {
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
+  subscription,
+ 
   title,
   price,
   features,
+
   featured = false,
   onGetStarted,
 }) => {
@@ -56,7 +60,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
             ? "bg-gradient-to-tr from-purple-500 via-blue-500 to-yellow-500 text-white hover:bg-gradient-to-bl"
             : "bg-gradient-to-r hover:bg-gradient-to-l from-blue-400/30 via-purple-600/30 to-orange-500/30 bg-opacity-10"
         }`}
-        onClick={() => onGetStarted(title)}
+        onClick={() => onGetStarted(subscription)}
       >
         {featured ? (
           "Get Started"

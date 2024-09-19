@@ -2,9 +2,10 @@
 
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { toast } from "react-toastify";
+import { toast ,ToastContainer} from "react-toastify";
 import { api } from "@/lib/axios"; // Ensure your Axios instance is correctly configured
 import "react-toastify/dist/ReactToastify.css";
+import { getAccessToken } from "@/utils/util";
 const PasswordReset = () => {
   const [newPassword, setNewPassword] = useState<string>("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState<string>("");
@@ -15,10 +16,11 @@ const PasswordReset = () => {
  
   const uid = searchParams.get("uid");
   const token = searchParams.get("token");
-
+ console.log(uid,token)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+ const accessToken = getAccessToken();
 
     // Validate passwords match
     if (newPassword !== newPasswordConfirm) {
@@ -34,11 +36,17 @@ const PasswordReset = () => {
         token,
         new_password: newPassword,
         new_password_confirm: newPasswordConfirm,
-      });
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        }})
 
       toast.success("Password reset successful");
       router.push("/Login"); // Redirect to login after success
     } catch (err: any) {
+      console.log(err)
       toast.error(err.response?.data?.message || "Failed to reset password");
     } finally {
       setLoading(false);
@@ -47,6 +55,7 @@ const PasswordReset = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <ToastContainer/>
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Reset Password</h2>
 

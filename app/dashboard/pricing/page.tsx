@@ -64,7 +64,8 @@ const PricingPage: React.FC = () => {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <PricingCard
-              title="basic"
+            subscription="basic"
+              title="Basic"
               price={activeTab === "monthly" ? 35 : 35}
               priceId="price_1HhQ2bQGf4fNlG6fQgP0kjE3"
               features={[
@@ -81,7 +82,8 @@ const PricingPage: React.FC = () => {
               onGetStarted={handleGetStarted}
             />
             <PricingCard
-              title="Premium"
+            title="Meduim"
+              subscription="meduim"
               price={activeTab === "monthly" ? 65 : 65}
               priceId="price_1HhQ3fQGf4fNlG6fl9PoXK09"
               features={[
@@ -100,7 +102,8 @@ const PricingPage: React.FC = () => {
               onGetStarted={handleGetStarted}
             />
             <PricingCard
-              title="Platinum"
+              title="Premuim"
+              subscription="Premuim"
               price={activeTab === "monthly" ? 99 : 99}
               priceId="price_1HhQ4uQGf4fNlG6fsH2yPvLJ"
               features={[

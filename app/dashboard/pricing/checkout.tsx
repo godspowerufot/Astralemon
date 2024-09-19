@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { api } from "@/lib/axios";
 import { useUserDetails } from "@/hooks/useLoguser";
 import { getAccessToken } from "@/utils/util";
+import "react-toastify/dist/ReactToastify.css";
 
 const CheckoutForm: React.FC<{ plans: string; onClose: () => void }> = ({
   plans,
@@ -168,7 +169,7 @@ const handleSubmit = async (event: React.FormEvent) => {
           </button>
         </div>
         {error && (
-          <p className="text-red-500 text-sm mt-2 text-center">{error}</p>
+          <p className="text-red text-sm mt-2 text-center">{error}</p>
         )}
         {success && (
           <p className="text-green-500 text-sm mt-2 text-center">{success}</p>
