@@ -59,8 +59,15 @@ const register = async (formData: {
   } catch (err: any) {
     // Handle errors
     setLoading(false);
-    const errorMessage = err.response?.data?.username || err.response?.data?.email;
+    const errorMessage =
+      err.response?.data?.username||
+      err.response?.data?.error||
+      err.response?.data?.email;
     setError(errorMessage);
+    console.log(err);
+
+    // Extract the error message from the Axios error object
+  
     toast.error(errorMessage);
     return false;
   }
@@ -89,9 +96,16 @@ const register = async (formData: {
       router.push("/dashboard");
     } catch (err: any) {
       setLoading(false);
-      const errorMessage = err.response?.data?.message || "Login failed";
-      setError(errorMessage);
-      toast.error(errorMessage);
+   console.log(err);
+
+   // Extract the error message from the Axios error object
+   const errorMessage =
+     err.response?.data?.error || // Backend error message
+     err.response?.data?.message || // Alternate backend error field
+     "Login failed"; // Fallback message
+
+   setError(errorMessage);
+   toast.error(errorMessage);
     }
   };
 

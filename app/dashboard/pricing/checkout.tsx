@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-import { toast } from "react-toastify";
+import { toast,ToastContainer } from "react-toastify";
 import { api } from "@/lib/axios";
 import { useUserDetails } from "@/hooks/useLoguser";
 import { getAccessToken } from "@/utils/util";
@@ -72,9 +72,10 @@ const handleSubmit = async (event: React.FormEvent) => {
 
     console.log("API response:", response);
     setLoading(false) // Log the entire response object
-      toast.success("Subscription successful!");
 
     if (response.status === 201) {
+            toast.success("Subscription successful!");
+
       console.log("Subscription successful:", response.data);
       setSuccess("Subscription successful!");
     } else {
@@ -100,6 +101,8 @@ const handleSubmit = async (event: React.FormEvent) => {
   return (
   
       <div className="fixed inset-0 flex items-center justify-center z-50">
+      
+      <ToastContainer/>
       <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur-md" onClick={onClose}></div>
     <div className="w-full    z-[1111]  max-w-sm mx-auto p-6 bg-white  rounded-lg shadow-md">
       <h3 className="text-xl font-bold mb-4">Subscribe to {plans}</h3>
