@@ -82,8 +82,8 @@ const PricingPage: React.FC = () => {
               onGetStarted={handleGetStarted}
             />
             <PricingCard
-            title="Meduim"
-              subscription="meduim"
+            title="Medium"
+              subscription="medium"
               price={activeTab === "monthly" ? 65 : 65}
               priceId="price_1HhQ3fQGf4fNlG6fl9PoXK09"
               features={[
@@ -102,8 +102,8 @@ const PricingPage: React.FC = () => {
               onGetStarted={handleGetStarted}
             />
             <PricingCard
-              title="Premuim"
-              subscription="Premuim"
+              title="Premium"
+              subscription="premium"
               price={activeTab === "monthly" ? 99 : 99}
               priceId="price_1HhQ4uQGf4fNlG6fsH2yPvLJ"
               features={[

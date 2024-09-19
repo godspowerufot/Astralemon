@@ -6,6 +6,7 @@ import { api } from "@/lib/axios";
 import { useUserDetails } from "@/hooks/useLoguser";
 import { getAccessToken } from "@/utils/util";
 import "react-toastify/dist/ReactToastify.css";
+import { FaBullseye } from "react-icons/fa";
 
 const CheckoutForm: React.FC<{ plans: string; onClose: () => void }> = ({
   plans,
@@ -69,11 +70,12 @@ const handleSubmit = async (event: React.FormEvent) => {
       }
     );
 
-    console.log("API response:", response); // Log the entire response object
+    console.log("API response:", response);
+    setLoading(false) // Log the entire response object
+      toast.success("Subscription successful!");
 
     if (response.status === 201) {
       console.log("Subscription successful:", response.data);
-      toast.success("Subscription successful!");
       setSuccess("Subscription successful!");
     } else {
       // Inspect the response data to determine the error structure

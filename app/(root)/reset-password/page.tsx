@@ -30,19 +30,24 @@ const PasswordReset = () => {
     }
 
     try {
+      setLoading(true)
       // send request  to the reset password confirm endpoint
-      await api.post("/accounts/password-reset-confirm/", {
-        uid,
-        token,
-        new_password: newPassword,
-        new_password_confirm: newPasswordConfirm,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        }})
-
+      await api.post(
+        "/accounts/password-reset-confirm/",
+        {
+          uid,
+          token,
+          new_password: newPassword,
+          new_password_confirm: newPasswordConfirm,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
+          },
+        }
+      );
+setLoading(false)
       toast.success("Password reset successful");
       router.push("/Login"); // Redirect to login after success
     } catch (err: any) {
