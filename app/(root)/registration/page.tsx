@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation"; // Use `useSearchParams` to get the URL params
 import Image from "next/image";
@@ -113,9 +112,8 @@ const Spinner = () => (
   </div>
 );
   return (
-        <Suspense fallback={<Spinner/>}>
 
-    
+    <>
       {/* Main container with loading blur effect */}
       <div
         className={`h-[50%] bg-gray-100 text-gray-900 flex justify-center ${
@@ -276,7 +274,7 @@ const Spinner = () => (
           </div>
         </div>
       </div>
-    </Suspense>
+      </>
   );
 };
 
