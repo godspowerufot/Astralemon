@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect, useRef, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation"; // Use `useSearchParams` to get the URL params
 import Image from "next/image";
 import MediaBears from "@/public/media logo.png";
 import { useAuth } from "@/hooks/useAuth"; // Import the useAuth hook
@@ -13,8 +13,6 @@ interface FormData {
   last_name: string;
   email: string;
   password: string;
-  phone_no: string;
-  referred_by: string; // Optional
 }
 
 const Register = () => {
@@ -24,8 +22,6 @@ const Register = () => {
     last_name: "",
     email: "",
     password: "",
-    phone_no: "",
-    referred_by: "", // Optional
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
@@ -34,20 +30,22 @@ const Register = () => {
   const [showModal, setShowModal] = useState(false);
   const { register, loading, error } = useAuth();
   const router = useRouter();
-  const inputRefs: Record<keyof FormData, React.RefObject<HTMLInputElement>> = {
-    first_name: useRef(null),
-    last_name: useRef(null),
-    username: useRef(null),
-    email: useRef(null),
-    password: useRef(null),
-    phone_no: useRef(null),
-    referred_by: useRef(null),
-  };
+  const searchParams = useSearchParams(); // To extract the ref query param
+const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefObject<HTMLInputElement>>> = {
+  first_name: useRef(null),
+  last_name: useRef(null),
+  username: useRef(null),
+  email: useRef(null),
+  password: useRef(null),
+};
+
+ 
+ 
 
   const validateForm = () => {
     const newErrors: Partial<Record<keyof FormData, string>> = {};
     (Object.keys(formData) as (keyof FormData)[]).forEach((key) => {
-      if (key !== "referred_by" && !formData[key]) {
+      if (!formData[key]) {
         newErrors[key] = "This field is required";
       }
     });
@@ -76,6 +74,12 @@ const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const referralCode = searchParams.get("ref"); // Get referral code from URL
+
+    // If there's a referral code, include it in the form data
+    if (referralCode) {
+      setFormData((prevData) => ({ ...prevData, referred_by: referralCode }));
+    }
     if (validateForm()) {
       await register(formData);
     }
@@ -84,9 +88,34 @@ const Register = () => {
   const handleNavigation = (path: string) => {
     router.push(path);
   };
-
+// components/Spinner.js
+const Spinner = () => (
+  <div className="flex justify-center items-center h-full">
+    <svg
+      className="animate-spin h-8 w-8 border-t-4 border-blue-500 border-solid rounded-full"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+      />
+    </svg>
+  </div>
+);
   return (
-    <>
+        <Suspense fallback={<Spinner/>}>
+
+    
       {/* Main container with loading blur effect */}
       <div
         className={`h-[50%] bg-gray-100 text-gray-900 flex justify-center ${
@@ -105,10 +134,8 @@ const Register = () => {
                       "first_name",
                       "last_name",
                       "username",
-
                       "email",
                       "password",
-                      "phone_no",
                     ].map((field, index) => (
                       <div key={index} className="mt-5">
                         <input
@@ -127,16 +154,12 @@ const Register = () => {
                               ? "email"
                               : field === "password"
                               ? "password"
-                               : field === "phone_no"
-                               ? "number"
                               : "text"
                           }
                           name={field}
                           placeholder={
                             field === "username"
                               ? "Choose a username"
-                              : field === "phone_no"
-                              ? "Phone No."
                               : field
                                   .replace("_", " ")
                                   .charAt(0)
@@ -154,14 +177,7 @@ const Register = () => {
                         )}
                       </div>
                     ))}
-                    <input
-                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                      type="text"
-                      name="referred_by"
-                      placeholder="Referral (Username) optional"
-                      value={formData.referred_by}
-                      onChange={handleChange}
-                    />
+
                     <button
                       type="submit"
                       className="mt-5 tracking-wide text-white font-semibold bg-blue-600 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
@@ -247,24 +263,20 @@ const Register = () => {
                             </text>
                           </svg>
                         </span>
-                        <span className="ml-[0%] block font-semibold text-white">
-                          {step.title}
-                        </span>
+                        <span className="pl-4 font-medium text-white">{step.title}</span>
                       </span>
-                      <div className="border-l-[4px] border-white pl-5">
-                        <div className="font-normal  text-white ">
-                          {step.description}
-                        </div>
-                      </div>
                     </span>
                   </div>
+                  <span className="pl-6 border-l-white  text-white pr-2 text-gray-300 text-sm text-left">
+                    {step.description}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </Suspense>
   );
 };
 

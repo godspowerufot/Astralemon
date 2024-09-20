@@ -52,7 +52,7 @@ setLoading(false)
       router.push("/Login"); // Redirect to login after success
     } catch (err: any) {
       console.log(err)
-      toast.error(err.response?.data?.message || "Failed to reset password");
+      toast.error(err.response?.data?.error || "Failed to reset password");
     } finally {
       setLoading(false);
     }

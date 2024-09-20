@@ -7,6 +7,7 @@ import ChartTwo from "../components/Charts/ChartTwo";
 // import ChatCard from "../Chat/ChatCard";
 import TableOne from "../components/Tables/TableOne";
 import CardDataStats from "../CardDataStats";
+import { useUserDetails } from "@/hooks/useLoguser";
 
 const MapOne = dynamic(() => import("@/app/dashboard/components/Maps/MapOne"), {
   ssr: false,
@@ -49,6 +50,7 @@ const cardData = [
 ];
 
 const DashBoardHome: React.FC = () => {
+  //  const { dataInsta} =useUserDetails();
   return (
     <>
       <div className="grid grid-cols-1  gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">

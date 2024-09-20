@@ -29,7 +29,7 @@ const register = async (formData: {
   last_name: string;
   email: string;
   password: string;
-  phone_no: string;
+
   referred_by?: string; // Optional referralId
 }): Promise<boolean> => {
   setLoading(true);
@@ -150,11 +150,23 @@ const register = async (formData: {
       setLoading(false);
       setError("Failed to fetch referral link.");
     }
-  };
 
+    
+  };
+   const handleResendVerification = async (emailInput: any) => {
+     try {
+       await api.post("/accounts/resend-verification/", {
+         email: emailInput,
+       });
+       toast.success("Verification email sent successfully");
+     } catch (err) {
+       toast.error("Failed to send verification email");
+     }
+   };
   return {
     register,
     login,
+    handleResendVerification,
     logout,
     getReferralLink,
     referralCode,
