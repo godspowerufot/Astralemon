@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef,Suspense } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation"; // Use `useSearchParams` to get the URL params
 import Image from "next/image";
 import MediaBears from "@/public/media logo.png";
@@ -39,14 +39,8 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
   password: useRef(null),
 };
 
-
-  // On mount, extract the referral code from the URL and set it in the form data
-  useEffect(() => {
-    const referralCode = searchParams.get("ref");
-    if (referralCode) {
-      setFormData((prevData) => ({ ...prevData, referred_by: referralCode }));
-    }
-  }, [searchParams]);
+ 
+ 
 
   const validateForm = () => {
     const newErrors: Partial<Record<keyof FormData, string>> = {};
@@ -80,6 +74,12 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const referralCode = searchParams.get("ref"); // Get referral code from URL
+
+    // If there's a referral code, include it in the form data
+    if (referralCode) {
+      setFormData((prevData) => ({ ...prevData, referred_by: referralCode }));
+    }
     if (validateForm()) {
       await register(formData);
     }
@@ -88,10 +88,34 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
   const handleNavigation = (path: string) => {
     router.push(path);
   };
-
+// components/Spinner.js
+const Spinner = () => (
+  <div className="flex justify-center items-center h-full">
+    <svg
+      className="animate-spin h-8 w-8 border-t-4 border-blue-500 border-solid rounded-full"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+      />
+    </svg>
+  </div>
+);
   return (
-            <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Spinner/>}>
 
+    
       {/* Main container with loading blur effect */}
       <div
         className={`h-[50%] bg-gray-100 text-gray-900 flex justify-center ${
@@ -216,7 +240,7 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
             <div className="flex flex-col justify-center items-center mt-12 w-[70%]">
               {steps.map((step) => (
                 <div key={step.number} className="flex flex-col mb-6">
-                  <div className="flex items-center justify-start text-left p-2">
+                  <div className="flex items-center text-left p-2">
                     <span className="w-full text-gray-600 text-sm">
                       <span className="flex ">
                         <span
@@ -243,7 +267,7 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
                       </span>
                     </span>
                   </div>
-                  <span className="pl-6 border-l-white border-l-6  text-white pr-2 text-gray-300 text-sm text-left">
+                  <span className="pl-6 border-l-white  text-white pr-2 text-gray-300 text-sm text-left">
                     {step.description}
                   </span>
                 </div>
@@ -252,7 +276,7 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
           </div>
         </div>
       </div>
-         </Suspense>
+    </Suspense>
   );
 };
 
