@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation"; // Use `useSearchParams` to get the URL params
 import Image from "next/image";
 import MediaBears from "@/public/media logo.png";
@@ -91,12 +91,14 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
 
   return (
     <>
+     
       {/* Main container with loading blur effect */}
       <div
         className={`h-[50%] bg-gray-100 text-gray-900 flex justify-center ${
           loading ? "blur-sm" : ""
         }`}
       >
+       <Suspense fallback={<div>Loading...</div>}></Suspense>
         <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow-2xl rounded-lg flex justify-center flex-1">
           <div className="lg:w-[50%] xl:w-[50.666667%] p-6 sm:p-12">
             <div className="mt-8 flex flex-col items-center">
