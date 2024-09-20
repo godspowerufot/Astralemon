@@ -5,6 +5,7 @@ import Image from "next/image";
 import MediaBears from "@/public/media logo.png";
 import { useAuth } from "@/hooks/useAuth"; // Import the useAuth hook
 import { steps } from "@/lib/expertlink";
+import { Spinner } from "@chakra-ui/react";
 
 interface FormData {
   first_name: string;
@@ -14,7 +15,7 @@ interface FormData {
   password: string;
 }
 
-const Register = () => {
+const Registeration = () => {
   const [formData, setFormData] = useState<FormData>({
     first_name: "",
     username: "",
@@ -88,29 +89,7 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
     router.push(path);
   };
 // components/Spinner.js
-const Spinner = () => (
-  <div className="flex justify-center items-center h-full">
-    <svg
-      className="animate-spin h-8 w-8 border-t-4 border-blue-500 border-solid rounded-full"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-    >
-      <circle
-        className="opacity-25"
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="4"
-      />
-      <path
-        className="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-      />
-    </svg>
-  </div>
-);
+
   return (
 
     <>
@@ -275,6 +254,38 @@ const Spinner = () => (
         </div>
       </div>
       </>
+  );
+};
+
+
+const Spinner = () => (
+  <div className="flex justify-center items-center h-full">
+    <svg
+      className="animate-spin h-8 w-8 border-t-4 border-blue-500 border-solid rounded-full"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+      />
+    </svg>
+  </div>
+);
+const Register = () => {
+  return (
+    <Suspense fallback={<Spinner />}>
+  <Registeration/>
+    </Suspense>
   );
 };
 
