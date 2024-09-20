@@ -37,7 +37,7 @@ const PricingPage: React.FC = () => {
   return (
     <Elements stripe={stripePromise}>
    
-        <div className="container mx-auto">
+        <div className="container mx-auto max-md:flex max-md:items-center max-md:justify-center">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <PricingCard
               subscription="basic"

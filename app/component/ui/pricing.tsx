@@ -31,7 +31,11 @@ function Pricing() {
                 Find the perfect plan for you.
               </p>
             </div>
+            <div className="flex justify-center items-center">
+
+     
             <PricingPage />
+                   </div>
 
             {/* <stripe-pricing-table
               pricing-table-id={process.env.STRIPE_PRICING_TABLE_ID}

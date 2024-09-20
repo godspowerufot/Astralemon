@@ -52,7 +52,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
         className="w-auto mt-3  h-auto"
       />
       <p className="text-[14px] mt-2 mb-2  text-slate-500 ">{text}</p>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <h1 className="text-2xl font-bold mb-2">{title}</h1>
       <div className="text-3xl text-slate-700 font-bold mb-1">${price}</div>
       <p className="text-sm text-slate-500">
         {`Per ${price >= 1000 ? "year" : "month"}`}
