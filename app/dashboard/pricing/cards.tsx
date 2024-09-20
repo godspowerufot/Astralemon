@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Check, X } from "lucide-react";
-
+import Image from "next/image"
 interface Feature {
   text: string;
   included: boolean;
@@ -12,6 +12,8 @@ interface PricingCardProps {
   subscription:string;
   price: number;
   priceId: string;
+  imgurl:string;
+text:string;
   features: Feature[];
   featured?: boolean;
   onGetStarted: (plan: string) => void;
@@ -21,6 +23,8 @@ const PricingCard: React.FC<PricingCardProps> = ({
   subscription,
  
   title,
+  imgurl,
+  text,
   price,
   features,
 
@@ -33,17 +37,26 @@ const PricingCard: React.FC<PricingCardProps> = ({
         featured ? "ring-1 ring-slate-300" : ""
       }`}
     >
+      
       {featured && (
         <div className="text-blue-500 text-sm font-semibold mb-2">
           Most Popular
         </div>
       )}
+      {" "}
+      <Image
+        width={100}
+        height={100}
+        src={`${imgurl}`}
+        alt="User Badge"
+        className="w-auto mt-3  h-auto"
+      />
+      <p className="text-[14px] mt-2 mb-2  text-slate-500 ">{text}</p>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <div className="text-3xl text-slate-700 font-bold mb-1">${price}</div>
       <p className="text-sm text-slate-500">
         {`Per ${price >= 1000 ? "year" : "month"}`}
       </p>
-
       <ul className="w-full my-4 space-y-2">
         {features.map((feature, index) => (
           <ListItem
@@ -53,7 +66,6 @@ const PricingCard: React.FC<PricingCardProps> = ({
           />
         ))}
       </ul>
-
       <button
         className={`w-full py-2 rounded-md transition-colors font-semibold  ${
           featured

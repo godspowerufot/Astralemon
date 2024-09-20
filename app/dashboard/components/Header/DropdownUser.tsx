@@ -6,10 +6,15 @@ import { useRouter } from "next/navigation";
 import ClickOutside from "@/components/ClickOutside";
 import { useAuth } from "@/hooks/useAuth"; // Import the useAuth hook
 import { useUserDetails } from "@/hooks/useLoguser";
+import { data } from "autoprefixer";
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { logout } = useAuth(); // Use the logout function from the useAuth hook
   const router = useRouter();
+    let imageUrl = "";
+  let bgColor = "bg-red-500"; // Default background color
+
+
 const {data}=useUserDetails();
   // Handle the logout process
   const handleLogout = async () => {
@@ -17,6 +22,16 @@ const {data}=useUserDetails();
     setDropdownOpen(false);
     router.push("/Login"); // Redirect to the login page after logout
   };
+       if (data?.is_superuser) {
+         imageUrl = "/Premium.png";
+         bgColor = ""; // No background color when an image is present
+       } else if (data?.is_staff) {
+         imageUrl = "/medium.png";
+         bgColor = "";
+       } else if (data?.is_active) {
+         imageUrl = "/basic.png";
+         bgColor = "";
+       }
 
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
@@ -25,7 +40,7 @@ const {data}=useUserDetails();
         className="flex items-center gap-4"
         href="#"
       >
-        <span className="h-12 w-12 rounded-full">
+        <span className="h-12 w-12 mr-4 rounded-full">
           <Image
             width={112}
             height={112}
@@ -36,6 +51,17 @@ const {data}=useUserDetails();
             }}
             alt="User"
           />
+
+          {imageUrl ? (
+            <Image
+              width={30}
+              height={50}
+              src={imageUrl}
+              alt="User Badge"
+              className="absolute bottom-[8px] left-[20px]"
+            />
+          ) : null}
+
         </span>
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
@@ -90,9 +116,11 @@ const {data}=useUserDetails();
                 My Profile
               </Link>
             </li>
-           
           </ul>
-          <button onClick={handleLogout} className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+          >
             <svg
               className="fill-current"
               width="22"

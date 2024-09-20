@@ -1,6 +1,7 @@
 import * as React from "react";
 import Button from "../atoms/Button";
 import Link from "next/link";
+import PricingPage from "@/app/dashboard/pricing/Pricingcard";
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -30,11 +31,12 @@ function Pricing() {
                 Find the perfect plan for you.
               </p>
             </div>
+            <PricingPage />
 
-            <stripe-pricing-table
+            {/* <stripe-pricing-table
               pricing-table-id={process.env.STRIPE_PRICING_TABLE_ID}
               publishable-key={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
-            ></stripe-pricing-table>
+            ></stripe-pricing-table> */}
           </div>
         </div>
       </div>

@@ -59,6 +59,7 @@ export const useUserDetails = () => {
         );
         setUserId(response?.data?.id);
         setData(response?.data);
+        console.log(response?.data)
         setLoading(false);
       } catch (err: any) {
         setLoading(false);
@@ -105,7 +106,6 @@ export const useUserDetails = () => {
           },
         }
       );
-      console.log(response?.data);
       setLoading(false);
     } catch (err: any) {
       setLoading(false);

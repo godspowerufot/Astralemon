@@ -74,8 +74,12 @@ const handleSubmit = async (event: React.FormEvent) => {
     setLoading(false) // Log the entire response object
 
     if (response.status === 201) {
-            toast.success("Subscription successful!");
-
+toast.success("Subscription successful!", {
+  position: "top-center", // Set the toast position to the top-center
+  style: {
+    marginTop: "50px", // Adjust this value to push it down
+  },
+});
       console.log("Subscription successful:", response.data);
       setSuccess("Subscription successful!");
     } else {
