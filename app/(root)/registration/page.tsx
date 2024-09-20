@@ -215,7 +215,7 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
             <div className="flex flex-col justify-center items-center mt-12 w-[70%]">
               {steps.map((step) => (
                 <div key={step.number} className="flex flex-col mb-6">
-                  <div className="flex items-center text-left p-2">
+                  <div className="flex items-center justify-start text-left p-2">
                     <span className="w-full text-gray-600 text-sm">
                       <span className="flex ">
                         <span
@@ -238,11 +238,11 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
                             </text>
                           </svg>
                         </span>
-                        <span className="pl-4 text-white">{step.title}</span>
+                        <span className="pl-4 font-medium text-white">{step.title}</span>
                       </span>
                     </span>
                   </div>
-                  <span className="pl-6 pr-2 text-gray-300 text-sm text-left">
+                  <span className="pl-6 border-l-white border-l-6  text-white pr-2 text-gray-300 text-sm text-left">
                     {step.description}
                   </span>
                 </div>
