@@ -1,5 +1,4 @@
 "use client"; 
-
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast ,ToastContainer} from "react-toastify";
@@ -97,7 +96,7 @@ setLoading(false)
           className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           disabled={loading}
         >
-          {loading ? "Resetting Password..." : "Reset Password"}
+          {loading ? "Resetting Passwords..." : "Reset Password"}
         </button>
       </form>
     </div>
