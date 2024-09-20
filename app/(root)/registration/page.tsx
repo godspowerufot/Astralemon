@@ -5,7 +5,6 @@ import Image from "next/image";
 import MediaBears from "@/public/media logo.png";
 import { useAuth } from "@/hooks/useAuth"; // Import the useAuth hook
 import { steps } from "@/lib/expertlink";
-import { Spinner } from "@chakra-ui/react";
 
 interface FormData {
   first_name: string;
