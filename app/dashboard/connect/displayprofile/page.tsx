@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Card from "./cards";
+import TargetCard from "./target";
 
 const DisplayInstaProfile: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("setting");
+  const [activeTab, setActiveTab] = useState("target");
 
 
   return (
@@ -47,7 +48,8 @@ const DisplayInstaProfile: React.FC = () => {
           <h2 className="mt-7 mb-5 text-black-2 font-medium text-[1.5em]">
             Saved user account profiles
           </h2>
-          {/* /dividing card */} <Card />
+          {/* /dividing card */}
+           <Card />
         </div>
         {/* Second Card */}
 
@@ -55,7 +57,7 @@ const DisplayInstaProfile: React.FC = () => {
           <div className="flex gap-8">
             {/* Tab Buttons */}
             <h2
-              className={`cursor-pointer text-lg font-semibold ${
+              className={`cursor-pointer text-lg font-medium ${
                 activeTab === "setting" ? "text-blue-600" : "text-gray-600"
               }`}
               onClick={() => setActiveTab("setting")}
@@ -63,7 +65,7 @@ const DisplayInstaProfile: React.FC = () => {
               Setting
             </h2>
             <h2
-              className={`cursor-pointer text-lg font-semibold ${
+              className={`cursor-pointer text-lg font-medium ${
                 activeTab === "target" ? "text-blue-600" : "text-gray-600"
               }`}
               onClick={() => setActiveTab("target")}
@@ -82,9 +84,7 @@ const DisplayInstaProfile: React.FC = () => {
               </div>
             ) : (
               <div>
-                <h2 className="text-blue-600">
-                  Hi, this is the Target content!
-                </h2>
+                <TargetCard/>
               </div>
             )}
           </div>
