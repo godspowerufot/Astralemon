@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import Card from "./cards";
 
 const DisplayInstaProfile: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<"monthly" | "yearly">("monthly");
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState("setting");
 
 
   return (
@@ -48,43 +47,46 @@ const DisplayInstaProfile: React.FC = () => {
           <h2 className="mt-7 mb-5 text-black-2 font-medium text-[1.5em]">
             Saved user account profiles
           </h2>
-            {/* /dividing card */}{" "}
-           <Card/>
+          {/* /dividing card */} <Card />
         </div>
         {/* Second Card */}
 
         <div className="info-card bg-white border- p-10 rounded-lg shadow-md flex-1">
-          <div>
-            <h2 className="text-gray-3">
-Setting 
+          <div className="flex gap-8">
+            {/* Tab Buttons */}
+            <h2
+              className={`cursor-pointer text-lg font-semibold ${
+                activeTab === "setting" ? "text-blue-600" : "text-gray-600"
+              }`}
+              onClick={() => setActiveTab("setting")}
+            >
+              Setting
             </h2>
-            <h2 className="text-blue">
+            <h2
+              className={`cursor-pointer text-lg font-semibold ${
+                activeTab === "target" ? "text-blue-600" : "text-gray-600"
+              }`}
+              onClick={() => setActiveTab("target")}
+            >
               Target
-              </h2>
+            </h2>
           </div>
-          <div className="flex flex-col lg:flex-row justify-between items-center mb-8">
-            <div className="flex items-center bg-[#eeeff0] p-2 rounded-md w-72">
-              <button
-                className={`flex-1 px-4 py-2 rounded-l-md ${
-                  activeTab === "monthly"
-                    ? "bg-white text-blue-600 font-semibold"
-                    : "text-gray-500"
-                }`}
-                onClick={() => setActiveTab("monthly")}
-              >
-                Target
-              </button>
-              <button
-                className={`flex-1 px-4 py-2 rounded-r-md ${
-                  activeTab === "yearly"
-                    ? "bg-white text-blue-600 font-semibold"
-                    : "text-gray-500"
-                }`}
-                onClick={() => setActiveTab("yearly")}
-              >
-                Yearly
-              </button>
-            </div>
+
+          {/* Render different content based on active tab */}
+          <div className="mt-8">
+            {activeTab === "setting" ? (
+              <div>
+                <h2 className="text-gray-600">
+                  Hi, this is the Setting content!
+                </h2>
+              </div>
+            ) : (
+              <div>
+                <h2 className="text-blue-600">
+                  Hi, this is the Target content!
+                </h2>
+              </div>
+            )}
           </div>
         </div>
       </div>
