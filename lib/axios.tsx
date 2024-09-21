@@ -48,7 +48,7 @@ const useAxiosPrivate = () => {
             Cookies.set("accessToken", data.access);
 
             // Log the new access token
-            console.log("New access token:", data.access);
+          
 
             // Update header and retry original request
             api.defaults.headers.common[
