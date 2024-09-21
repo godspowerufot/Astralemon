@@ -36,79 +36,77 @@ const PricingPage: React.FC = () => {
 
   return (
     <Elements stripe={stripePromise}>
-   
-        <div className="container mx-auto max-md:flex max-md:items-center max-md:justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <PricingCard
-              subscription="basic"
-              title="Easy"
-              text="Take advantage of a trial to discover the performance of our services."
-              imgurl="/basicbig.png"
-              price={activeTab === "monthly" ? 35 : 35}
-              priceId="price_1HhQ2bQGf4fNlG6fQgP0kjE3"
-              features={[
-                { text: "250 followers/wee", included: true },
-                { text: "25,000 shares/day", included: true },
-                { text: "Mass views of stories", included: true },
-                { text: "Mass likes of stories", included: true },
-                { text: "Interactions with surveys", included: true },
-                { text: "Daily reports", included: true },
-                { text: "1 Instagram account", included: true },
-                { text: "Welcome DM", included: false },
-                { text: "Follow / Unfollow", included: false },
-              ]}
-              onGetStarted={handleGetStarted}
-            />
-            <PricingCard
-              title="Premium"
-              imgurl="/meduimbig.png"
-              text="Premium offer to perform at your fair value."
-              subscription="medium"
-              price={activeTab === "monthly" ? 65 : 65}
-              priceId="price_1HhQ3fQGf4fNlG6fl9PoXK09"
-              features={[
-                { text: "800 -1,500 followers/month", included: true },
-                { text: "25,000 actions/day", included: true },
-                { text: "Mass views of stories", included: true },
-                { text: "Mass likes of stories", included: true },
-                { text: "Follow / Unfollow", included: false },
-                { text: "Daily reports", included: true },
-                { text: "Targetting with AI", included: true },
-                { text: "Interactions with surveys", included: true },
-                { text: "1 Instagram account", included: true },
-                { text: "Welcome DM", included: false },
-              ]}
-              featured
-              onGetStarted={handleGetStarted}
-            />
-            <PricingCard
-              title="Expert"
-              imgurl="/premuimbig.png"
-              text="Our comprehensive offer guarantees you the best results."
-              subscription="premium"
-              price={activeTab === "monthly" ? 99 : 99}
-              priceId="price_1HhQ4uQGf4fNlG6fsH2yPvLJ"
-              features={[
-                { text: "1,200 -2,000 followers/month", included: true },
-                { text: "35,000 actions/day", included: true },
-                { text: "Mass views of stories", included: true },
-                { text: "Mass likes of stories", included: true },
-                { text: "Follow / Unfollow", included: false },
-                { text: "Daily reports", included: true },
-                { text: "Welcome DM", included: true },
-                { text: "Interactions with surveys", included: true },
-                { text: "Post likes", included: true },
-                { text: "Targetting with AI", included: true },
-                { text: "2 Instagram account", included: true },
-              ]}
-              onGetStarted={handleGetStarted}
-            />
-          </div>
+      <div className="container mx-auto max-md:flex max-md:items-center max-md:justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <PricingCard
+            subscription="basic"
+            title="Easy"
+            text="Take advantage of a trial to discover the performance of our services."
+            imgurl="/basicbig.png"
+            price={activeTab === "monthly" ? 35 : 35}
+            priceId="price_1HhQ2bQGf4fNlG6fQgP0kjE3"
+            features={[
+              { text: "250 followers/week", included: true },
+              { text: "25,000 shares/day", included: true },
+              { text: "Mass views of stories", included: true },
+              { text: "Mass likes of stories", included: true },
+              { text: "Interactions with surveys", included: true },
+              { text: "Daily reports", included: true },
+              { text: "1 Instagram account", included: true },
+              { text: "Welcome DM", included: false },
+              { text: "Follow/Unfollow", included: false },
+            ]}
+            onGetStarted={handleGetStarted}
+          />
+          <PricingCard
+            title="Premium"
+            imgurl="/premuimbig.png"
+            text="Premium offer to perform at your fair value."
+            subscription="medium"
+            price={activeTab === "monthly" ? 65 : 65}
+            priceId="price_1HhQ3fQGf4fNlG6fl9PoXK09"
+            features={[
+              { text: "800 - 1,500 followers/month", included: true },
+              { text: "25,000 actions/day", included: true },
+              { text: "Mass views of stories", included: true },
+              { text: "Mass likes of stories", included: true },
+              { text: "Follow/Unfollow", included: true },
+              { text: "Daily reports", included: true },
+              { text: "Targetting with AI", included: true },
+              { text: "Interactions with surveys", included: true },
+              { text: "1 Instagram account", included: true },
+              { text: "Welcome DM", included: false },
+            ]}
+            featured
+            onGetStarted={handleGetStarted}
+          />
+          <PricingCard
+            title="Expert"
+            imgurl="/NeoFlashbg.png"
+            text="Our comprehensive offer guarantees you the best results."
+            subscription="premium"
+            price={activeTab === "monthly" ? 99 : 99}
+            priceId="price_1HhQ4uQGf4fNlG6fsH2yPvLJ"
+            features={[
+              { text: "1,200 - 2,000 followers/month", included: true },
+              { text: "35,000 actions/day", included: true },
+              { text: "Mass views of stories", included: true },
+              { text: "Mass likes of stories", included: true },
+              { text: "Follow/Unfollow", included: true },
+              { text: "Daily reports", included: true },
+              { text: "Welcome DM", included: true },
+              { text: "Interactions with surveys", included: true },
+              { text: "Post likes", included: true },
+              { text: "Targetting with AI", included: true },
+              { text: "2 Instagram account", included: true },
+            ]}
+            onGetStarted={handleGetStarted}
+          />
         </div>
-        {selectedPlan && (
-          <CheckoutForm plans={selectedPlan} onClose={handleCloseCheckout} />
-        )}
-    
+      </div>
+      {selectedPlan && (
+        <CheckoutForm plans={selectedPlan} onClose={handleCloseCheckout} />
+      )}
     </Elements>
   );
 };
