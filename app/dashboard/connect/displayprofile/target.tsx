@@ -45,7 +45,7 @@ const users = [
             <div className="flex w-full items-center gap-4 justify-start">
               <input
                 type="text"
-                placeholder="enter a Username"
+                placeholder="Search Username"
                 className="input-2  border h-[5%] border-[#ACB9CD] p-4   mt-3 bg-[#F6F7F9]    rounded-lg "
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -78,8 +78,20 @@ const users = [
         ) : (
           <div>
             {/* Target Content */}
-            <h2 className="text-blue-600 ">This is the Target Content</h2>
-            <p>You can view and set your targets here.</p>
+            <div className="flex w-full items-center gap-4 justify-start">
+              <input
+                type="text"
+                placeholder="Search hashtag"
+                className="input-2  border h-[5%] border-[#ACB9CD] p-4   mt-3 bg-[#F6F7F9]    rounded-lg "
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                required
+              />
+              <div className="btn lg:w-[10em]  p-[0.5em] rounded-lg flex item-center  mr-5 justify-center gap-2   mt-2 text-[1.2em]    bg-blue-500 text-white   font-bold hover:bg-blue-600 disabled:opacity-50">
+                <BiSearch className="text-white h-8" />
+                <p className="text-white  font-light">search </p>
+              </div>
+            </div>
           </div>
         )}
       </div>

@@ -55,7 +55,7 @@ const {data}=useUserDetails();
           {imageUrl ? (
             <Image
               width={30}
-              height={50}
+              height={30}
               src={imageUrl}
               alt="User Badge"
               className="absolute bottom-[8px] left-[20px]"
