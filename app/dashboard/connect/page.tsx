@@ -49,17 +49,17 @@ console.log(response)
   };
 
   return (
-    <div id="wrapper" className="max-w-4xl mx-auto mt-12 p-4">
+    <div id="wrapper" className=" mx-auto mt-12 p-4">
       {/* Flex container for the cards */}
-      <ToastContainer/>
-      <div className="flex flex-col lg:flex-row gap-8">
+      <ToastContainer />
+      <div className="flex flex-col p-5  lg:flex-row gap-8">
         {/* First Card */}
-        <div className="main-content flex items-stretch justify-center flex-col gap-[5%] bg-white border-2 p-10 rounded-lg shadow-md flex-1">
+        <div className="main-content flex items-stretch justify-center flex-col gap-[5%] bg-white  p-10 rounded-lg flex-1">
           <div className="header mb-5 flex justify-center">
             <img
               src="https://i.imgur.com/zqpwkLQ.png"
               alt="Instagram Logo"
-              className="h-12 w-44"
+              className="h-full w-[50%]"
             />
           </div>
           <form
@@ -67,21 +67,28 @@ console.log(response)
               e.preventDefault();
               handleConnect();
             }}
-            className="l-part space-y-4"
+            className="  w-full"
           >
+            <label htmlFor="Username" className="text-2xl">
+              {" "}
+              Username
+            </label>
             <input
               type="text"
-              placeholder="Username"
-              className="input-1 w-full border border-gray-300 p-2 rounded-md focus:ring focus:ring-blue-300"
+              placeholder="enter a Username"
+              className="input-2 w-full border h-[20%] border-[#ACB9CD] p-6   mt-3 bg-[#F6F7F9]    rounded-lg "
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
             <div className="overlap-text relative mt-5">
+              <label htmlFor="Password" className="text-2xl ">
+                Password
+              </label>
               <input
                 type="password"
-                placeholder="Password"
-                className="input-2 w-full border border-gray-300 p-2 rounded-md focus:ring focus:ring-blue-300"
+                placeholder=" enter a Password"
+                className="input-2 w-full border h-[20%] p-6 border-1 border-[#ACB9CD]  mt-3 bg-[#F6F7F9]    rounded-lg "
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -89,7 +96,7 @@ console.log(response)
             </div>
             <button
               type="submit"
-              className="btn w-full bg-blue-500 text-white p-2 rounded-md font-bold hover:bg-blue-600 disabled:opacity-50"
+              className="btn w-full rounded-full  text-[1.2em] p-4 mt-[7%]  bg-blue-500 text-white   font-bold hover:bg-blue-600 disabled:opacity-50"
               disabled={loading}
             >
               {loading ? "Connecting..." : "Connect"}
@@ -98,24 +105,23 @@ console.log(response)
         </div>
 
         {/* Second Card */}
-        <div className="info-card bg-white border-2 p-10 rounded-lg shadow-md flex-1">
+        <div className="info-card bg-white  h-fit p-10 rounded-lg w-full flex-1">
           <h2 className="text-2xl font-bold mb-4">Functionalities</h2>
-          <p className="mb-4">
+          <hr className="bg-[#6B7280] w-full mb-3 " />
+          <p className="mb-4 text-[#6B7280]  font-medium text-[1.2em] ">
             {" "}
             Connect your Instagram account to access our custom coded algorithm
           </p>
-          <h3 className="text-xl font-semibold mb-2">
+          <h3 className="text-2xl font-semibold mb-2">
             You &apos;re information provided is secured.
           </h3>
-          <ol className="list-decimal list-inside mb-4">
+          <ol className="list-decimal  text-[#6B7280] text-[1.2em] font-medium list-inside mb-4">
             <li>Connect your account.</li>
             <li>Confirm with 2 factor authentication. (optional)</li>
             <li>Chose your target audience.</li>
             <li>Start the algorithm.</li>
           </ol>
-          <p className="text-sm text-gray-500">
-            Time estimation: <b>2 minutes</b>
-          </p>
+        
         </div>
       </div>
 
