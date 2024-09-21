@@ -40,7 +40,7 @@ const Card = () => {
           className="w-full sm:w-1/2 lg:w-[47%] flex justify-center flex-col  gap-5 bg-white p-10 rounded-lg"
         >
           <div className="flex relative flex-col items-center mb-4">
-            <div className="w-5 h-5 absolute top-0 right-0 rounded-full bg-green-400"></div>
+            <div className="w-5 h-5 absolute top-0 right-0 rounded-full"></div>
             <div className="w-30 h-30 rounded-full bg-slate-400 overflow-hidden"></div>
             <div>
               <h2 className="text-1.3em mt-2 font-bold">{user.name}</h2>

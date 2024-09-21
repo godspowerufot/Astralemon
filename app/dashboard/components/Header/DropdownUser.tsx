@@ -58,7 +58,7 @@ const {data}=useUserDetails();
               height={30}
               src={imageUrl}
               alt="User Badge"
-              className="absolute -top-4 left-6"
+              className="absolute bottom-[15px] left-[20px]"
             />
           ) : null}
 

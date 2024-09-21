@@ -43,6 +43,8 @@ const users = [
           <div className="flex  flex-col w-full ">
             {/* input */}
             <div className="flex w-full items-center gap-4 justify-start">
+              <BiSearch className="text-[#ACB9CD] h-10 absolute mt-2" />
+
               <input
                 type="text"
                 placeholder="Search Username"
@@ -79,11 +81,11 @@ const users = [
           <div>
             {/* Target Content */}
             <div className="flex w-full items-center gap-4 justify-start">
-              <BiSearch className="text-white h-8 relative" />
+              <BiSearch className="text-[#ACB9CD] h-10 absolute mt-2" />
               <input
                 type="text"
                 placeholder="Search hashtag"
-                className="input-2  border h-[5%] border-[#ACB9CD] p-4   mt-3 bg-[#F6F7F9]    rounded-lg "
+                className="input-2  border h-[5%] border-[#ACB9CD] p-5 px-5   mt-3 bg-[#F6F7F9]    rounded-lg "
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 required
