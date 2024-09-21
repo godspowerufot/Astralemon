@@ -79,6 +79,7 @@ const users = [
           <div>
             {/* Target Content */}
             <div className="flex w-full items-center gap-4 justify-start">
+              <BiSearch className="text-white h-8 relative" />
               <input
                 type="text"
                 placeholder="Search hashtag"

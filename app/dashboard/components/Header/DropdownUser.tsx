@@ -40,7 +40,7 @@ const {data}=useUserDetails();
         className="flex items-center gap-4"
         href="#"
       >
-        <span className="h-12 w-12 mr-4 rounded-full">
+        <span className="h-12  relative w-12 mr-4 rounded-full">
           <Image
             width={112}
             height={112}
@@ -58,7 +58,7 @@ const {data}=useUserDetails();
               height={30}
               src={imageUrl}
               alt="User Badge"
-              className="absolute bottom-[8px] left-[20px]"
+              className="absolute -top-4 left-6"
             />
           ) : null}
 
