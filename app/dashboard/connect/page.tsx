@@ -5,12 +5,13 @@ import { toast,ToastContainer } from "react-toastify";
 import { api } from "@/lib/axios";
 import "react-toastify/dist/ReactToastify.css";
 import { getAccessToken } from "@/utils/util";
+import { useRouter } from "next/navigation";
 const ConnectInstagram: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
+const router=useRouter()
   const handleConnect = async () => {
     setLoading(true);
     setError(null);
@@ -33,6 +34,7 @@ const ConnectInstagram: React.FC = () => {
       toast.success("Instagram account connected successfully!");
 console.log(response)
       setLoading(false);
+      router.push("/dashboard/connect/displayprofile")
     } catch (err: any) {
     setLoading(false);
       console.log(err);
