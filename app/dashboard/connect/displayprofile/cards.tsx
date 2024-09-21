@@ -33,7 +33,7 @@ const users = [
 
 const Card = () => {
   return (
-    <div className="flex flex-row flex-wrap justify-start gap-8">
+    <div className="flex flex-col lg:flex-row  md:justify-center lg:flex-wrap  lg:w-full overflow-x-auto justify-start gap-8">
       {users.map((user, index) => (
         <div
           key={index}
