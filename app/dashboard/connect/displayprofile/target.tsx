@@ -5,7 +5,13 @@ const TargetCard = () => {
   // State to track the active tab
   const [activeTab, setActiveTab] = useState("Add Profile");
   const [search, setSearch] = useState("");
-
+const users = [
+  { id: 1, username: "@divine", name: "Divine Samuel" },
+  { id: 2, username: "@jane_doe", name: "Jane Doe" },
+  { id: 3, username: "@john_smith", name: "John Smith" },
+  { id: 4, username: "@emily_clark", name: "Emily Clark" },
+  { id: 5, username: "@michael_lee", name: "Michael Lee" },
+];
   return (
     <div>
       <div className="flex items-center bg-[#eeeff0] p-2 rounded-md w-72">
@@ -51,16 +57,22 @@ const TargetCard = () => {
               </div>
             </div>
             <h2 className="mt-7 mb-5 text-black-2 font-medium text-[1.5em]">
-            Results
+              Results
             </h2>
-            {/* Setting Content */}
-            <div className="flex  gap-7 justify-between items-center">
-              <div className="w-10 h-10 rounded-full bg-slate-400 overflow-hidden"></div>
-              <h2 className="text-[1em] font-meduim">@divine Samuel </h2>
-              <h2 className="text-[1em]  font-medium">divine Samuel </h2>
-              <div className="btn lg:w-[5em] font-light p-1 rounded-lg flex item-center   justify-center gap-2    text-[1em]    bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50">
-                Add
-              </div>
+            <div className="flex flex-col gap-4">
+              {users.map((user, index) => (
+                <div
+                  key={index}
+                  className="flex gap-7 justify-between items-center p-4 bg-white rounded-lg "
+                >
+                  <div className="w-10 h-10 rounded-full bg-slate-400 overflow-hidden"></div>
+                  <h2 className="text-[1em] font-medium">{user.username}</h2>
+                  <h2 className="text-[1em] font-medium">{user.name}</h2>
+                  <div className="btn lg:w-[5em] font-light p-1 rounded-lg flex items-center justify-center gap-2 text-[1em] bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50">
+                    Add
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ) : (
