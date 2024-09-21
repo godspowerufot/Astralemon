@@ -34,13 +34,13 @@ const TargetCard = () => {
       {/* Content based on the active tab */}
       <div className="mt-8     w-full ">
         {activeTab === "Add Profile" ? (
-          <div className="flex w-full ">
+          <div className="flex  flex-col w-full ">
             {/* input */}
             <div className="flex w-full items-center gap-4 justify-start">
               <input
                 type="text"
                 placeholder="enter a Username"
-                className="input-2  border h-[10%] border-[#ACB9CD] p-6   mt-3 bg-[#F6F7F9]    rounded-lg "
+                className="input-2  border h-[5%] border-[#ACB9CD] p-4   mt-3 bg-[#F6F7F9]    rounded-lg "
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 required
@@ -50,7 +50,18 @@ const TargetCard = () => {
                 <p className="text-white  font-light">search </p>
               </div>
             </div>
+            <h2 className="mt-7 mb-5 text-black-2 font-medium text-[1.5em]">
+            Results
+            </h2>
             {/* Setting Content */}
+            <div className="flex  gap-7 justify-between items-center">
+              <div className="w-10 h-10 rounded-full bg-slate-400 overflow-hidden"></div>
+              <h2 className="text-[1em] font-meduim">@divine Samuel </h2>
+              <h2 className="text-[1em]  font-medium">divine Samuel </h2>
+              <div className="btn lg:w-[5em] font-light p-1 rounded-lg flex item-center   justify-center gap-2    text-[1em]    bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50">
+                Add
+              </div>
+            </div>
           </div>
         ) : (
           <div>
