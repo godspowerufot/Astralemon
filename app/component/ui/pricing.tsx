@@ -2,6 +2,7 @@ import * as React from "react";
 import Button from "../atoms/Button";
 import Link from "next/link";
 import PricingPage from "@/app/dashboard/pricing/Pricingcard";
+import PricingPages from "@/app/dashboard/pricing/page";
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -33,8 +34,7 @@ function Pricing() {
             </div>
             <div className="flex justify-center items-center">
 
-     
-            <PricingPage activeTabs={""} />
+     <PricingPages/>
                    </div>
 
             {/* <stripe-pricing-table
