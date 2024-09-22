@@ -5,7 +5,7 @@ import { X } from "lucide-react";
 const Update = () => {
   return (
     <>
-      <div className="w-full mt-[20%]   flex items-center  p-6">
+      <div className="w-full lg:mt-[20%]   flex items-center  p-6">
         <div
           className="w-full  mb-6 rounded-xl  flex-col flex items-start justify-start p-4"
           style={{
