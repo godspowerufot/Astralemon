@@ -34,7 +34,7 @@ function Pricing() {
             <div className="flex justify-center items-center">
 
      
-            <PricingPage />
+            <PricingPage activeTabs={""} />
                    </div>
 
             {/* <stripe-pricing-table
