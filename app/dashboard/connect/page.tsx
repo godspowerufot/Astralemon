@@ -56,7 +56,7 @@ console.log(response)
       <ToastContainer />
       <div className="flex flex-col lg:p-5  lg:flex-row gap-8">
         {/* First Card */}
-        <div className="main-content flex w-[20rem] lg:w-full items-stretch justify-center flex-col gap-[5%] bg-white p-3 lg:p-10 rounded-lg lg:flex-1">
+        <div className="main-content flex w-[20rem] md:w-[100%] lg:w-full items-stretch justify-center flex-col gap-[5%] bg-white p-3 lg:p-10 rounded-lg lg:flex-1">
           <div className="header mb-5 flex justify-center mt-5">
             <img
               src="https://i.imgur.com/zqpwkLQ.png"

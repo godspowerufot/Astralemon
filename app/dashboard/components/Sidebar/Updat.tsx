@@ -15,7 +15,7 @@ const Update = () => {
     <>
       {/* If the card is visible, show the card */}
       {isCardVisible ? (
-        <div className="w-full fixed bottom-0 left-0 flex items-center p-6">
+        <div className="w-full lg:fixed bottom-0 left-0 flex items-center p-6">
           <div
             className="w-full mb-6 rounded-xl flex-col flex items-start justify-start p-4"
             style={{
