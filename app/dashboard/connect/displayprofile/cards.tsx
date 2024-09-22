@@ -33,11 +33,11 @@ const users = [
 
 const Card = () => {
   return (
-    <div className="flex flex-col lg:flex-row  md:justify-center lg:flex-wrap  lg:w-full overflow-x-auto justify-start gap-8">
+    <div className="flex flex-row w-[20rem] md:w-full lg:flex-row  md:justify-center lg:flex-wrap  lg:w-full overflow-x-auto justify-start gap-8">
       {users.map((user, index) => (
         <div
           key={index}
-          className="w-full sm:w-1/2 lg:w-[47%] flex justify-center flex-col  gap-5 bg-white p-10 rounded-lg"
+          className="w-[15rem] sm:w-1/2 lg:w-[47%] flex justify-center flex-col  gap-5 bg-white p-10 rounded-lg"
         >
           <div className="flex relative flex-col items-center mb-4">
             <div className="w-5 h-5 absolute top-0 right-0 rounded-full"></div>
@@ -49,7 +49,7 @@ const Card = () => {
               </p>
             </div>
           </div>
-          <div className="flex justify-center items-center gap-10 mt-2 text-sm mb-4">
+          <div className="flex justify-center items-center gap-5 lg:gap-10 mt-2 text-sm mb-4">
             <div>
               <p className="font-bold">Posts</p>
               <p className="text-[#6B7280]">{user.posts}</p>

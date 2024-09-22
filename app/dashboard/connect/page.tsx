@@ -51,13 +51,13 @@ console.log(response)
   };
 
   return (
-    <div id="wrapper" className=" mx-auto mt-12 p-2 lg:p-4">
+    <div id="wrapper" className=" lg:mx-auto  w-full mt-12 p-1 lg:p-4">
       {/* Flex container for the cards */}
       <ToastContainer />
-      <div className="flex flex-col p-2 lg:p-5  lg:flex-row gap-8">
+      <div className="flex flex-col lg:p-5  lg:flex-row gap-8">
         {/* First Card */}
-        <div className="main-content flex items-stretch justify-center flex-col gap-[5%] bg-white  p-10 rounded-lg flex-1">
-          <div className="header mb-5 flex justify-center">
+        <div className="main-content flex w-[20rem] lg:w-full items-stretch justify-center flex-col gap-[5%] bg-white p-3 lg:p-10 rounded-lg lg:flex-1">
+          <div className="header mb-5 flex justify-center mt-5">
             <img
               src="https://i.imgur.com/zqpwkLQ.png"
               alt="Instagram Logo"
@@ -71,26 +71,26 @@ console.log(response)
             }}
             className="  w-full"
           >
-            <label htmlFor="Username" className="text-2xl">
+            <label htmlFor="Username" className="text-xl lg:text2xl ">
               {" "}
               Username
             </label>
             <input
               type="text"
-              placeholder="enter a Username"
-              className="input-2 w-full border h-[20%] border-[#ACB9CD] p-6   mt-3 bg-[#F6F7F9]    rounded-lg "
+              placeholder="enter username"
+              className="input-2 w-full border h-[20%] border-[#ACB9CD] lg:p-6 p-3  mt-3 bg-[#F6F7F9]    rounded-lg "
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
             <div className="overlap-text relative mt-5">
-              <label htmlFor="Password" className="text-2xl ">
+              <label htmlFor="Password" className="  text-xl lg:text-2xl ">
                 Password
               </label>
               <input
                 type="password"
-                placeholder=" enter a Password"
-                className="input-2 w-full border h-[20%] p-6 border-1 border-[#ACB9CD]  mt-3 bg-[#F6F7F9]    rounded-lg "
+                placeholder=" enter password"
+                className="input-2 w-full border h-[20%] lg:p-6 p-3 border-1 border-[#ACB9CD]  mt-3 bg-[#F6F7F9]    rounded-lg "
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -98,7 +98,7 @@ console.log(response)
             </div>
             <button
               type="submit"
-              className="btn w-full rounded-full  text-[1.2em] p-4 mt-[7%]  bg-blue-500 text-white   font-bold hover:bg-blue-600 disabled:opacity-50"
+              className="btn w-full rounded-full  mt-5  mb-5  text-[1.2em] lg:p-4 p-2 font-light lg:mt-[7%]  bg-blue-500 text-white   lg:font-bold hover:bg-blue-600 disabled:opacity-50"
               disabled={loading}
             >
               {loading ? "Connecting..." : "Connect"}
@@ -110,14 +110,14 @@ console.log(response)
         <div className="info-card bg-white  h-fit p-10 rounded-lg w-full flex-1">
           <h2 className="text-2xl font-bold mb-4">Functionalities</h2>
           <hr className="bg-[#6B7280] w-full mb-3 " />
-          <p className="mb-4 text-[#6B7280]  font-medium text-[1.2em] ">
+          <p className="mb-4 text-[#6B7280]  font-medium lg:text-[1.2em] ">
             {" "}
             Connect your Instagram account to access our custom coded algorithm
           </p>
-          <h3 className="text-2xl font-semibold mb-2">
+          <h3 className="lg:text-2xl text-xl  mt-5 font-semibold mb-2">
             You &apos;re information provided is secured.
           </h3>
-          <ol className="list-decimal  text-[#6B7280] text-[1.2em] font-medium list-inside mb-4">
+          <ol className="list-decimal   text-[#6B7280] lg:text-[1.2em] font-medium list-inside mb-4">
             <li>Connect your account.</li>
             <li>Confirm with 2 factor authentication. (optional)</li>
             <li>Chose your target audience.</li>

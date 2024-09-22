@@ -2,19 +2,19 @@
 import React, { useState } from "react";
 import Card from "./cards";
 import TargetCard from "./target";
-
+import SettingCard from "./Setting"
 const DisplayInstaProfile: React.FC = () => {
   const [activeTab, setActiveTab] = useState("target");
 
 
   return (
-    <div id="wrapper" className=" mx-auto mt-12 p-2 lg:p-4">
+    <div id="wrapper" className=" mx-auto mt-12  w-full  p-2 lg:p-4 lg:w-full ">
       {" "}
       {/* Flex container for the cards */}
-      <div className="flex  w-full items-start flex-col lg:flex-row gap-8">
+      <div className="flex  overflow-hidden w-full  lg:w-full justify-start items-start flex-col lg:flex-row gap-8">
         {/* First Card */}
-        <div className="flex flex-1 flex-col ustify-center w-full ">
-          <div className=" w-full   flex justify-center flex-col gap-[5%] bg-white  p-10 rounded-lg flex-1">
+        <div className="flex flex-1 flex-col justify-center  w-full lg:w-full ">
+          <div className=" w-full   flex justify-center flex-col gap-[5%] bg-white  p-10 rounded-lg lg:flex-1">
             <div className="flex  relative flex-col items-center mb-4">
               <div className="w-5 h-5  absolute top-0 right-0  float-right rounded-full bg-green-400 overflow-hidden "></div>
 
@@ -53,8 +53,8 @@ const DisplayInstaProfile: React.FC = () => {
         </div>
         {/* Second Card */}
 
-        <div className="info-card bg-white border- p-10 rounded-lg shadow-md flex-1">
-          <div className="flex gap-8">
+        <div className="info-card w-[20rem] md:w-full p-3 lg:w-full bg-white border- lg:p-10 rounded-lg shadow-md flex-1">
+          <div className="flex gap-8 w-fit ">
             {/* Tab Buttons */}
             <h2
               className={`cursor-pointer text-lg font-medium ${
@@ -75,13 +75,9 @@ const DisplayInstaProfile: React.FC = () => {
           </div>
 
           {/* Render different content based on active tab */}
-          <div className="mt-8">
+          <div className="mt-8  md:w-full lg:w-full">
             {activeTab === "setting" ? (
-              <div>
-                <h2 className="text-gray-600">
-                  Hi, this is the Setting content!
-                </h2>
-              </div>
+            <SettingCard/>
             ) : (
               <div>
                 <TargetCard/>
