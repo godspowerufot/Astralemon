@@ -17,9 +17,11 @@ const stripePromise = loadStripe(
 //     "Stripe publishable key is not set in the environment variables."
 //   );
 // }
+interface PricingPageProps {
+  activeTabs: string;
+}
 
-const PricingPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<"monthly" | "yearly">("monthly");
+const PricingPage: React.FC<PricingPageProps> = ({ activeTabs }) => {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const accesstoken = getAccessToken();
 
@@ -43,7 +45,7 @@ const PricingPage: React.FC = () => {
             title="Easy"
             text="Take advantage of a trial to discover the performance of our services."
             imgurl="/basicbig.png"
-            price={activeTab === "monthly" ? 35 : 35}
+            price={activeTabs === "monthly" ? 35 : 420}
             priceId="price_1HhQ2bQGf4fNlG6fQgP0kjE3"
             features={[
               { text: "250 followers/week", included: true },
@@ -63,7 +65,7 @@ const PricingPage: React.FC = () => {
             imgurl="/premuimbig.png"
             text="Premium offer to perform at your fair value."
             subscription="medium"
-            price={activeTab === "monthly" ? 65 : 65}
+            price={activeTabs === "monthly" ? 65 : 780}
             priceId="price_1HhQ3fQGf4fNlG6fl9PoXK09"
             features={[
               { text: "800 - 1,500 followers/month", included: true },
@@ -85,7 +87,7 @@ const PricingPage: React.FC = () => {
             imgurl="/NeoFlashbg.png"
             text="Our comprehensive offer guarantees you the best results."
             subscription="premium"
-            price={activeTab === "monthly" ? 99 : 99}
+            price={activeTabs === "monthly" ? 99 : 1188}
             priceId="price_1HhQ4uQGf4fNlG6fsH2yPvLJ"
             features={[
               { text: "1,200 - 2,000 followers/month", included: true },

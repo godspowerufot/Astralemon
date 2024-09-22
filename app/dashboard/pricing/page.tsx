@@ -10,7 +10,7 @@ import PricingPage from "./Pricingcard";
 // }
 
 const PricingPages: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<"monthly" | "yearly">("monthly");
+  const [activeTab, setActiveTab] = useState("monthly");
 
 
   return (
@@ -47,7 +47,7 @@ const PricingPages: React.FC = () => {
           </div>
         </div>
       
-      <PricingPage/>
+      <PricingPage activeTabs={activeTab}/>
       </section>
       </>
   );
