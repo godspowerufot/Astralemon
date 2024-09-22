@@ -218,7 +218,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             ))}
           </nav>
           {/* <!-- Sidebar Menu --> */}
-        </div>
+              
+                  </div>
       </aside>
     </ClickOutside>
   );

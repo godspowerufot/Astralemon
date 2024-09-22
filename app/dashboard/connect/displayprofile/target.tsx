@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
+import { Search } from "lucide-react";
 const TargetCard = () => {
   // State to track the active tab
   const [activeTab, setActiveTab] = useState("Add Profile");
@@ -14,7 +15,7 @@ const users = [
 ];
   return (
     <div>
-      <div className="flex items-center bg-[#eeeff0] p-2 rounded-md w-72">
+      <div className="flex items-center bg-[#eeeff0] p-2 rounded-md   lg:w-72">
         <button
           className={`flex-1 px-4 py-2 rounded-l-md ${
             activeTab === "Add Profile"
@@ -43,34 +44,43 @@ const users = [
           <div className="flex  flex-col w-full ">
             {/* input */}
             <div className="flex w-full items-center gap-4 justify-start">
-              <BiSearch className="text-[#ACB9CD] h-10 absolute mt-2" />
+              {/* Search icon inside the input field */}
+              <div className="relative w-full">
+                <Search className="absolute text-[#ACB9CD] h-6 left-3 top-[55%] transform -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="search username"
+                  className="input-2 border h-12 border-[#ACB9CD] pl-[3rem] lg:pl-[5rem] pr-4 mt-3 bg-[#F6F7F9] rounded-lg w-full"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  required
+                />
+              </div>
 
-              <input
-                type="text"
-                placeholder="Search Username"
-                className="input-2  border h-[5%] border-[#ACB9CD] p-4   mt-3 bg-[#F6F7F9]    rounded-lg "
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                required
-              />
-              <div className="btn lg:w-[10em]  p-[0.5em] rounded-lg flex item-center  mr-5 justify-center gap-2   mt-2 text-[1.2em]    bg-blue-500 text-white   font-bold hover:bg-blue-600 disabled:opacity-50">
-                <BiSearch className="text-white h-8" />
-                <p className="text-white  font-light">search </p>
+              <div className="rounded-lg px-3 flex h-[35px]  mr-5 justify-center gap-2  mt-2  items-center text-[1.2em]    bg-blue-500 text-white   font-bold hover:bg-blue-600 disabled:opacity-50">
+                <Search className="h-5" />
+                <p className="text-white  font-light hidden lg:block ">
+                  search{" "}
+                </p>
               </div>
             </div>
             <h2 className="mt-7 mb-5 text-black-2 font-medium text-[1.5em]">
               Results
             </h2>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-x-5 ">
               {users.map((user, index) => (
                 <div
                   key={index}
-                  className="flex gap-7 justify-between items-center p-4 bg-white rounded-lg "
+                  className="flex lg:gap-7 justify-between  items-center p-4 bg-white rounded-lg "
                 >
                   <div className="w-10 h-10 rounded-full bg-slate-400 overflow-hidden"></div>
-                  <h2 className="text-[1em] font-medium">{user.username}</h2>
-                  <h2 className="text-[1em] font-medium">{user.name}</h2>
-                  <div className="btn lg:w-[5em] font-light p-1 rounded-lg flex items-center justify-center gap-2 text-[1em] bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50">
+                  <h2 className="lg:text-[1em] text-[0.7em]  font-medium">
+                    {user.username}
+                  </h2>
+                  <h2 className="lg:text-[1em] text-[0.7em] font-medium text-nowrap">
+                    {user.name}
+                  </h2>
+                  <div className="btn lg:w-[5em] font-light p-2 lg:p-1 rounded-lg flex items-center justify-center gap-2 text-[0.7em] lg:text-[1em] bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50">
                     Add
                   </div>
                 </div>
@@ -81,18 +91,24 @@ const users = [
           <div>
             {/* Target Content */}
             <div className="flex w-full items-center gap-4 justify-start">
-              <BiSearch className="text-[#ACB9CD] h-10 absolute mt-2" />
-              <input
-                type="text"
-                placeholder="Search hashtag"
-                className="input-2  border h-[5%] border-[#ACB9CD] p-5 px-5   mt-3 bg-[#F6F7F9]    rounded-lg "
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                required
-              />
-              <div className="btn lg:w-[10em]  p-[0.5em] rounded-lg flex item-center  mr-5 justify-center gap-2   mt-2 text-[1.2em]    bg-blue-500 text-white   font-bold hover:bg-blue-600 disabled:opacity-50">
-                <BiSearch className="text-white h-8" />
-                <p className="text-white  font-light">search </p>
+              {/* Search icon inside the input field */}
+              <div className="relative w-full">
+                <Search className="absolute text-[#ACB9CD] h-6 left-3 top-[55%] transform -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="search hashtag"
+                  className="input-2 border h-12 border-[#ACB9CD]  pl-[3rem] lg:pl-[5rem] pr-4 mt-3 bg-[#F6F7F9] rounded-lg w-full"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="rounded-lg px-3 flex h-[35px]  mr-5 justify-center gap-2  mt-2  items-center text-[1.2em]    bg-blue-500 text-white   font-bold hover:bg-blue-600 disabled:opacity-50">
+                <Search className="h-5" />
+                <p className="text-white  font-light hidden lg:block ">
+                  search{" "}
+                </p>
               </div>
             </div>
           </div>
