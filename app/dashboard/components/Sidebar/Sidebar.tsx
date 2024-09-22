@@ -7,6 +7,7 @@ import Image from "next/image";
 import SidebarItem from "@/components/Sidebar/SidebarItem";
 import ClickOutside from "@/components/ClickOutside";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import Update from "./Updat";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -217,9 +218,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </div>
             ))}
           </nav>
-          {/* <!-- Sidebar Menu --> */}
-              
-                  </div>
+          <Update />
+        </div>
       </aside>
     </ClickOutside>
   );
