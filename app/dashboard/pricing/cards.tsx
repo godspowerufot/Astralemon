@@ -61,7 +61,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
         ${price}
       </div>
       <p className="text-sm text-slate-500 h-16">
-        {`Per ${price >= 1000 ? "year" : "month"}`}
+        {`Per ${price >= 300 ? "year" : "month"}`}
       </p>
       <ul className="w-full my-4 space-y-2 h-[520px]">
         {features.map((feature, index) => (
