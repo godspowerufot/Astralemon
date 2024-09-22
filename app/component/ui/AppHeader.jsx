@@ -6,6 +6,8 @@ import MediaBear from "@/public/applogo.png";
 import Button from "@/app/component/atoms/Button";
 import Link from "next/link";
 import { useUpdateUserDetails } from "@/hooks/useUpdate";
+import DropdownNotification from "@/app/dashboard/components/Header/DropdownNotification"
+import DropdownUser from "@/app/dashboard/components/Header/DropdownUser"
 import { getAccessToken } from "@/utils/util";
 const AppHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,18 +74,19 @@ const AppHeader = () => {
         </div>
 
         {accesstoken ? (
-          <span className="h-12 w-12 rounded-full">
-            <Image
-              width={112}
-              height={112}
-              src={"/images/user/user-01.png"}
-              style={{
-                width: "auto",
-                height: "auto",
-              }}
-              alt="User"
-            />
-          </span>
+          <div className="flex items-center gap-3 2xsm:gap-7">
+            <ul className="flex items-center gap-2 2xsm:gap-4">
+              {/* Dark Mode Toggler */}
+
+              {/* Notification Menu Area */}
+              <DropdownNotification />
+              {/* Chat Notification Area */}
+              {/* <DropdownMessage /> */}
+            </ul>
+
+            {/* User Area */}
+            <DropdownUser />
+          </div>
         ) : (
           <div className="flex gap-[20px] max-md:hidden">
             <Link href="/Login">
@@ -193,18 +196,34 @@ const AppHeader = () => {
               </a>
             </li>
             <li>
-              <div className="flex  gap-[20px]">
-                <Link href="/Login">
-                  <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[50px] w-[150px]">
-                    Log in
-                  </Button>
-                </Link>
-                <Link href="/registration">
-                  <Button className="h-[45px] text-white bg-blue-600 border border-blue-600  r flex items-center justify-center text-[14px] text-center rounded-[50px] w-[150px] ">
-                    Sign up
-                  </Button>
-                </Link>
-              </div>
+              {accesstoken ? (
+                <div className="flex items-center gap-3 2xsm:gap-7">
+                  <ul className="flex items-center gap-2 2xsm:gap-4">
+                    {/* Dark Mode Toggler */}
+
+                    {/* Notification Menu Area */}
+                    <DropdownNotification />
+                    {/* Chat Notification Area */}
+                    {/* <DropdownMessage /> */}
+                  </ul>
+
+                  {/* User Area */}
+                  <DropdownUser />
+                </div>
+              ) : (
+                <div className="flex gap-[20px] max-md:hidden">
+                  <Link href="/Login">
+                    <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[50px]  md:w-[100px] lg:w-[95px]">
+                      Log in
+                    </Button>
+                  </Link>
+                  <Link href="/registration">
+                    <Button className="h-[45px] text-white border bg-blue-600 border-blue-600 flex items-center justify-center text-[14px] text-center rounded-[50px]  md:w-[100px]">
+                      Sign up
+                    </Button>
+                  </Link>
+                </div>
+              )}
             </li>
           </ul>
         </div>
