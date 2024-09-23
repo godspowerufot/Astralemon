@@ -4,9 +4,11 @@ import Image from "next/image";
 import { toast, ToastContainer } from "react-toastify";
 import { useAuth } from "@/hooks/useAuth";
 import "react-toastify/dist/ReactToastify.css";
+import { useUserDetails } from "@/hooks/useLoguser";
 
 const Affiliations = () => {
   const { getReferralLink, referralCode, loading, error }: any = useAuth();
+  const { data } = useUserDetails();
 
   useEffect(() => {
     // Fetch referral link when component mounts
@@ -65,8 +67,8 @@ const Affiliations = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-lg shadow-md flex justify-between items-center">
             <div className="flex flex-col">
-              <h4 className="text-gray-500">Referral earnings</h4>
-              <p className="text-3xl font-semibold">$23,657</p>
+              <h4 className="text-gray-500">Number of refferals</h4>
+              <p className="text-3xl font-semibold">{data?.referred_by||"0"}</p>
             </div>
             <Image
               width={22}

@@ -217,9 +217,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </ul>
               </div>
             ))}
-            <Update />
           </nav>
           {/* <!-- Sidebar Menu --> */}
+          <Update />
         </div>
       </aside>
     </ClickOutside>
