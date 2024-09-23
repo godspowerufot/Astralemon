@@ -211,7 +211,7 @@ const AppHeader = () => {
                   <DropdownUser />
                 </div>
               ) : (
-                <div className="flex gap-[20px] max-md:hidden">
+                <div className="flex gap-[20px] ">
                   <Link href="/Login">
                     <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[50px]  md:w-[100px] lg:w-[95px]">
                       Log in

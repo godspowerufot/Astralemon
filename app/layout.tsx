@@ -26,7 +26,7 @@ export default function RootLayout({
       >
         {/* <AppHeader /> */}
         <div className="h-full   dark:bg-boxdark-2 dark:text-bodydark">
-          {children}
+        {children}
         </div>
         {/* <AppFooter /> */}
       </body>

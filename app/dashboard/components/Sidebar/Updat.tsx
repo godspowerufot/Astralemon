@@ -15,9 +15,9 @@ const Update = () => {
     <>
       {/* If the card is visible, show the card */}
       {isCardVisible ? (
-        <div className="w-full lg:fixed bottom-0 left-0 flex items-center p-6">
+        <div className="w-full  fixed bottom-0  left-0 flex items-center p-6">
           <div
-            className="w-full mb-6 rounded-xl flex-col flex items-start justify-start p-4"
+            className="w-full   rounded-xl flex-col flex items-start justify-start p-4"
             style={{
               background:
                 "linear-gradient(90deg, rgba(91, 145, 255, 1), rgba(120, 186, 252, 1))", // Gradient background
@@ -47,7 +47,9 @@ const Update = () => {
           onClick={toggleCard} // Show the card when clicked
         >
           {/* Add content/icon inside the circle if desired */}
-          <span className="text-white  text-lg font-bold"><ArrowBigUp/></span>
+          <span className="text-white  text-lg font-bold">
+            <ArrowBigUp />
+          </span>
         </div>
       )}
     </>
