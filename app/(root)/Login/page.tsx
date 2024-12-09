@@ -35,17 +35,18 @@ const Login = () => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { email, password } = formData;
-try{
- await login(email, password);
-}
-   catch(err) {
- if (
-   err === "Account is not verified. Please verify your account to login."
- ) {
-   setShowModal(true);
- }
-   }// Call the login function from the useAuth hook
+    router.push("/dashboard")
+//     const { email, password } = formData;
+// try{
+//  await login(email, password);
+// }
+//    catch(err) {
+//  if (
+//    err === "Account is not verified. Please verify your account to login."
+//  ) {
+//    setShowModal(true);
+//  }
+//    }// Call the login function from the useAuth hook
    
 
     // Handle specific errors like email not verified

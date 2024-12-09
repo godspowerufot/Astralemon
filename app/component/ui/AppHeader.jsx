@@ -8,15 +8,13 @@ import Link from "next/link";
 import { useUpdateUserDetails } from "@/hooks/useUpdate";
 import DropdownNotification from "@/app/dashboard/components/Header/DropdownNotification"
 import DropdownUser from "@/app/dashboard/components/Header/DropdownUser"
-import { getAccessToken } from "@/utils/util";
 const AppHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
   const { data } = useUpdateUserDetails();
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
-  const accesstoken=getAccessToken();
-  console.log(accesstoken)
+  
   const handleNavigation = (path) => {
     closeMenu();
     router.push(path);
@@ -73,21 +71,7 @@ const AppHeader = () => {
           </a>
         </div>
 
-        {accesstoken ? (
-          <div className="flex items-center gap-3 2xsm:gap-7">
-            <ul className="flex items-center gap-2 2xsm:gap-4">
-              {/* Dark Mode Toggler */}
-
-              {/* Notification Menu Area */}
-              <DropdownNotification />
-              {/* Chat Notification Area */}
-              {/* <DropdownMessage /> */}
-            </ul>
-
-            {/* User Area */}
-            <DropdownUser />
-          </div>
-        ) : (
+  
           <div className="flex gap-[20px] max-md:hidden">
             <Link href="/Login">
               <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[50px]  md:w-[100px] lg:w-[95px]">
@@ -100,8 +84,7 @@ const AppHeader = () => {
               </Button>
             </Link>
           </div>
-        )}
-
+    
         <button
           onClick={toggleMenu}
           className="md:hidden text-black focus:outline-none"
@@ -196,21 +179,7 @@ const AppHeader = () => {
               </a>
             </li>
             <li>
-              {accesstoken ? (
-                <div className="flex items-center gap-3 2xsm:gap-7">
-                  <ul className="flex items-center gap-2 2xsm:gap-4">
-                    {/* Dark Mode Toggler */}
-
-                    {/* Notification Menu Area */}
-                    <DropdownNotification />
-                    {/* Chat Notification Area */}
-                    {/* <DropdownMessage /> */}
-                  </ul>
-
-                  {/* User Area */}
-                  <DropdownUser />
-                </div>
-              ) : (
+    
                 <div className="flex gap-[20px] ">
                   <Link href="/Login">
                     <Button className="h-[45px] bg-transparent border border-blue-600 flex items-center justify-center text-blue-600 text-[14px] text-center rounded-[50px]  md:w-[100px] lg:w-[95px]">
@@ -223,7 +192,6 @@ const AppHeader = () => {
                     </Button>
                   </Link>
                 </div>
-              )}
             </li>
           </ul>
         </div>

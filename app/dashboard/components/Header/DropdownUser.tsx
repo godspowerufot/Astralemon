@@ -15,23 +15,23 @@ const DropdownUser = () => {
   let bgColor = "bg-red-500"; // Default background color
 
 
-const {data}=useUserDetails();
-  // Handle the logout process
-  const handleLogout = async () => {
-    logout(); // Call the logout function from useAuth
-    setDropdownOpen(false);
-    router.push("/Login"); // Redirect to the login page after logout
-  };
-       if (data?.is_superuser) {
-         imageUrl = "/Premium.png";
-         bgColor = ""; // No background color when an image is present
-       } else if (data?.is_staff) {
-         imageUrl = "/medium.png";
-         bgColor = "";
-       } else if (data?.is_active) {
-         imageUrl = "/basic.png";
-         bgColor = "";
-       }
+// const {data}=useUserDetails();
+//   // Handle the logout process
+//   const handleLogout = async () => {
+//     // logout(); // Call the logout function from useAuth
+//     setDropdownOpen(false);
+//     // router.push("/Login"); // Redirect to the login page after logout
+//   };
+//        if (data?.is_superuser) {
+//          imageUrl = "/Premium.png";
+//          bgColor = ""; // No background color when an image is present
+//        } else if (data?.is_staff) {
+//          imageUrl = "/medium.png";
+//          bgColor = "";
+//        } else if (data?.is_active) {
+//          imageUrl = "/basic.png";
+//          bgColor = "";
+//        }
 
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
@@ -65,7 +65,7 @@ const {data}=useUserDetails();
         </span>
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            {data?.username}
+            {/* {data?.username} */}
           </span>
         </span>
         <svg
@@ -118,7 +118,6 @@ const {data}=useUserDetails();
             </li>
           </ul>
           <button
-            onClick={handleLogout}
             className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
           >
             <svg

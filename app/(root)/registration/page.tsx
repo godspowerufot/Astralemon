@@ -73,15 +73,16 @@ const inputRefs: Partial<Record<keyof Omit<FormData, 'referred_by'>, React.RefOb
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const referralCode = searchParams.get("ref"); // Get referral code from URL
+    router.push("/dashboard")
+    // const referralCode = searchParams.get("ref"); // Get referral code from URL
 
-    // If there's a referral code, include it in the form data
-    if (referralCode) {
-      setFormData((prevData) => ({ ...prevData, referred_by: referralCode }));
-    }
-    if (validateForm()) {
-      await register(formData);
-    }
+    // // If there's a referral code, include it in the form data
+    // if (referralCode) {
+    //   setFormData((prevData) => ({ ...prevData, referred_by: referralCode }));
+    // }
+    // if (validateForm()) {
+    //   await register(formData);
+    // }
   };
 
   const handleNavigation = (path: string) => {

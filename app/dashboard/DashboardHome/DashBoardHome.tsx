@@ -7,7 +7,6 @@ import ChartTwo from "../components/Charts/ChartTwo";
 // import ChatCard from "../Chat/ChatCard";
 import TableOne from "../components/Tables/TableOne";
 import CardDataStats from "../CardDataStats";
-import { useUserDetails } from "@/hooks/useLoguser";
 
 const MapOne = dynamic(() => import("@/app/dashboard/components/Maps/MapOne"), {
   ssr: false,
